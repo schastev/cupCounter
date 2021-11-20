@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Счетчик кружек</string>
+    <string name="edit_message">Введите номер телефона</string>
+    <string name="searchCustomers">Найти</string>
+    <string name="title_activity_client_card">ClientCard</string>
+    <string name="enterPhoneNumber">Введите номер телефона</string>
+    <string name="enterCustomerName">Введите имя</string>
+    <string name="AddCustomer">Добавить запись</string>
+    <string name="MoveToAddCustomerScreen">Новый клиент</string>
+</resources>
