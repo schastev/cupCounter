@@ -11,9 +11,11 @@
         android:theme="@style/Theme.CupCounter">
         <activity
             android:name=".DisplayCustomerInfoActivity"
+            android:parentActivityName=".MainActivity" />
             android:exported="true" />
         <activity
             android:name=".AddNewCustomerActivity"
+            android:parentActivityName=".MainActivity" />
             android:exported="true" />
         <activity
             android:name=".DisplaySearchResultsActivity"
