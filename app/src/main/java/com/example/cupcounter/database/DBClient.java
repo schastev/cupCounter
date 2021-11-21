@@ -8,15 +8,12 @@ public class DBClient {
     private Context mCtx;
     private static DBClient mInstance;
 
-    //our app database object
     private AppDatabase appDatabase;
 
     private DBClient(Context mCtx) {
         this.mCtx = mCtx;
-        //creating the app database with Room database builder
-        //MyToDos is the name of the database
         appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "cup_counter.db")//todo remove the following two bits before deployment
-                .fallbackToDestructiveMigration()
+//                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
     }
