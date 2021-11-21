@@ -1,14 +1,20 @@
 package com.example.cupcounter;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
+
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
@@ -18,6 +24,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     Customer customer;
     int customerId;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +38,14 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         TextView nameField = findViewById(R.id.CustomerName);
         nameField.setText(customer.getName());
 
-        //todo change output date format
         TextView registrationField = findViewById(R.id.RegistrationDate);
-        registrationField.setText(customer.getRegistrationDate().toString());
+        registrationField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                .withLocale(new Locale("ru"))
+                .format(customer.getRegistrationDate()));
         TextView lastVisitField = findViewById(R.id.LastVisitDate);
-        lastVisitField.setText(customer.getLastVisit().toString());
+        lastVisitField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                .withLocale(new Locale("ru"))
+                .format(customer.getLastVisit()));
 //        displayFreeCoffeeButton(customer.getCups());
     }
 
