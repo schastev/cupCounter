@@ -12,4 +12,5 @@
     <string name="info_button_claim">Cписать кофе</string>
     <string name="info_field_name">TextView</string>
     <string name="info_alert_lost">Потеряшка!</string>
+    <string name="info_alert_free_cups">"Доступно бесплатных кружек: %1$d"</string>
 </resources>

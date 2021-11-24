@@ -1,6 +1,7 @@
 package com.example.cupcounter;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +24,15 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     AppDatabase db;
     CustomerDAO customerDAO;
+    Customer customer;
+    Resources res;
+
     int FREE_CUP_THRESHOLD = 5; //cups customers need to buy before they can claim one free cup. Will be defined in the app's settings
     int RETURNING_CLIENT_THRESHHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
-    Customer customer;
-    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert;
+
+    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton;
+
     //fields to keep new values until they are recorded in the database
     int newCups;
     String newPhoneNumber;
@@ -48,6 +53,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         lastVisitField = findViewById(R.id.info_field_last_visit);
         claimCoffeeButton = findViewById(R.id.info_button_claim);
         lostClientAlert = findViewById(R.id.info_alert_lost);
+        freeCupsAlert = findViewById(R.id.info_alert_free_cups);
+        res = getResources();
 
         //set field values using data from selected customer
         phoneField.setText(customer.getPhoneNumber());
@@ -82,8 +89,12 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     private void checkClaimButtonVisibility() {
         if (newCups / FREE_CUP_THRESHOLD >= 1) {
             claimCoffeeButton.setVisibility(View.VISIBLE);
+            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), customer.getCups() % FREE_CUP_THRESHOLD);
+            freeCupsAlert.setText(cupsAlertTest);
+            freeCupsAlert.setVisibility(View.VISIBLE);
         } else {
             claimCoffeeButton.setVisibility(View.INVISIBLE);
+            freeCupsAlert.setVisibility(View.INVISIBLE);
         }
     }
 

@@ -112,4 +112,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_field_last_visit" />
 
+    <TextView
+        android:id="@+id/info_alert_free_cups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/info_alert_free_cups"
+        app:layout_constraintEnd_toStartOf="@+id/info_button_update"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_button_claim" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
