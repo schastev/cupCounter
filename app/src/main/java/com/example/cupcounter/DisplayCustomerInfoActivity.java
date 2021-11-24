@@ -15,6 +15,7 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
@@ -23,10 +24,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     AppDatabase db;
     CustomerDAO customerDAO;
-    int FREE_CUP_THRESHOLD = 5;
+    int FREE_CUP_THRESHOLD = 5; //cups customers need to buy before they can claim one free cup. Will be defined in the app's settings
     Customer customer;
     int customerId;
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField;
+    //fields to keep new values until they are recorded in the database
     int newCups;
     String newPhoneNumber;
 
@@ -39,24 +41,29 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         customerDAO = db.customerDao();
         customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
-        phoneField = findViewById(R.id.CustomerPhoneNumber);
+        //find text fields
+        phoneField = findViewById(R.id.info_field_phone);
+        cupNumberField = findViewById(R.id.info_field_cups);
+        registrationField = findViewById(R.id.info_field_registration);
+        lastVisitField = findViewById(R.id.info_field_last_visit);
+
+        //set field values using data from selected customer
         phoneField.setText(customer.getPhoneNumber());
-        nameField = findViewById(R.id.CustomerName);
         nameField.setText(customer.getName());
-
-        cupNumberField = findViewById(R.id.cupNumber);
         cupNumberField.setText(String.valueOf(customer.getCups()));
+        registrationField.setText(formatDate(customer.getRegistrationDate()));
+        lastVisitField.setText(formatDate(customer.getLastVisit()));
 
-        registrationField = findViewById(R.id.RegistrationDate);
-        registrationField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                .withLocale(new Locale("ru"))
-                .format(customer.getRegistrationDate()));
-        lastVisitField = findViewById(R.id.LastVisitDate);
-        lastVisitField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                .withLocale(new Locale("ru"))
-                .format(customer.getLastVisit()));
         newCups = customer.getCups();
-//        displayFreeCoffeeButton(customer.getCups());
+
+//        displayFreeCoffeeButton(newCups);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String formatDate(LocalDate date) {
+        return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                .withLocale(new Locale("ru"))
+                .format(date);
     }
 
     public void useFreeCoffee(View view) {
@@ -71,6 +78,10 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     public int displayFreeCoffeeButton(int numberOfCups) {
         return numberOfCups / FREE_CUP_THRESHOLD;
+    }
+
+    public void revertPhoneNumber() {
+        phoneField.setText(customer.getPhoneNumber());
     }
 
     public void updateCustomer(View view) {

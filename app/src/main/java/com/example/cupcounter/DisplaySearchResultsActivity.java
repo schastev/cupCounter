@@ -35,10 +35,10 @@ public class DisplaySearchResultsActivity extends AppCompatActivity implements O
         String phoneNumberEnding = intent.getStringExtra(com.example.cupcounter.MainActivity.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView);
+        TextView textView = findViewById(R.id.results_field_query);
         textView.setText(phoneNumberEnding);
 
-        RecyclerView listView = findViewById(R.id.client_names);
+        RecyclerView listView = findViewById(R.id.result_list_names);
         // находим клиентов по телефону
         foundCustomers = customerDAO.findByShortNumber("%" + phoneNumberEnding);
         // используем адаптер данных

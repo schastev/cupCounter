@@ -7,7 +7,7 @@
     tools:context=".DisplayCustomerInfoActivity">
 
     <EditText
-        android:id="@+id/CustomerPhoneNumber"
+        android:id="@+id/info_field_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -21,19 +21,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/CustomerName"
+        android:id="@+id/info_field_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/CustomerNameField"
+        android:text="@string/info_field_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/CustomerPhoneNumber"
+        app:layout_constraintEnd_toStartOf="@+id/info_field_phone"
         app:layout_constraintHorizontal_bias="0.239"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/RegistrationDate"
+        android:id="@+id/info_field_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -42,10 +42,10 @@
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerName" />
+        app:layout_constraintTop_toBottomOf="@+id/info_field_name" />
 
     <TextView
-        android:id="@+id/LastVisitDate"
+        android:id="@+id/info_field_last_visit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -54,11 +54,11 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.613"
-        app:layout_constraintStart_toEndOf="@+id/RegistrationDate"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerPhoneNumber" />
+        app:layout_constraintStart_toEndOf="@+id/info_field_registration"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_phone" />
 
     <TextView
-        android:id="@+id/cupNumber"
+        android:id="@+id/info_field_cups"
         android:layout_width="94dp"
         android:layout_height="47dp"
         android:layout_marginTop="32dp"
@@ -66,40 +66,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate" />
+        app:layout_constraintTop_toBottomOf="@+id/info_field_registration" />
 
     <Button
-        android:id="@+id/minusButton"
+        android:id="@+id/info_button_claim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="28dp"
         android:onClick="useFreeCoffee"
-        android:text="@string/ClaimFreeCoffeeButton"
-        app:layout_constraintEnd_toStartOf="@+id/cupNumber"
-        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate"
+        android:text="@string/info_button_claim"
+        app:layout_constraintEnd_toStartOf="@+id/info_field_cups"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_registration"
         app:layout_goneMarginEnd="32dp" />
 
     <Button
-        android:id="@+id/plusButton"
+        android:id="@+id/info_button_add_coffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:onClick="addCoffee"
-        android:text="@string/AddCoffeeButton"
-        app:layout_constraintStart_toEndOf="@+id/cupNumber"
-        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate" />
+        android:text="@string/info_button_add_coffee"
+        app:layout_constraintStart_toEndOf="@+id/info_field_cups"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_registration" />
 
     <Button
-        android:id="@+id/saveChangesButton"
+        android:id="@+id/info_button_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="204dp"
         android:onClick="updateCustomer"
-        android:text="@string/SaveCustomerInfoButton"
+        android:text="@string/info_button_update"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LastVisitDate" />
+        app:layout_constraintTop_toBottomOf="@+id/info_field_last_visit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

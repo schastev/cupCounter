@@ -14,7 +14,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/edit_message"
+        android:hint="@string/main_input_phone_search_bar"
         android:inputType="phone"
         android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/SearchCustomers"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/searchCustomers"
+        android:hint="@string/main_button_search"
         android:onClick="findCustomer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

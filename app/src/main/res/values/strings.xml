@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Счетчик кружек</string>
-    <string name="edit_message">Введите номер телефона</string>
-    <string name="searchCustomers">Найти</string>
+    <string name="main_input_phone_search_bar">Введите номер телефона</string>
+    <string name="main_button_search">Найти</string>
+    <string name="main_button_add_customer">Новый клиент</string>
     <string name="title_activity_client_card">ClientCard</string>
-    <string name="enterPhoneNumber">Введите номер телефона</string>
-    <string name="enterCustomerName">Введите имя</string>
-    <string name="AddCustomer">Добавить запись</string>
-    <string name="MoveToAddCustomerScreen">Новый клиент</string>
-    <string name="SaveCustomerInfoButton">Сохранить</string>
-    <string name="AddCoffeeButton">+</string>
-    <string name="ClaimFreeCoffeeButton">Cписать кофе</string>
-    <string name="CustomerNameField">TextView</string>
+    <string name="new_input_phone">Введите номер телефона</string>
+    <string name="new_input_name">Введите имя</string>
+    <string name="new_button_add">Добавить запись</string>
+    <string name="info_button_update">Сохранить</string>
+    <string name="info_button_add_coffee">+</string>
+    <string name="info_button_claim">Cписать кофе</string>
+    <string name="info_field_name">TextView</string>
 </resources>

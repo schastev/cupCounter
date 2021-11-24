@@ -16,7 +16,6 @@ import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class AddNewCustomerActivity extends AppCompatActivity {
 
@@ -36,9 +35,9 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addCustomer(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        EditText form = findViewById(R.id.enterPhoneNumber);
+        EditText form = findViewById(R.id.new_input_phone);
         String phoneNumber = form.getText().toString();
-        form = findViewById(R.id.enterCustomerName);
+        form = findViewById(R.id.new_input_name);
         String name = form.getText().toString();
         Customer newCustomer = new Customer(name, phoneNumber, LocalDate.now(), LocalDate.now(), 1);
         customerDAO.insert(newCustomer);
