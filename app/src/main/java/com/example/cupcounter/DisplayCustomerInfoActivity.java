@@ -28,7 +28,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     Resources res;
 
     int FREE_CUP_THRESHOLD = 5; //cups customers need to buy before they can claim one free cup. Will be defined in the app's settings
-    int RETURNING_CLIENT_THRESHHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
+    int RETURNING_CLIENT_THRESHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
 
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton;
@@ -99,7 +99,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void checkReturningClient() {
-        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CLIENT_THRESHHOLD))) {
+        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CLIENT_THRESHOLD))) {
             lostClientAlert.setVisibility(View.VISIBLE);
         } else {
             lostClientAlert.setVisibility(View.INVISIBLE);
