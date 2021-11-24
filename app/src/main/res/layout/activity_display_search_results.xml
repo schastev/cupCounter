@@ -17,13 +17,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/client_names"
-        android:layout_width="816dp"
-        android:layout_height="442dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="813dp"
+        android:layout_height="393dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.169" />
 </androidx.constraintlayout.widget.ConstraintLayout>
