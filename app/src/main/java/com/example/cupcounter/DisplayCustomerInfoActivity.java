@@ -42,6 +42,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
         //find text fields
+        nameField = findViewById(R.id.info_field_name);
         phoneField = findViewById(R.id.info_field_phone);
         cupNumberField = findViewById(R.id.info_field_cups);
         registrationField = findViewById(R.id.info_field_registration);
