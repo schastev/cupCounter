@@ -42,7 +42,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         String name = nameField.getText().toString();
         String validName = null;
         String validNumber = null;
-        if (name.matches("[a-zA-Zа-яА-Я ]+")) {
+        if (name.matches("[a-zA-Z ]+") || name.matches("[а-яА-Я ]+")) {
             validName = name;
         } else {
             nameField.setText("");
