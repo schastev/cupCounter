@@ -26,13 +26,13 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     AppDatabase db;
     CustomerDAO customerDAO;
     int FREE_CUP_THRESHOLD = 5; //cups customers need to buy before they can claim one free cup. Will be defined in the app's settings
+    int RETURNING_CLIENT_THRESHHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
     Customer customer;
-    int customerId;
-    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField;
+    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert;
+    Button claimCoffeeButton;
     //fields to keep new values until they are recorded in the database
     int newCups;
     String newPhoneNumber;
-    Button claimCoffeeButton;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -41,7 +41,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_customer_info);
         db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
-        customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
+        int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
         //find text fields
         nameField = findViewById(R.id.info_field_name);
@@ -50,6 +50,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         registrationField = findViewById(R.id.info_field_registration);
         lastVisitField = findViewById(R.id.info_field_last_visit);
         claimCoffeeButton = findViewById(R.id.info_button_claim);
+        lostClientAlert = findViewById(R.id.info_alert_lost);
 
         //set field values using data from selected customer
         phoneField.setText(customer.getPhoneNumber());
@@ -60,6 +61,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
         newCups = customer.getCups();
         checkClaimButtonVisibility();
+        checkReturningClient();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -81,12 +83,21 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         checkClaimButtonVisibility();
     }
 
-    public void checkClaimButtonVisibility() {
+    private void checkClaimButtonVisibility() {
         if (newCups / FREE_CUP_THRESHOLD >= 1) {
             claimCoffeeButton.setVisibility(View.VISIBLE);
         }
         else {
             claimCoffeeButton.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void checkReturningClient() {
+        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CLIENT_THRESHHOLD))) {
+            lostClientAlert.setVisibility(View.VISIBLE);
+        } else {
+            lostClientAlert.setVisibility(View.INVISIBLE);
         }
     }
 

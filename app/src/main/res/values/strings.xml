@@ -11,4 +11,5 @@
     <string name="info_button_add_coffee">+</string>
     <string name="info_button_claim">Cписать кофе</string>
     <string name="info_field_name">TextView</string>
+    <string name="info_alert_lost">Потеряшка!</string>
 </resources>
