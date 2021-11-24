@@ -1,8 +1,11 @@
 package com.example.cupcounter;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +26,9 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     int FREE_CUP_THRESHOLD = 5;
     Customer customer;
     int customerId;
+    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField;
+    int newCups;
+    String newPhoneNumber;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -33,41 +39,50 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         customerDAO = db.customerDao();
         customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
-        TextView phoneField = findViewById(R.id.CustomerPhoneNumber);
+        phoneField = findViewById(R.id.CustomerPhoneNumber);
         phoneField.setText(customer.getPhoneNumber());
-        TextView nameField = findViewById(R.id.CustomerName);
+        nameField = findViewById(R.id.CustomerName);
         nameField.setText(customer.getName());
 
-        TextView registrationField = findViewById(R.id.RegistrationDate);
+        cupNumberField = findViewById(R.id.cupNumber);
+        cupNumberField.setText(String.valueOf(customer.getCups()));
+
+        registrationField = findViewById(R.id.RegistrationDate);
         registrationField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
                 .withLocale(new Locale("ru"))
                 .format(customer.getRegistrationDate()));
-        TextView lastVisitField = findViewById(R.id.LastVisitDate);
+        lastVisitField = findViewById(R.id.LastVisitDate);
         lastVisitField.setText(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
                 .withLocale(new Locale("ru"))
                 .format(customer.getLastVisit()));
+        newCups = customer.getCups();
 //        displayFreeCoffeeButton(customer.getCups());
     }
 
-    public void updatePhoneNumber(String newNumber) {
-        customer.setPhoneNumber(newNumber);
-        customerDAO.insert(customer);
+    public void useFreeCoffee(View view) {
+        newCups = newCups - FREE_CUP_THRESHOLD;
+        cupNumberField.setText(String.valueOf(newCups));
     }
 
-    public void updateCups(int newNumber) {
-        if (newNumber < customer.getCups()) {
-            return;
-        }
-        customer.setCups(newNumber);
-    }
-
-    public void useFreeCoffee() {
-        int newNumber = customer.getCups() - FREE_CUP_THRESHOLD;
-        customer.setCups(newNumber);
-        customerDAO.update(customer);
+    public void addCoffee(View view) {
+        newCups = newCups + 1;
+        cupNumberField.setText(String.valueOf(newCups));
     }
 
     public int displayFreeCoffeeButton(int numberOfCups) {
         return numberOfCups / FREE_CUP_THRESHOLD;
+    }
+
+    public void updateCustomer(View view) {
+        int newCups = Integer.parseInt(String.valueOf(cupNumberField.getText()));
+        newPhoneNumber = String.valueOf(phoneField.getText());
+        customer.setCups(newCups);
+        customer.setPhoneNumber(newPhoneNumber);
+        customerDAO.update(customer);
+        Intent intent = new Intent(this, MainActivity.class);
+        Toast toast = Toast.makeText(getApplicationContext(), "Данные клиента обновлены успешно", Toast.LENGTH_SHORT);
+        toast.show();
+        startActivity(intent);
+
     }
 }

@@ -7,4 +7,8 @@
     <string name="enterCustomerName">Введите имя</string>
     <string name="AddCustomer">Добавить запись</string>
     <string name="MoveToAddCustomerScreen">Новый клиент</string>
+    <string name="SaveCustomerInfoButton">Сохранить</string>
+    <string name="AddCoffeeButton">+</string>
+    <string name="ClaimFreeCoffeeButton">Cписать кофе</string>
+    <string name="CustomerNameField">TextView</string>
 </resources>

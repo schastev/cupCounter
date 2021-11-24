@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/CustomerNameField"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toStartOf="@+id/CustomerPhoneNumber"
         app:layout_constraintHorizontal_bias="0.239"
@@ -39,7 +39,6 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="date"
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,12 +50,56 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="date"
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.613"
         app:layout_constraintStart_toEndOf="@+id/RegistrationDate"
         app:layout_constraintTop_toBottomOf="@+id/CustomerPhoneNumber" />
+
+    <TextView
+        android:id="@+id/cupNumber"
+        android:layout_width="94dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate" />
+
+    <Button
+        android:id="@+id/minusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:onClick="useFreeCoffee"
+        android:text="@string/ClaimFreeCoffeeButton"
+        app:layout_constraintEnd_toStartOf="@+id/cupNumber"
+        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate"
+        app:layout_goneMarginEnd="32dp" />
+
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:onClick="addCoffee"
+        android:text="@string/AddCoffeeButton"
+        app:layout_constraintStart_toEndOf="@+id/cupNumber"
+        app:layout_constraintTop_toBottomOf="@+id/RegistrationDate" />
+
+    <Button
+        android:id="@+id/saveChangesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="204dp"
+        android:onClick="updateCustomer"
+        android:text="@string/SaveCustomerInfoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LastVisitDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
