@@ -1,14 +1,12 @@
 package com.example.cupcounter;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
@@ -35,7 +33,6 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         nameField = findViewById(R.id.new_input_name);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addCustomer(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         String phoneNumber = phoneField.getText().toString();

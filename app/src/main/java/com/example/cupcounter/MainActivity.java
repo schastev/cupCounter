@@ -1,14 +1,12 @@
 package com.example.cupcounter;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cupcounter.customerlist.CustomerAdapter;
 import com.example.cupcounter.customerlist.OnItemClickListener;
@@ -46,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void findCustomer(View view) {
         String numberEnding = phoneSearchField.getText().toString();
         // находим клиентов по телефону

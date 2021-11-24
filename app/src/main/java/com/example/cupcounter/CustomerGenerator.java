@@ -1,9 +1,5 @@
 package com.example.cupcounter;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
@@ -23,7 +19,6 @@ public abstract class CustomerGenerator {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static LocalDate randomRegistrationDate() {
         long minDay = LocalDate.of(2021, 6, 1).toEpochDay();
         long maxDay = LocalDate.now().toEpochDay();
@@ -31,7 +26,6 @@ public abstract class CustomerGenerator {
         return LocalDate.ofEpochDay(randomDay);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static LocalDate randomLastVisitDate(LocalDate min) {
         long minDay = min.toEpochDay();
         long maxDay = LocalDate.now().toEpochDay();
@@ -40,7 +34,7 @@ public abstract class CustomerGenerator {
     }
 
     public static int randomCups() {
-        return (int) Math.floor(Math.random()*(50));
+        return (int) Math.floor(Math.random() * (50));
     }
 
 

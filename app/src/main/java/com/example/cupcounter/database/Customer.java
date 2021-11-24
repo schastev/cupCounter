@@ -1,13 +1,13 @@
 package com.example.cupcounter.database;
 
 
+import android.os.Build;
+
 import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
-
-import android.os.Build;
 
 import com.example.cupcounter.CustomerGenerator;
 
@@ -97,7 +97,9 @@ public class Customer implements Serializable, Comparable {
         this.id = id;
     }
 
-    public void setName (String name) {this.name = name;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

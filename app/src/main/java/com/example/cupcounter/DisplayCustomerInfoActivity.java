@@ -1,14 +1,12 @@
 package com.example.cupcounter;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.database.AppDatabase;
@@ -34,7 +32,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     int newCups;
     String newPhoneNumber;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +61,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         checkReturningClient();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private String formatDate(LocalDate date) {
         return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
                 .withLocale(new Locale("ru"))
@@ -86,13 +82,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     private void checkClaimButtonVisibility() {
         if (newCups / FREE_CUP_THRESHOLD >= 1) {
             claimCoffeeButton.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             claimCoffeeButton.setVisibility(View.INVISIBLE);
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void checkReturningClient() {
         if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CLIENT_THRESHHOLD))) {
             lostClientAlert.setVisibility(View.VISIBLE);
@@ -123,6 +117,5 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         if (phoneUpdated != null) phoneUpdated.show();
         if (cupsUpdated != null) cupsUpdated.show();
         startActivity(intent);
-
     }
 }
