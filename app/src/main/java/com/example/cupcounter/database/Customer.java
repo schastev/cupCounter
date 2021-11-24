@@ -1,6 +1,5 @@
 package com.example.cupcounter.database;
 
-import static androidx.room.ColumnInfo.INTEGER;
 
 import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
@@ -13,15 +12,13 @@ import android.os.Build;
 import com.example.cupcounter.CustomerGenerator;
 
 import java.io.Serializable;
-import java.sql.Types;
 import java.time.LocalDate;
 
 @Entity
 @TypeConverters({LocalDateTypeConverter.class})
-public class Customer implements Serializable {
+public class Customer implements Serializable, Comparable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-//    @ColumnInfo(typeAffinity = INTEGER)
     private int id;
     @ColumnInfo(name = "name")
     private String name;
@@ -62,6 +59,14 @@ public class Customer implements Serializable {
                 this.registrationDate.equals(((Customer) o).getRegistrationDate()) ||
                 this.lastVisit.equals(((Customer) o).getLastVisit()) ||
                 this.cups == ((Customer) o).getCups();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o.getClass().equals(Customer.class)) {
+            return this.name.compareTo(((Customer) o).getName());
+        }
+        return 0;
     }
 
     public int getId() {

@@ -18,6 +18,7 @@ import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DisplaySearchResultsActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -43,7 +44,10 @@ public class DisplaySearchResultsActivity extends AppCompatActivity implements O
 
         RecyclerView listView = findViewById(R.id.result_list_names);
         // находим клиентов по телефону
-        foundCustomers = customerDAO.findByShortNumber("%" + phoneNumberEnding);//.stream().sorted().collect(Collectors.toList()); todo implement Comparable for Customer
+        foundCustomers = customerDAO.findByShortNumber("%" + phoneNumberEnding)
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
         // используем адаптер данных
         CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
         // Привяжем массив через адаптер к ListView
