@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     //fields to keep new values until they are recorded in the database
     int newCups;
     String newPhoneNumber;
+    Button claimCoffeeButton;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -47,6 +49,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         cupNumberField = findViewById(R.id.info_field_cups);
         registrationField = findViewById(R.id.info_field_registration);
         lastVisitField = findViewById(R.id.info_field_last_visit);
+        claimCoffeeButton = findViewById(R.id.info_button_claim);
 
         //set field values using data from selected customer
         phoneField.setText(customer.getPhoneNumber());
@@ -56,8 +59,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         lastVisitField.setText(formatDate(customer.getLastVisit()));
 
         newCups = customer.getCups();
-
-//        displayFreeCoffeeButton(newCups);
+        checkClaimButtonVisibility();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -67,18 +69,25 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
                 .format(date);
     }
 
-    public void useFreeCoffee(View view) {
+    public void claimCoffee(View view) {
         newCups = newCups - FREE_CUP_THRESHOLD;
         cupNumberField.setText(String.valueOf(newCups));
+        checkClaimButtonVisibility();
     }
 
     public void addCoffee(View view) {
         newCups = newCups + 1;
         cupNumberField.setText(String.valueOf(newCups));
+        checkClaimButtonVisibility();
     }
 
-    public int displayFreeCoffeeButton(int numberOfCups) {
-        return numberOfCups / FREE_CUP_THRESHOLD;
+    public void checkClaimButtonVisibility() {
+        if (newCups / FREE_CUP_THRESHOLD >= 1) {
+            claimCoffeeButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            claimCoffeeButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void revertPhoneNumber() {
@@ -88,12 +97,20 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     public void updateCustomer(View view) {
         int newCups = Integer.parseInt(String.valueOf(cupNumberField.getText()));
         newPhoneNumber = String.valueOf(phoneField.getText());
-        customer.setCups(newCups);
-        customer.setPhoneNumber(newPhoneNumber);
+        Toast cupsUpdated = null;
+        Toast phoneUpdated = null;
+        if (newCups != customer.getCups()) {
+            customer.setCups(newCups);
+            cupsUpdated = Toast.makeText(getApplicationContext(), "Данные о кружках обновлены успешно", Toast.LENGTH_SHORT);
+        }
+        if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
+            customer.setPhoneNumber(newPhoneNumber);
+            phoneUpdated = Toast.makeText(getApplicationContext(), "Номер телефона обновлён успешно", Toast.LENGTH_SHORT);
+        }
         customerDAO.update(customer);
         Intent intent = new Intent(this, MainActivity.class);
-        Toast toast = Toast.makeText(getApplicationContext(), "Данные клиента обновлены успешно", Toast.LENGTH_SHORT);
-        toast.show();
+        if (phoneUpdated != null) phoneUpdated.show();
+        if (cupsUpdated != null) cupsUpdated.show();
         startActivity(intent);
 
     }

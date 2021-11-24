@@ -1,10 +1,12 @@
 package com.example.cupcounter;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ public class DisplaySearchResultsActivity extends AppCompatActivity implements O
     CustomerDAO customerDAO;
     List<Customer> foundCustomers;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class DisplaySearchResultsActivity extends AppCompatActivity implements O
 
         RecyclerView listView = findViewById(R.id.result_list_names);
         // находим клиентов по телефону
-        foundCustomers = customerDAO.findByShortNumber("%" + phoneNumberEnding);
+        foundCustomers = customerDAO.findByShortNumber("%" + phoneNumberEnding);//.stream().sorted().collect(Collectors.toList()); todo implement Comparable for Customer
         // используем адаптер данных
         CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
         // Привяжем массив через адаптер к ListView
