@@ -118,10 +118,12 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         if (newCups != customer.getCups()) {
             customer.setCups(newCups);
             cupsUpdated = Toast.makeText(getApplicationContext(), "Данные о кружках обновлены успешно", Toast.LENGTH_SHORT);
+            customer.setLastVisit(LocalDate.now());
         }
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
             customer.setPhoneNumber(newPhoneNumber);
             phoneUpdated = Toast.makeText(getApplicationContext(), "Номер телефона обновлён успешно", Toast.LENGTH_SHORT);
+            customer.setLastVisit(LocalDate.now());
         }
         customerDAO.update(customer);
         Intent intent = new Intent(this, MainActivity.class);
