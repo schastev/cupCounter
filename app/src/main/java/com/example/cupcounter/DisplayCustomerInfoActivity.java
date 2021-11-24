@@ -106,8 +106,14 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         }
     }
 
-    public void revertPhoneNumber() {
+    public void revertPhoneChanges(View view) {
         phoneField.setText(customer.getPhoneNumber());
+    }
+
+    public void revertCupChanges(View view) {
+        newCups = customer.getCups();
+        cupNumberField.setText(String.valueOf(newCups));
+        checkClaimButtonVisibility();
     }
 
     public void updateCustomer(View view) {
