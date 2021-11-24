@@ -12,16 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintLeft_toRightOf="@+id/MoveToAddCustomerScreen"
-        app:layout_constraintRight_toLeftOf="@+id/SearchCustomers"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/edit_message"
         android:inputType="phone"
         android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/SearchCustomers"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toEndOf="@+id/MoveToAddCustomerScreen"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -35,14 +34,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/MoveToAddCustomerScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="56dp"
+        android:clickable="true"
         android:onClick="addCustomer"
-        android:text="@string/MoveToAddCustomerScreen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
