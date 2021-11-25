@@ -31,7 +31,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     int RETURNING_CLIENT_THRESHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
 
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
-    Button claimCoffeeButton;
+    Button claimCoffeeButton, revertPhoneButton, revertCupsButton;
 
     //fields to keep new values until they are recorded in the database
     int newCups;
@@ -51,9 +51,13 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         cupNumberField = findViewById(R.id.info_field_cups);
         registrationField = findViewById(R.id.info_field_registration);
         lastVisitField = findViewById(R.id.info_field_last_visit);
-        claimCoffeeButton = findViewById(R.id.info_button_claim);
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
+
+        //find buttons
+        claimCoffeeButton = findViewById(R.id.info_button_claim);
+        revertPhoneButton= findViewById(R.id.info_button_revert_phone);
+        revertCupsButton= findViewById(R.id.info_button_revert_cups);
         res = getResources();
 
         //set field values using data from selected customer
@@ -66,6 +70,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         newCups = customer.getCups();
         checkClaimButtonVisibility();
         checkReturningClient();
+        checkRevertPhoneButtonVisibility();
+        checkRevertCupsButtonVisibility();
     }
 
     private String formatDate(LocalDate date) {
@@ -78,24 +84,14 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         newCups = newCups - FREE_CUP_THRESHOLD;
         cupNumberField.setText(String.valueOf(newCups));
         checkClaimButtonVisibility();
+        checkRevertCupsButtonVisibility();
     }
 
     public void addCoffee(View view) {
         newCups = newCups + 1;
         cupNumberField.setText(String.valueOf(newCups));
         checkClaimButtonVisibility();
-    }
-
-    private void checkClaimButtonVisibility() {
-        if (newCups / FREE_CUP_THRESHOLD >= 1) {
-            claimCoffeeButton.setVisibility(View.VISIBLE);
-            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), customer.getCups() % FREE_CUP_THRESHOLD);
-            freeCupsAlert.setText(cupsAlertTest);
-            freeCupsAlert.setVisibility(View.VISIBLE);
-        } else {
-            claimCoffeeButton.setVisibility(View.INVISIBLE);
-            freeCupsAlert.setVisibility(View.INVISIBLE);
-        }
+        checkRevertCupsButtonVisibility();
     }
 
     private void checkReturningClient() {
@@ -104,6 +100,30 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         } else {
             lostClientAlert.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void checkClaimButtonVisibility() {
+        if (newCups / FREE_CUP_THRESHOLD >= 1) {
+            claimCoffeeButton.setVisibility(View.VISIBLE);
+            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), newCups / FREE_CUP_THRESHOLD);
+            freeCupsAlert.setText(cupsAlertTest);
+            freeCupsAlert.setVisibility(View.VISIBLE);
+        } else {
+            claimCoffeeButton.setVisibility(View.INVISIBLE);
+            freeCupsAlert.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void checkRevertPhoneButtonVisibility() { //fixme add a listener of some sort to look out for symbols being typed/erased in the field
+        if(phoneField.getText().toString().equals(customer.getPhoneNumber())) {
+            revertPhoneButton.setVisibility(View.INVISIBLE);
+        } else revertPhoneButton.setVisibility(View.VISIBLE);
+    }
+
+    private void checkRevertCupsButtonVisibility() {
+        if(cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
+            revertCupsButton.setVisibility(View.INVISIBLE);
+        } else revertCupsButton.setVisibility(View.VISIBLE);
     }
 
     public void revertPhoneChanges(View view) {
