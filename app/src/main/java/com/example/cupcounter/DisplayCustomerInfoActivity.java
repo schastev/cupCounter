@@ -143,12 +143,12 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         Toast phoneUpdated = null;
         if (newCups != customer.getCups()) {
             customer.setCups(newCups);
-            cupsUpdated = Toast.makeText(getApplicationContext(), "Данные о кружках обновлены успешно", Toast.LENGTH_SHORT);
+            cupsUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_cups_updated), Toast.LENGTH_SHORT);
             customer.setLastVisit(LocalDate.now());
         }
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
             customer.setPhoneNumber(newPhoneNumber);
-            phoneUpdated = Toast.makeText(getApplicationContext(), "Номер телефона обновлён успешно", Toast.LENGTH_SHORT);
+            phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
             customer.setLastVisit(LocalDate.now());
         }
         customerDAO.update(customer);

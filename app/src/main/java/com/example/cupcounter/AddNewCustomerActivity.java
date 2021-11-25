@@ -1,6 +1,7 @@
 package com.example.cupcounter;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     CustomerDAO customerDAO;
     Toast toast;
     EditText phoneField, nameField;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         toast = new Toast(getApplicationContext());
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);
+        res = getResources();
     }
 
     public void addCustomer(View view) {
@@ -42,21 +45,19 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         if (name.matches("[a-zA-Z ]+") || name.matches("[а-яА-Я ]+")) {
             validName = name;
         } else {
-            nameField.setText("");
-            toast = Toast.makeText(getApplicationContext(), "Введите имя, состоящее только из символов русского или английского алфавита и пробелов", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_name_error), Toast.LENGTH_LONG);
             toast.show();
         }
         if (phoneNumber.matches("[0-9]+")) {
             validNumber = phoneNumber;
         } else {
-            phoneField.setText("");
-            toast = Toast.makeText(getApplicationContext(), "Введите телефон, состоящий только из цифр", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT);
             toast.show();
         }
         if (validName != null && validNumber != null) {
             Customer newCustomer = new Customer(validName, validNumber, LocalDate.now(), LocalDate.now(), 1);
             customerDAO.insert(newCustomer);
-            toast = Toast.makeText(getApplicationContext(), "Клиент добавлен успешно", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_added), Toast.LENGTH_SHORT);
             toast.show();
             startActivity(intent);
         }
