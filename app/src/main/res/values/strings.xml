@@ -18,4 +18,6 @@
     <string name="new_toast_added">Клиент добавлен успешно</string>
     <string name="info_toast_phone_updated">Номер телефона обновлён успешно</string>
     <string name="info_toast_cups_updated">Данные о кружках обновлены успешно</string>
+    <string name="info_hint_registration_date">Дата регистрации</string>
+    <string name="info_hint_last_visit_date">Дата последнего визита</string>
 </resources>
