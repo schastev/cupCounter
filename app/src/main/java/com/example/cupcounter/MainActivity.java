@@ -51,15 +51,23 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
-        // используем адаптер данных
-        CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
-        // Привяжем массив через адаптер к ListView
-        customerNameList.setAdapter(adapter);
-        customerNameList.setVisibility(View.VISIBLE);
-        adapter.setClickListener(this);
+        if (foundCustomers.size() == 1) {
+            goToCustomerCard(0);
+        } else {
+            // используем адаптер данных
+            CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
+            // Привяжем массив через адаптер к ListView
+            customerNameList.setAdapter(adapter);
+            customerNameList.setVisibility(View.VISIBLE);
+            adapter.setClickListener(this);
+        }
     }
 
     public void onClick(View view, int position) {
+        goToCustomerCard(position);
+    }
+
+    private void goToCustomerCard(int position) {
         final Customer customer = foundCustomers.get(position);
         Intent intent = new Intent(this, DisplayCustomerInfoActivity.class);
         intent.putExtra("CUSTOMER_ID", customer.getId());
