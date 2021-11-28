@@ -73,4 +73,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         intent.putExtra("CUSTOMER_ID", customer.getId());
         startActivity(intent);
     }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
 }

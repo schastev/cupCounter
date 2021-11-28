@@ -1,6 +1,7 @@
 package com.example.cupcounter;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -26,9 +27,9 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     CustomerDAO customerDAO;
     Customer customer;
     Resources res;
-
-    int FREE_CUP_THRESHOLD = 5; //cups customers need to buy before they can claim one free cup. Will be defined in the app's settings
-    int RETURNING_CLIENT_THRESHOLD = 30; //the number of days that have to pass since the last visit for the client to be considered lost. If they return afterwards, display a notification for the barista. This should also be defined in the settings.
+    int FREE_CUP;
+    int RETURNING_CUSTOMER;
+    SharedPreferences settings;
 
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton, revertPhoneButton, revertCupsButton;
@@ -43,6 +44,10 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_customer_info);
         db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
+        settings = getSharedPreferences("Constants", 0);
+
+        FREE_CUP = settings.getInt("Free cup", 5);
+        RETURNING_CUSTOMER = settings.getInt("Returning client", 30);
         int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
         //find text fields
@@ -81,7 +86,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     public void claimCoffee(View view) {
-        newCups = newCups - FREE_CUP_THRESHOLD;
+        newCups = newCups - FREE_CUP;
         cupNumberField.setText(String.valueOf(newCups));
         checkClaimButtonVisibility();
         checkRevertCupsButtonVisibility();
@@ -95,7 +100,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void checkReturningClient() {
-        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CLIENT_THRESHOLD))) {
+        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CUSTOMER))) {
             lostClientAlert.setVisibility(View.VISIBLE);
         } else {
             lostClientAlert.setVisibility(View.INVISIBLE);
@@ -103,9 +108,9 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void checkClaimButtonVisibility() {
-        if (newCups / FREE_CUP_THRESHOLD >= 1) {
+        if (newCups / FREE_CUP >= 1) {
             claimCoffeeButton.setVisibility(View.VISIBLE);
-            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), newCups / FREE_CUP_THRESHOLD);
+            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), newCups / FREE_CUP);
             freeCupsAlert.setText(cupsAlertTest);
             freeCupsAlert.setVisibility(View.VISIBLE);
         } else {
