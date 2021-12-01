@@ -8,19 +8,21 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Single;
+
 @Dao
 public interface CustomerDAO {
     @Query("SELECT * FROM customer")
-    List<Customer> getAll();
+    Single<List<Customer>> getAll();
 
     @Query("SELECT * FROM customer WHERE id = :id")
-    Customer getById(int id);
+    Single<Customer> getById(long id);
 
     @Query("SELECT * FROM customer WHERE phone_number LIKE :number")
-    List<Customer> findByShortNumber(String number);
+    Single<List<Customer>> findByShortNumber(String number);
 
     @Query("SELECT * FROM customer WHERE phone_number = :number")
-    List<Customer> findByFullNumber(String number);
+    Single<List<Customer>> findByFullNumber(String number);
 
     @Insert
     long insert(Customer customer);
@@ -29,6 +31,6 @@ public interface CustomerDAO {
     void delete(Customer customer);
 
     @Update
-    void update(Customer customer);
+    Single<Integer> update(Customer customer);
 
 }

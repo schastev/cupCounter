@@ -49,7 +49,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         FREE_CUP = settings.getInt("Free cup", 5);
         RETURNING_CUSTOMER = settings.getInt("Returning client", 30);
         int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
-        customer = customerDAO.getById(customerId);
+        customer = customerDAO.getById(customerId).blockingGet();
         //find text fields
         nameField = findViewById(R.id.info_field_name);
         phoneField = findViewById(R.id.info_field_phone);

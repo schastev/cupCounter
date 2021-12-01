@@ -60,6 +60,7 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
     // optional - Paging 3 Integration
-    implementation "androidx.room:room-paging:2.4.0-beta02"
+    implementation "androidx.room:room-paging:2.4.0-rc01"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
 }

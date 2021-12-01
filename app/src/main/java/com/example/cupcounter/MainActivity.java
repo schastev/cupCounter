@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void findCustomer(View view) {
         String numberEnding = phoneSearchField.getText().toString();
         // находим клиентов по телефону
-        foundCustomers = customerDAO.findByShortNumber("%" + numberEnding)
+        foundCustomers = customerDAO.findByShortNumber("%" + numberEnding).blockingGet()
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());

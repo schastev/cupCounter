@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class Customer implements Serializable, Comparable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private int id;
+    private long id;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "phone_number")
@@ -69,7 +69,7 @@ public class Customer implements Serializable, Comparable {
         return 0;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -93,7 +93,7 @@ public class Customer implements Serializable, Comparable {
         return cups;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
