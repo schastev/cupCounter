@@ -27,13 +27,25 @@ public class AddNewCustomerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
-        customerDAO = db.customerDao();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_customer);
-        toast = new Toast(getApplicationContext());
+        setUpDatabase();
+        initializeUiElements();
+        setUpAdditionalResources();
+    }
+
+    private void setUpDatabase() {
+        db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
+        customerDAO = db.customerDao();
+    }
+
+    private void initializeUiElements() {
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);
+    }
+
+    private void setUpAdditionalResources() {
+        toast = new Toast(getApplicationContext());
         res = getResources();
     }
 

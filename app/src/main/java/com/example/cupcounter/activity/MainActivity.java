@@ -33,8 +33,16 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUpDatabase();
+        initializeUiElements();
+    }
+
+    private void setUpDatabase() {
         db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
+    }
+
+    private void initializeUiElements() {
         phoneSearchField = findViewById(R.id.enterPhoneNumberToSearch);
         customerNameList = findViewById(R.id.result_list_names);
         customerNameList.setVisibility(View.INVISIBLE);
@@ -47,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     public void findCustomer(View view) {
         String numberEnding = phoneSearchField.getText().toString();
-        // находим клиентов по телефону
         foundCustomers = customerDAO.findByShortNumber("%" + numberEnding)
                 .stream()
                 .sorted()
@@ -55,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         if (foundCustomers.size() == 1) {
             goToCustomerCard(0);
         } else {
-            // используем адаптер данных
             CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
             // Привяжем массив через адаптер к ListView
             customerNameList.setAdapter(adapter);

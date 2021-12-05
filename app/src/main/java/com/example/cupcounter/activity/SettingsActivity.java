@@ -19,9 +19,17 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        initializeUiElements();
+        setFieldValues();
+    }
+
+    private void initializeUiElements() {
         settings = getSharedPreferences("Constants", 0);
         freeCupField = findViewById(R.id.settings_input_free_cup);
         returningCustomerInputField = findViewById(R.id.settings_input_returning_client);
+    }
+
+    private void setFieldValues() {
         int freeCup = settings.getInt("Free cup", 5);
         int returningCustomer= settings.getInt("Returning client", 30);
         freeCupField.setText(String.valueOf(freeCup));

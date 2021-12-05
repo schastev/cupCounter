@@ -43,15 +43,27 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_customer_info);
+        setUpDatabase();
+        setUpAdditionalResources();
+        setConstants();
+        setUpCustomer();
+        initializeUiElements();
+        setFieldValues();
+
+        newCups = customer.getCups();
+
+        checkClaimButtonVisibility();
+        checkReturningClient();
+        checkRevertPhoneButtonVisibility();
+        checkRevertCupsButtonVisibility();
+    }
+
+    private void setUpDatabase() {
         db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
-        settings = getSharedPreferences("Constants", 0);
+    }
 
-        FREE_CUP = settings.getInt("Free cup", 5);
-        RETURNING_CUSTOMER = settings.getInt("Returning client", 30);
-        int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
-        customer = customerDAO.getById(customerId);
-        //find text fields
+    private void initializeUiElements() {
         nameField = findViewById(R.id.info_field_name);
         phoneField = findViewById(R.id.info_field_phone);
         cupNumberField = findViewById(R.id.info_field_cups);
@@ -60,44 +72,32 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
-        //find buttons
         claimCoffeeButton = findViewById(R.id.info_button_claim);
         revertPhoneButton= findViewById(R.id.info_button_revert_phone);
         revertCupsButton= findViewById(R.id.info_button_revert_cups);
-        res = getResources();
+    }
 
-        //set field values using data from selected customer
+    private void setFieldValues() {
         phoneField.setText(customer.getPhoneNumber());
         nameField.setText(customer.getName());
         cupNumberField.setText(String.valueOf(customer.getCups()));
         registrationField.setText(formatDate(customer.getRegistrationDate()));
         lastVisitField.setText(formatDate(customer.getLastVisit()));
-
-        newCups = customer.getCups();
-        checkClaimButtonVisibility();
-        checkReturningClient();
-        checkRevertPhoneButtonVisibility();
-        checkRevertCupsButtonVisibility();
     }
 
-    private String formatDate(LocalDate date) {
-        return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                .withLocale(new Locale("ru"))
-                .format(date);
+    private void setUpAdditionalResources() {
+        res = getResources();
+        settings = getSharedPreferences("Constants", 0);
     }
 
-    public void claimCoffee(View view) {
-        newCups = newCups - FREE_CUP;
-        cupNumberField.setText(String.valueOf(newCups));
-        checkClaimButtonVisibility();
-        checkRevertCupsButtonVisibility();
+    private void setConstants() {
+        FREE_CUP = settings.getInt("Free cup", 5);
+        RETURNING_CUSTOMER = settings.getInt("Returning client", 30);
     }
 
-    public void addCoffee(View view) {
-        newCups = newCups + 1;
-        cupNumberField.setText(String.valueOf(newCups));
-        checkClaimButtonVisibility();
-        checkRevertCupsButtonVisibility();
+    private void setUpCustomer() {
+        int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
+        customer = customerDAO.getById(customerId);
     }
 
     private void checkReturningClient() {
@@ -130,6 +130,26 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         if(cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
             revertCupsButton.setVisibility(View.INVISIBLE);
         } else revertCupsButton.setVisibility(View.VISIBLE);
+    }
+
+    private String formatDate(LocalDate date) {
+        return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                .withLocale(new Locale("ru"))
+                .format(date);
+    }
+
+    public void claimCoffee(View view) {
+        newCups = newCups - FREE_CUP;
+        cupNumberField.setText(String.valueOf(newCups));
+        checkClaimButtonVisibility();
+        checkRevertCupsButtonVisibility();
+    }
+
+    public void addCoffee(View view) {
+        newCups = newCups + 1;
+        cupNumberField.setText(String.valueOf(newCups));
+        checkClaimButtonVisibility();
+        checkRevertCupsButtonVisibility();
     }
 
     public void revertPhoneChanges(View view) {
