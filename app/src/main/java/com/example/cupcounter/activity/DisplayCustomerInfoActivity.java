@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.example.cupcounter.R;
 import com.example.cupcounter.database.AppDatabase;
@@ -28,6 +29,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     CustomerDAO customerDAO;
     Customer customer;
     Resources res;
+    SharedPreferences defaultSettings;
     int FREE_CUP;
     int RETURNING_CUSTOMER;
     SharedPreferences settings;
@@ -52,6 +54,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
         newCups = customer.getCups();
 
+        checkDateFieldsVisibility();
         checkClaimButtonVisibility();
         checkReturningClient();
         checkRevertPhoneButtonVisibility();
@@ -88,6 +91,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     private void setUpAdditionalResources() {
         res = getResources();
         settings = getSharedPreferences("Constants", 0);
+        defaultSettings = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     private void setConstants() {
@@ -98,6 +102,20 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     private void setUpCustomer() {
         int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
         customer = customerDAO.getById(customerId);
+    }
+
+    private void checkDateFieldsVisibility() {
+        if (defaultSettings.getBoolean("settings_show_dates_on_customer_screen", false)) {
+            findViewById(R.id.info_hint_last_visit_date).setVisibility(View.VISIBLE);
+            findViewById(R.id.info_hint_registration_date).setVisibility(View.VISIBLE);
+            registrationField.setVisibility(View.VISIBLE);
+            lastVisitField.setVisibility(View.VISIBLE);
+        } else {
+            registrationField.setVisibility(View.INVISIBLE);
+            lastVisitField.setVisibility(View.INVISIBLE);
+            findViewById(R.id.info_hint_last_visit_date).setVisibility(View.INVISIBLE);
+            findViewById(R.id.info_hint_registration_date).setVisibility(View.INVISIBLE);
+        }
     }
 
     private void checkReturningClient() {

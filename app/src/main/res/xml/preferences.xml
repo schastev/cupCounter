@@ -26,7 +26,6 @@
 <!--        </intent>-->
 
         <SwitchPreferenceCompat
-            app:defaultValue="false"
             app:key="settings_show_dates_on_customer_screen"
             app:title="@string/settings_line_show_dates_on_customer_screen" />
     </PreferenceCategory>
