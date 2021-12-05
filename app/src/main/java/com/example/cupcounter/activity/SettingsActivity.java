@@ -4,23 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.cupcounter.R;
 
+import com.example.cupcounter.settings.SettingsFragment;
+
 public class SettingsActivity extends AppCompatActivity {
     SharedPreferences settings;
     TextView returningCustomerInputField;
     TextView freeCupField;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settings_container_options, new SettingsFragment())
+                .commit();
         setContentView(R.layout.activity_settings);
         initializeUiElements();
         setFieldValues();
+        setUpAdditionalResources();
     }
 
     private void initializeUiElements() {
@@ -36,10 +45,14 @@ public class SettingsActivity extends AppCompatActivity {
         returningCustomerInputField.setText(String.valueOf(returningCustomer));
     }
 
+    private void setUpAdditionalResources() {
+        res = getResources();
+    }
+
     public void saveSettings(View view) {
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("Returning client", Integer.parseInt(returningCustomerInputField.getText().toString()));
-        editor.putInt("Free cup", Integer.parseInt(freeCupField.getText().toString()));
+        editor.putInt(res.getString(R.string.placeholder_constant_returning_client), Integer.parseInt(returningCustomerInputField.getText().toString()));
+        editor.putInt(res.getString(R.string.placeholder_constant_free_cup), Integer.parseInt(freeCupField.getText().toString()));
         editor.apply();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

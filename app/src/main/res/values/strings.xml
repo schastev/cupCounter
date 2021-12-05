@@ -19,5 +19,17 @@
     <string name="info_toast_phone_updated">Номер телефона обновлён успешно</string>
     <string name="info_toast_cups_updated">Данные о кружках обновлены успешно</string>
     <string name="info_hint_registration_date">Дата регистрации</string>
+    <string name="toolbar_settings">Настройки</string>
     <string name="info_hint_last_visit_date">Дата последнего визита</string>
+    <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
+    <string name="setting_line_returning_client">Через сколько дней после последнего визита клиент считается потеряшкой</string>
+    <string name="settings_line_show_dates_on_customer_screen">Показывать на карточке клиента даты регистрации и последнего визита</string>
+    <string name="settings_title_behavior">Настройки поведения</string>
+    <string name="placeholder_constant_free_cup">FREE_CUP</string>
+    <string name="placeholder_constant_returning_client">RETURNING_CLIENT</string>
+    <string name="settings_category_export">База данных</string>
+    <string name="setting_line_backup">Настройки резервного копирования</string>
+    <string name="setting_line_import">Импортировать базу данных из .csv</string>
+    <string name="setting_line_export">Экспортировать базу данных в .csv</string>
+    <string name="settings_button_apply_changes">Сохранить</string>
 </resources>

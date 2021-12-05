@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        app:key="settings_category_behavior"
+        app:title="@string/settings_title_behavior">
+        <Preference
+            app:key="setting_free_cups"
+            app:title="@string/settings_line_free_cups" />
+<!--        <intent-->
+<!--            android:targetClass="com.example.cupcounter.activity"-->
+<!--            android:targetPackage="com.example.cupcounter.activity.DialogActivity">-->
+<!--            <extra-->
+<!--                android:name="SETTING"-->
+<!--                android:value="@string/placeholder_constant_free_cup" />-->
+<!--        </intent>-->
+
+        <Preference
+            app:key="setting_returning_client"
+            app:title="@string/setting_line_returning_client" />
+<!--        <intent-->
+<!--            android:targetClass="com.example.cupcounter.activity.ExampleActivity"-->
+<!--            android:targetPackage="com.example.cupcounter.activity">-->
+<!--            <extra-->
+<!--                android:name="SETTING"-->
+<!--                android:value="placeholder_constant_returning_client" />-->
+<!--        </intent>-->
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="settings_show_dates_on_customer_screen"
+            app:title="@string/settings_line_show_dates_on_customer_screen" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:key="settings_category_export"
+        app:title="@string/settings_category_export">
+        <Preference
+            app:key="setting_import"
+            app:title="@string/setting_line_import" />
+        <Preference
+            app:key="setting_export"
+            app:title="@string/setting_line_export" />
+        <Preference
+            app:key="setting_backup"
+            app:title="@string/setting_line_backup" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -22,8 +22,17 @@
         android:layout_marginTop="119dp"
         android:ems="10"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_input_free_cup" />
+
+    <ScrollView
+        android:id="@+id/settings_container_options"
+        android:layout_width="751dp"
+        android:layout_height="586dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </ScrollView>
 
     <Button
         android:id="@+id/settings_button_save"
@@ -31,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:onClick="saveSettings"
-        android:text="Apply"
+        android:text="@string/settings_button_apply_changes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_input_returning_client" />
 </androidx.constraintlayout.widget.ConstraintLayout>
