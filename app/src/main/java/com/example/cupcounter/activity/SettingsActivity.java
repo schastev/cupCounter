@@ -28,8 +28,8 @@ public class SettingsActivity extends AppCompatActivity {
                 .commit();
         setContentView(R.layout.activity_settings);
         initializeUiElements();
-        setFieldValues();
         setUpAdditionalResources();
+        setFieldValues();
     }
 
     private void initializeUiElements() {
@@ -39,8 +39,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setFieldValues() {
-        int freeCup = settings.getInt("Free cup", 5);
-        int returningCustomer= settings.getInt("Returning client", 30);
+        int freeCup = settings.getInt(res.getString(R.string.placeholder_constant_free_cup), 5);
+        int returningCustomer= settings.getInt(res.getString(R.string.placeholder_constant_returning_client), 30);
         freeCupField.setText(String.valueOf(freeCup));
         returningCustomerInputField.setText(String.valueOf(returningCustomer));
     }

@@ -95,8 +95,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void setConstants() {
-        FREE_CUP = settings.getInt("Free cup", 5);
-        RETURNING_CUSTOMER = settings.getInt("Returning client", 30);
+        FREE_CUP = settings.getInt(res.getString(R.string.placeholder_constant_free_cup), 5);
+        RETURNING_CUSTOMER = settings.getInt(res.getString(R.string.placeholder_constant_returning_client), 30);
     }
 
     private void setUpCustomer() {
