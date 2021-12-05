@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.example.cupcounter.activity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cupcounter.R;
 import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;

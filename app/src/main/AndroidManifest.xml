@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupCounter">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".DisplayCustomerInfoActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".activity.DisplayCustomerInfoActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="landscape"
             android:exported="true"/>
         <activity
-            android:name=".AddNewCustomerActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".activity.AddNewCustomerActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="landscape"
             android:exported="true"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>

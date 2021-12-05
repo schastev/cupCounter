@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.example.cupcounter.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cupcounter.R;
 import com.example.cupcounter.customerlist.CustomerAdapter;
 import com.example.cupcounter.customerlist.OnItemClickListener;
 import com.example.cupcounter.database.AppDatabase;

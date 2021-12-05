@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.example.cupcounter.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.cupcounter.R;
 
 public class SettingsActivity extends AppCompatActivity {
     SharedPreferences settings;
