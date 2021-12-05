@@ -1,11 +1,8 @@
 package com.example.cupcounter.database;
 
-
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -40,7 +37,7 @@ public class Customer implements Serializable, Comparable {
         this.cups = cups;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Ignore
     public Customer() {
         this.name = CustomerGenerator.randomName();
         this.phoneNumber = CustomerGenerator.randomNumber();
