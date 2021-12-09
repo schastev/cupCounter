@@ -4,7 +4,7 @@
     <PreferenceCategory
         app:key="settings_category_behavior"
         app:title="@string/settings_title_behavior">
-        <Preference
+        <EditTextPreference
             app:key="setting_free_cups"
             app:title="@string/settings_line_free_cups" />
 <!--        <intent-->
@@ -38,7 +38,6 @@
             app:key="settings_delete_customer"
             app:title="@string/settings_line_delete_customer"/>
         <intent
-            android:action="android.intent.action.MAIN"
             android:targetPackage="com.example.cupcounter.activity"
             android:targetClass="com.example.cupcounter.activity.MainActivity">
             <extra

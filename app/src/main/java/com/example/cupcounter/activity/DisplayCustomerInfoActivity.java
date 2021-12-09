@@ -29,10 +29,9 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     CustomerDAO customerDAO;
     Customer customer;
     Resources res;
-    SharedPreferences defaultSettings;
+    SharedPreferences sharedPreferences;
     int FREE_CUP;
     int RETURNING_CUSTOMER;
-    SharedPreferences settings;
 
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton, revertPhoneButton, revertCupsButton, deleteCustomerButton;
@@ -92,13 +91,12 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     private void setUpAdditionalResources() {
         res = getResources();
-        settings = getSharedPreferences("Constants", 0);
-        defaultSettings = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     private void setConstants() {
-        FREE_CUP = settings.getInt(res.getString(R.string.placeholder_constant_free_cup), 5);
-        RETURNING_CUSTOMER = settings.getInt(res.getString(R.string.placeholder_constant_returning_client), 30);
+        FREE_CUP = Integer.parseInt(sharedPreferences.getString("setting_free_cups", "5"));
+        RETURNING_CUSTOMER = Integer.parseInt(sharedPreferences.getString("setting_returning_customer", "30"));
     }
 
     private void setUpCustomer() {
@@ -107,7 +105,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void checkDateFieldsVisibility() {
-        if (defaultSettings.getBoolean("settings_show_dates_on_customer_screen", false)) {
+        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
             findViewById(R.id.info_hint_last_visit_date).setVisibility(View.VISIBLE);
             findViewById(R.id.info_hint_registration_date).setVisibility(View.VISIBLE);
             registrationField.setVisibility(View.VISIBLE);

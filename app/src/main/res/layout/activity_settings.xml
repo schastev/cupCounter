@@ -6,41 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activity.SettingsActivity">
 
-    <EditText
-        android:id="@+id/settings_input_free_cup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/settings_input_returning_client"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="119dp"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_input_free_cup" />
-
     <ScrollView
         android:id="@+id/settings_container_options"
-        android:layout_width="751dp"
-        android:layout_height="586dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ScrollView>
-
-    <Button
-        android:id="@+id/settings_button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:onClick="saveSettings"
-        android:text="@string/settings_button_apply_changes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_input_returning_client" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
