@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -211,11 +212,16 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     public void deleteCustomer(View view) {
-        //todo show confirmation screen
-        customerDAO.delete(customer);
-        Intent intent = new Intent(this, MainActivity.class);
-        Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_customer_deleted), Toast.LENGTH_SHORT);
-        clientDeleted.show();
-        startActivity(intent);
+        new AlertDialog.Builder(this)
+                .setTitle(res.getString(R.string.info_dialog_title))
+                .setMessage(res.getString(R.string.info_dialog_main))
+                .setPositiveButton(R.string.info_dialog_button_delete, (dialog, whichButton) -> {
+                    customerDAO.delete(customer);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_customer_deleted), Toast.LENGTH_SHORT);
+                    clientDeleted.show();
+                    startActivity(intent);
+                })
+                .setNegativeButton(R.string.info_dialog_button_cancel, null).show();
     }
 }

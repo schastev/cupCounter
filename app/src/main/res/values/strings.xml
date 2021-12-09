@@ -21,6 +21,10 @@
     <string name="info_toast_cups_updated">Данные о кружках обновлены успешно</string>
     <string name="info_toast_customer_deleted">Клиент удален успешно</string>
     <string name="info_hint_registration_date">Дата регистрации</string>
+    <string name="info_dialog_title">Удаление клиента</string>
+    <string name="info_dialog_main">Вы уверены, что хотите удалить клиента? Это действие нельзя отменить.</string>
+    <string name="info_dialog_button_delete">Удалить</string>
+    <string name="info_dialog_button_cancel">Отменить</string>
     <string name="toolbar_settings">Настройки</string>
     <string name="info_hint_last_visit_date">Дата последнего визита</string>
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
