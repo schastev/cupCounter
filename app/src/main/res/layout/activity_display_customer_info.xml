@@ -6,17 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.DisplayCustomerInfoActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/info_field_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="152dp"
         android:ems="10"
-        android:inputType="phone"
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/info_button_revert_phone"
+        app:layout_constraintEnd_toStartOf="@+id/info_button_edit_phone"
         app:layout_constraintHorizontal_bias="0.645"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -121,15 +120,15 @@
         android:layout_marginStart="144dp"
         android:layout_marginBottom="60dp"
         android:text="@string/info_alert_lost"
-        app:layout_constraintBottom_toTopOf="@+id/info_button_revert_phone"
+        app:layout_constraintBottom_toTopOf="@+id/info_button_edit_phone"
         app:layout_constraintStart_toEndOf="@+id/info_field_name" />
 
     <Button
-        android:id="@+id/info_button_revert_phone"
+        android:id="@+id/info_button_edit_phone"
         android:layout_width="137dp"
         android:layout_height="54dp"
-        android:onClick="revertPhoneChanges"
-        android:text="@string/info_button_revert_cups"
+        android:onClick="callNumberEditDialog"
+        android:text="@string/info_button_edit_phone"
         app:layout_constraintBaseline_toBaselineOf="@+id/info_field_phone"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"

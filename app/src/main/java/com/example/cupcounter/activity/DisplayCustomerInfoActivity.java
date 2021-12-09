@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +58,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         checkDateFieldsVisibility();
         checkClaimButtonVisibility();
         checkReturningClient();
-        checkRevertPhoneButtonVisibility();
         checkRevertCupsButtonVisibility();
         checkDeleteButtonVisibility();
     }
@@ -77,7 +77,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
         claimCoffeeButton = findViewById(R.id.info_button_claim);
-        revertPhoneButton= findViewById(R.id.info_button_revert_phone);
+        revertPhoneButton= findViewById(R.id.info_button_edit_phone);
         revertCupsButton= findViewById(R.id.info_button_revert_cups);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
     }
@@ -179,34 +179,50 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         checkRevertCupsButtonVisibility();
     }
 
-    public void revertPhoneChanges(View view) {
-        phoneField.setText(customer.getPhoneNumber());
-    }
-
     public void revertCupChanges(View view) {
         newCups = customer.getCups();
         cupNumberField.setText(String.valueOf(newCups));
         checkClaimButtonVisibility();
     }
 
+    public void callNumberEditDialog(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle("Update phone number")
+                .setMessage("Please input new phone number")
+                .setView(R.layout.dialog_text_edit)
+                .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> updatePhone())
+                .setNegativeButton(R.string.info_dialog_button_cancel, null)
+                .show();
+    }
+
+    private void updatePhone() {
+        View dialog = getLayoutInflater().inflate(R.layout.dialog_text_edit, null);
+        EditText newPhoneField = (EditText) dialog.findViewById(R.id.info_dialog_edit_phone_field);
+        newPhoneNumber = String.valueOf(newPhoneField.getText());
+        if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
+            if (!newPhoneNumber.matches("[0-9]+")) {
+                Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT).show();
+            } else {
+                customer.setPhoneNumber(newPhoneNumber);
+                Toast phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
+                customer.setLastVisit(LocalDate.now());
+                customerDAO.update(customer);
+                phoneUpdated.show();
+                phoneField.setText(customer.getPhoneNumber());
+            }
+    }}
+
     public void updateCustomer(View view) {
         int newCups = Integer.parseInt(String.valueOf(cupNumberField.getText()));
         newPhoneNumber = String.valueOf(phoneField.getText());
         Toast cupsUpdated = null;
-        Toast phoneUpdated = null;
         if (newCups != customer.getCups()) {
             customer.setCups(newCups);
             cupsUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_cups_updated), Toast.LENGTH_SHORT);
             customer.setLastVisit(LocalDate.now());
         }
-        if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
-            customer.setPhoneNumber(newPhoneNumber);
-            phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
-            customer.setLastVisit(LocalDate.now());
-        }
         customerDAO.update(customer);
         Intent intent = new Intent(this, MainActivity.class);
-        if (phoneUpdated != null) phoneUpdated.show();
         if (cupsUpdated != null) cupsUpdated.show();
         startActivity(intent);
     }

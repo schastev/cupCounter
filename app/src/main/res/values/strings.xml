@@ -12,8 +12,9 @@
     <string name="info_button_claim">Cписать кофе</string>
     <string name="info_button_delete_customer">Удалить клиента</string>
     <string name="info_alert_lost">Потеряшка!</string>
-    <string name="info_alert_free_cups">"Доступно бесплатных кружек: %1$d"</string>
+    <string name="info_alert_free_cups">Доступно бесплатных кружек: %1$d</string>
     <string name="info_button_revert_cups">сбросить изменения</string>
+    <string name="info_button_edit_phone">изменить телефон</string>
     <string name="new_toast_name_error">Введите имя, состоящее только из символов русского или английского алфавита и пробелов</string>
     <string name="new_toast_phone_error">Введите номер телефона, состоящий только из цифр</string>
     <string name="new_toast_added">Клиент добавлен успешно</string>
@@ -24,6 +25,7 @@
     <string name="info_dialog_title">Удаление клиента</string>
     <string name="info_dialog_main">Вы уверены, что хотите удалить клиента? Это действие нельзя отменить.</string>
     <string name="info_dialog_button_delete">Удалить</string>
+    <string name="info_dialog_button_save">Сохранить</string>
     <string name="info_dialog_button_cancel">Отменить</string>
     <string name="toolbar_settings">Настройки</string>
     <string name="info_hint_last_visit_date">Дата последнего визита</string>
