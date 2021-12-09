@@ -33,9 +33,7 @@ public class DatabaseTest {
     @Before
     public void createDb() {
         Context context = ApplicationProvider.getApplicationContext();
-        db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class)//todo remove the following two bits before deployment
-//                .fallbackToDestructiveMigration()
-//                .allowMainThreadQueries()
+        db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class)
                 .build();
         customerDAO = db.customerDao();
         for (int i = 0; i < 10; i++) {

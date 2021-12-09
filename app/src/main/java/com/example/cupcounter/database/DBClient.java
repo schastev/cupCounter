@@ -12,8 +12,7 @@ public class DBClient {
 
     private DBClient(Context mCtx) {
         this.mCtx = mCtx;
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "cup_counter.db")//todo remove the following two bits before deployment
-//                .fallbackToDestructiveMigration()
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "cup_counter.db")//todo remove the main thread setting
                 .allowMainThreadQueries()
                 .build();
     }
