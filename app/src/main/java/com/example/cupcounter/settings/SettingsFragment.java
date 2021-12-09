@@ -1,11 +1,14 @@
 package com.example.cupcounter.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.cupcounter.R;
+import com.example.cupcounter.activity.MainActivity;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
@@ -22,6 +25,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         freeCupPreference.setSummaryProvider(EditTextPreference.SimpleSummaryProvider.getInstance());
         freeCupPreference.setOnBindEditTextListener(
                 editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER));
+
+        Preference deleteCustomer = findPreference("settings_delete_customer");
+        assert deleteCustomer != null;
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("DELETE_CUSTOMER", "true");
+        deleteCustomer.setIntent(intent);
     }
 
 }
