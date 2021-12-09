@@ -35,7 +35,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     SharedPreferences settings;
 
     TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
-    Button claimCoffeeButton, revertPhoneButton, revertCupsButton;
+    Button claimCoffeeButton, revertPhoneButton, revertCupsButton, deleteCustomerButton;
 
     //fields to keep new values until they are recorded in the database
     int newCups;
@@ -59,6 +59,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         checkReturningClient();
         checkRevertPhoneButtonVisibility();
         checkRevertCupsButtonVisibility();
+        checkDeleteButtonVisibility();
     }
 
     private void setUpDatabase() {
@@ -78,6 +79,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         claimCoffeeButton = findViewById(R.id.info_button_claim);
         revertPhoneButton= findViewById(R.id.info_button_revert_phone);
         revertCupsButton= findViewById(R.id.info_button_revert_cups);
+        deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
     }
 
     private void setFieldValues() {
@@ -150,6 +152,14 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         } else revertCupsButton.setVisibility(View.VISIBLE);
     }
 
+    private void checkDeleteButtonVisibility() {
+        if((boolean) this.getIntent().getExtras().get("DELETE_CUSTOMER")) {
+            deleteCustomerButton.setVisibility(View.VISIBLE);
+        } else {
+            deleteCustomerButton.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private String formatDate(LocalDate date) {
         return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
                 .withLocale(new Locale("ru"))
@@ -199,6 +209,15 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         if (phoneUpdated != null) phoneUpdated.show();
         if (cupsUpdated != null) cupsUpdated.show();
+        startActivity(intent);
+    }
+
+    public void deleteCustomer(View view) {
+        //todo show confirmation screen
+        customerDAO.delete(customer);
+        Intent intent = new Intent(this, MainActivity.class);
+        Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_client_deleted), Toast.LENGTH_SHORT);
+        clientDeleted.show();
         startActivity(intent);
     }
 }

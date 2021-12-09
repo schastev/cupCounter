@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         app:key="settings_category_behavior"
         app:title="@string/settings_title_behavior">
@@ -31,6 +32,19 @@
         <SwitchPreferenceCompat
             app:key="settings_add_cup_to_new_customer"
             app:title="@string/settings_line_add_cup_to_new_customer" />
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <Preference
+            app:key="settings_delete_customer"
+            app:title="@string/settings_line_delete_client"/>
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.example.cupcounter.activity"
+            android:targetClass="com.example.cupcounter.activity.MainActivity">
+            <extra
+                android:name="DELETE_CUSTOMER"
+                android:value="true"/>
+        </intent>
     </PreferenceCategory>
     <PreferenceCategory
         app:key="settings_category_export"

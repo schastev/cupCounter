@@ -101,9 +101,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/info_button_add_coffee"
         app:layout_constraintEnd_toStartOf="@+id/info_button_add_coffee"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/info_button_claim"
-        app:layout_constraintTop_toTopOf="@+id/info_button_add_coffee"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/info_button_claim" />
 
     <Button
         android:id="@+id/info_button_update"
@@ -187,5 +185,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="357dp" />
+
+    <Button
+        android:id="@+id/info_button_delete_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:onClick="deleteCustomer"
+        android:text="@string/info_button_delete_client"
+        app:layout_constraintBottom_toBottomOf="@+id/info_button_update"
+        app:layout_constraintEnd_toStartOf="@+id/info_button_update" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

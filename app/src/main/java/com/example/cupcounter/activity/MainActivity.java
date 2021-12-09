@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     private AppDatabase db;
     private CustomerDAO customerDAO;
     private List<Customer> foundCustomers;
+    boolean deleteCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         setContentView(R.layout.activity_main);
         setUpDatabase();
         initializeUiElements();
+        deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra("DELETE_CUSTOMER"));
     }
 
     private void setUpDatabase() {
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         final Customer customer = foundCustomers.get(position);
         Intent intent = new Intent(this, DisplayCustomerInfoActivity.class);
         intent.putExtra("CUSTOMER_ID", customer.getId());
+        intent.putExtra("DELETE_CUSTOMER", deleteCustomer);
         startActivity(intent);
     }
 
