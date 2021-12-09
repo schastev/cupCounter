@@ -218,8 +218,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.info_dialog_button_delete, (dialog, whichButton) -> {
                     customerDAO.delete(customer);
                     Intent intent = new Intent(this, MainActivity.class);
-                    Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_customer_deleted), Toast.LENGTH_SHORT);
-                    clientDeleted.show();
+                    Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_customer_deleted), Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 })
                 .setNegativeButton(R.string.info_dialog_button_cancel, null).show();
