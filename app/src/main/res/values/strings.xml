@@ -24,6 +24,7 @@
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_client">Через сколько дней после последнего визита клиент считается потеряшкой</string>
     <string name="settings_line_show_dates_on_customer_screen">Показывать на карточке клиента даты регистрации и последнего визита</string>
+    <string name="settings_line_add_cup_to_new_customer">Автоматически добавлять новому клиенту одну кружку при регистрации</string>
     <string name="settings_title_behavior">Настройки поведения</string>
     <string name="placeholder_constant_free_cup">FREE_CUP</string>
     <string name="placeholder_constant_returning_client">RETURNING_CLIENT</string>

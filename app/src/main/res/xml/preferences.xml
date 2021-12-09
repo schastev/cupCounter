@@ -28,6 +28,9 @@
         <SwitchPreferenceCompat
             app:key="settings_show_dates_on_customer_screen"
             app:title="@string/settings_line_show_dates_on_customer_screen" />
+        <SwitchPreferenceCompat
+            app:key="settings_add_cup_to_new_customer"
+            app:title="@string/settings_line_add_cup_to_new_customer" />
     </PreferenceCategory>
     <PreferenceCategory
         app:key="settings_category_export"

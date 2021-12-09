@@ -1,6 +1,7 @@
 package com.example.cupcounter.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.example.cupcounter.R;
 import com.example.cupcounter.database.AppDatabase;
@@ -24,6 +26,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     Toast toast;
     EditText phoneField, nameField;
     Resources res;
+    SharedPreferences defaultSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     private void setUpAdditionalResources() {
         toast = new Toast(getApplicationContext());
         res = getResources();
+        defaultSettings = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     public void addCustomer(View view) {
@@ -68,7 +72,11 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             toast.show();
         }
         if (validName != null && validNumber != null) {
-            Customer newCustomer = new Customer(validName, validNumber, LocalDate.now(), LocalDate.now(), 1);
+            int defaultCups = 0;
+            if (defaultSettings.getBoolean("settings_add_cup_to_new_customer", false)) {
+                defaultCups = 1;
+            }
+            Customer newCustomer = new Customer(validName, validNumber, LocalDate.now(), LocalDate.now(), defaultCups);
             customerDAO.insert(newCustomer);
             toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_added), Toast.LENGTH_SHORT);
             toast.show();
