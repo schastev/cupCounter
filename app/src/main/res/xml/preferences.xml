@@ -15,15 +15,15 @@
 <!--                android:value="@string/placeholder_constant_free_cup" />-->
 <!--        </intent>-->
 
-        <Preference
-            app:key="setting_returning_client"
-            app:title="@string/setting_line_returning_client" />
+        <EditTextPreference
+            app:key="setting_returning_customer"
+            app:title="@string/setting_line_returning_customer" />
 <!--        <intent-->
 <!--            android:targetClass="com.example.cupcounter.activity.ExampleActivity"-->
 <!--            android:targetPackage="com.example.cupcounter.activity">-->
 <!--            <extra-->
 <!--                android:name="SETTING"-->
-<!--                android:value="placeholder_constant_returning_client" />-->
+<!--                android:value="placeholder_constant_returning_customer" />-->
 <!--        </intent>-->
 
         <SwitchPreferenceCompat
@@ -36,7 +36,7 @@
     <PreferenceCategory>
         <Preference
             app:key="settings_delete_customer"
-            app:title="@string/settings_line_delete_client"/>
+            app:title="@string/settings_line_delete_customer"/>
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.example.cupcounter.activity"

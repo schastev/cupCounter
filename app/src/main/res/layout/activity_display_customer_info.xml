@@ -192,7 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:onClick="deleteCustomer"
-        android:text="@string/info_button_delete_client"
+        android:text="@string/info_button_delete_customer"
         app:layout_constraintBottom_toBottomOf="@+id/info_button_update"
         app:layout_constraintEnd_toStartOf="@+id/info_button_update" />
 

@@ -216,7 +216,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         //todo show confirmation screen
         customerDAO.delete(customer);
         Intent intent = new Intent(this, MainActivity.class);
-        Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_client_deleted), Toast.LENGTH_SHORT);
+        Toast clientDeleted = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_customer_deleted), Toast.LENGTH_SHORT);
         clientDeleted.show();
         startActivity(intent);
     }
