@@ -139,12 +139,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         }
     }
 
-    private void checkRevertPhoneButtonVisibility() { //fixme add a listener of some sort to look out for symbols being typed/erased in the field
-        if(phoneField.getText().toString().equals(customer.getPhoneNumber())) {
-            revertPhoneButton.setVisibility(View.INVISIBLE);
-        } else revertPhoneButton.setVisibility(View.VISIBLE);
-    }
-
     private void checkRevertCupsButtonVisibility() {
         if(cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
             revertCupsButton.setVisibility(View.INVISIBLE);
@@ -187,16 +181,15 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     public void callNumberEditDialog(View view) {
         new AlertDialog.Builder(this)
-                .setTitle("Update phone number")
-                .setMessage("Please input new phone number")
-                .setView(R.layout.dialog_text_edit)
+                .setTitle(R.string.info_dialog_phone_title)
+                .setView(R.layout.dialog_phone_edit)
                 .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> updatePhone())
                 .setNegativeButton(R.string.info_dialog_button_cancel, null)
                 .show();
     }
 
     private void updatePhone() {
-        View dialog = getLayoutInflater().inflate(R.layout.dialog_text_edit, null);
+        View dialog = getLayoutInflater().inflate(R.layout.dialog_phone_edit, null);
         EditText newPhoneField = (EditText) dialog.findViewById(R.id.info_dialog_edit_phone_field);
         newPhoneNumber = String.valueOf(newPhoneField.getText());
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
@@ -229,8 +222,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
 
     public void deleteCustomer(View view) {
         new AlertDialog.Builder(this)
-                .setTitle(res.getString(R.string.info_dialog_title))
-                .setMessage(res.getString(R.string.info_dialog_main))
+                .setTitle(res.getString(R.string.info_dialog_delete_title))
+                .setMessage(res.getString(R.string.info_dialog_delete_main))
                 .setPositiveButton(R.string.info_dialog_button_delete, (dialog, whichButton) -> {
                     customerDAO.delete(customer);
                     Intent intent = new Intent(this, MainActivity.class);
