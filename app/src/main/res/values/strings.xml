@@ -42,4 +42,5 @@
     <string name="setting_line_import">Импортировать базу данных из .csv</string>
     <string name="setting_line_export">Экспортировать базу данных в .csv</string>
     <string name="settings_button_apply_changes">Сохранить</string>
+    <string name="info_dialog_phone_title">Обновить номер телефона</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import com.example.cupcounter.DialogFragment;
 import com.example.cupcounter.R;
 import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
@@ -25,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
 
-public class DisplayCustomerInfoActivity extends AppCompatActivity {
+public class DisplayCustomerInfoActivity extends AppCompatActivity implements DialogFragment.OnDataPass {
 
     AppDatabase db;
     CustomerDAO customerDAO;
@@ -77,8 +78,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
         claimCoffeeButton = findViewById(R.id.info_button_claim);
-        revertPhoneButton= findViewById(R.id.info_button_edit_phone);
-        revertCupsButton= findViewById(R.id.info_button_revert_cups);
+        revertPhoneButton = findViewById(R.id.info_button_edit_phone);
+        revertCupsButton = findViewById(R.id.info_button_revert_cups);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
     }
 
@@ -140,13 +141,13 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     private void checkRevertCupsButtonVisibility() {
-        if(cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
+        if (cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
             revertCupsButton.setVisibility(View.INVISIBLE);
         } else revertCupsButton.setVisibility(View.VISIBLE);
     }
 
     private void checkDeleteButtonVisibility() {
-        if((boolean) this.getIntent().getExtras().get("DELETE_CUSTOMER")) {
+        if ((boolean) this.getIntent().getExtras().get("DELETE_CUSTOMER")) {
             deleteCustomerButton.setVisibility(View.VISIBLE);
         } else {
             deleteCustomerButton.setVisibility(View.INVISIBLE);
@@ -180,18 +181,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
     }
 
     public void callNumberEditDialog(View view) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.info_dialog_phone_title)
-                .setView(R.layout.dialog_phone_edit)
-                .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> updatePhone())
-                .setNegativeButton(R.string.info_dialog_button_cancel, null)
-                .show();
+        DialogFragment newFragment = new DialogFragment();
+        newFragment.show(getSupportFragmentManager(), "edit_phone");
     }
 
-    private void updatePhone() {
-        View dialog = getLayoutInflater().inflate(R.layout.dialog_phone_edit, null);
-        EditText newPhoneField = (EditText) dialog.findViewById(R.id.info_dialog_edit_phone_field);
-        newPhoneNumber = String.valueOf(newPhoneField.getText());
+    public void updatePhone() {
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
             if (!newPhoneNumber.matches("[0-9]+")) {
                 Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT).show();
@@ -203,11 +197,10 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
                 phoneUpdated.show();
                 phoneField.setText(customer.getPhoneNumber());
             }
-    }}
+        }
+    }
 
     public void updateCustomer(View view) {
-        int newCups = Integer.parseInt(String.valueOf(cupNumberField.getText()));
-        newPhoneNumber = String.valueOf(phoneField.getText());
         Toast cupsUpdated = null;
         if (newCups != customer.getCups()) {
             customer.setCups(newCups);
@@ -231,5 +224,10 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity {
                     startActivity(intent);
                 })
                 .setNegativeButton(R.string.info_dialog_button_cancel, null).show();
+    }
+
+    @Override
+    public void onDataPass(String data) {
+        newPhoneNumber = data;
     }
 }
