@@ -1,46 +1,49 @@
 <resources>
     <string name="app_name">Счетчик кружек</string>
-    <string name="main_input_phone_search_bar">Введите номер телефона</string>
+    <string name="main_input_phone_search_bar">Введите последние цифры номера телефона</string>
     <string name="main_button_search">Найти</string>
     <string name="main_button_add_customer">Новый клиент</string>
-    <string name="title_activity_client_card">ClientCard</string>
+    <string name="main_button_settings">настройки</string>
+
     <string name="new_input_phone">Введите номер телефона</string>
     <string name="new_input_name">Введите имя</string>
     <string name="new_button_add">Добавить запись</string>
-    <string name="info_button_update">Сохранить</string>
-    <string name="info_button_add_coffee">+</string>
-    <string name="info_button_claim">Cписать кофе</string>
-    <string name="info_button_delete_customer">Удалить клиента</string>
-    <string name="info_alert_lost">Потеряшка!</string>
-    <string name="info_alert_free_cups">Доступно бесплатных кружек: %1$d</string>
-    <string name="info_button_revert_cups">сбросить изменения</string>
-    <string name="info_button_edit_phone">изменить телефон</string>
     <string name="new_toast_name_error">Введите имя, состоящее только из символов русского или английского алфавита и пробелов</string>
     <string name="new_toast_phone_error">Введите номер телефона, состоящий только из цифр</string>
     <string name="new_toast_added">Клиент добавлен успешно</string>
+
+    <string name="info_button_update">Сохранить</string>
+    <string name="info_button_add_coffee" translatable="false">+</string>
+    <string name="info_button_claim">Cписать кофе</string>
+    <string name="info_button_delete_customer">Удалить клиента</string>
+    <string name="info_button_revert_cups">сбросить изменения</string>
+    <string name="info_button_edit_phone">изменить телефон</string>
+    <string name="info_alert_lost">Потеряшка!</string>
+    <string name="info_alert_free_cups">Доступно бесплатных кружек: %1$d</string>
     <string name="info_toast_phone_updated">Номер телефона обновлён успешно</string>
     <string name="info_toast_cups_updated">Данные о кружках обновлены успешно</string>
     <string name="info_toast_customer_deleted">Клиент удален успешно</string>
+    <string name="info_hint_last_visit_date">Дата последнего визита</string>
     <string name="info_hint_registration_date">Дата регистрации</string>
-    <string name="info_dialog_delete_title">Удаление клиента</string>
+    <string name="info_dialog_phone_title">Обновить номер телефона</string>
     <string name="info_dialog_delete_main">Вы уверены, что хотите удалить клиента? Это действие нельзя отменить.</string>
     <string name="info_dialog_button_delete">Удалить</string>
     <string name="info_dialog_button_save">Сохранить</string>
     <string name="info_dialog_button_cancel">Отменить</string>
-    <string name="toolbar_settings">Настройки</string>
-    <string name="info_hint_last_visit_date">Дата последнего визита</string>
+
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
     <string name="settings_line_show_dates_on_customer_screen">Показывать на карточке клиента даты регистрации и последнего визита</string>
     <string name="settings_line_add_cup_to_new_customer">Автоматически добавлять новому клиенту одну кружку при регистрации</string>
     <string name="settings_line_delete_customer">Удалить клиента</string>
-    <string name="settings_title_behavior">Настройки поведения</string>
-    <string name="placeholder_constant_free_cup">FREE_CUP</string>
-    <string name="placeholder_constant_returning_customer">RETURNING_CUSTOMER</string>
+    <string name="settings_title_behavior">Поведение приложения</string>
+
     <string name="settings_category_export">База данных</string>
-    <string name="setting_line_backup">Настройки резервного копирования</string>
+    <string name="setting_line_backup">Резервное копирование</string>
     <string name="setting_line_import">Импортировать базу данных из .csv</string>
     <string name="setting_line_export">Экспортировать базу данных в .csv</string>
     <string name="settings_button_apply_changes">Сохранить</string>
-    <string name="info_dialog_phone_title">Обновить номер телефона</string>
+
+    <string name="placeholder_constant_free_cup" translatable="false">FREE_CUP</string>
+    <string name="placeholder_constant_returning_customer" translatable="false">RETURNING_CUSTOMER</string>
 </resources>

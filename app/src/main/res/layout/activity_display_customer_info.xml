@@ -73,55 +73,44 @@
         android:layout_height="wrap_content"
         android:onClick="claimCoffee"
         android:text="@string/info_button_claim"
-        app:layout_constraintBottom_toBottomOf="@+id/info_field_cups"
-        app:layout_constraintEnd_toStartOf="@+id/info_field_cups"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/info_field_cups"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/info_field_cups" />
 
     <Button
         android:id="@+id/info_button_add_coffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
         android:onClick="addCoffee"
         android:text="@string/info_button_add_coffee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/info_field_cups"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5" />
 
     <TextView
         android:id="@+id/info_field_cups"
         android:layout_width="94dp"
         android:layout_height="47dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/info_button_add_coffee"
-        app:layout_constraintEnd_toStartOf="@+id/info_button_add_coffee"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/info_button_claim" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/info_button_add_coffee" />
 
     <Button
         android:id="@+id/info_button_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="84dp"
         android:onClick="updateCustomer"
         android:text="@string/info_button_update"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_button_revert_cups" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
         android:id="@+id/info_alert_lost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="64dp"
         android:text="@string/info_alert_lost"
-        app:layout_constraintBottom_toTopOf="@+id/info_button_edit_phone"
-        app:layout_constraintStart_toEndOf="@+id/info_field_name" />
+        app:layout_constraintStart_toEndOf="@+id/info_field_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/info_button_edit_phone"
@@ -149,14 +138,10 @@
         android:id="@+id/info_button_revert_cups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="324dp"
         android:onClick="revertCupChanges"
         android:text="@string/info_button_revert_cups"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_alert_free_cups"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/info_button_update"
+        app:layout_constraintTop_toBottomOf="@+id/info_button_claim" />
 
     <TextView
         android:id="@+id/info_hint_registration_date"
@@ -189,10 +174,26 @@
         android:id="@+id/info_button_delete_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="52dp"
         android:onClick="deleteCustomer"
         android:text="@string/info_button_delete_customer"
-        app:layout_constraintBottom_toBottomOf="@+id/info_button_update"
-        app:layout_constraintEnd_toStartOf="@+id/info_button_update" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="182dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="892dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

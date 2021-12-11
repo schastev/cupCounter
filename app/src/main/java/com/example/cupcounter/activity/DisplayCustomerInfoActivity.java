@@ -215,7 +215,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public void deleteCustomer(View view) {
         new AlertDialog.Builder(this)
-                .setTitle(res.getString(R.string.info_dialog_delete_title))
+                .setTitle(res.getString(R.string.info_button_delete_customer))
                 .setMessage(res.getString(R.string.info_dialog_delete_main))
                 .setPositiveButton(R.string.info_dialog_button_delete, (dialog, whichButton) -> {
                     customerDAO.delete(customer);
