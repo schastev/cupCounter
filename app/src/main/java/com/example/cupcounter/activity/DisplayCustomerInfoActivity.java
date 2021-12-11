@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +57,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
         checkDateFieldsVisibility();
         checkClaimButtonVisibility();
-        checkReturningClient();
+        checkReturningClientAlervVisibility();
         checkRevertCupsButtonVisibility();
         checkDeleteButtonVisibility();
     }
@@ -120,7 +119,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         }
     }
 
-    private void checkReturningClient() {
+    private void checkReturningClientAlervVisibility() {
         if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CUSTOMER))) {
             lostClientAlert.setVisibility(View.VISIBLE);
         } else {
@@ -178,6 +177,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         newCups = customer.getCups();
         cupNumberField.setText(String.valueOf(newCups));
         checkClaimButtonVisibility();
+        checkRevertCupsButtonVisibility();
     }
 
     public void callNumberEditDialog(View view) {
