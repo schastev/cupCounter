@@ -2,6 +2,8 @@ package com.example.cupcounter.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -15,6 +17,7 @@ import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
+import com.example.cupcounter.toolbar.ToolbarHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         setContentView(R.layout.activity_main);
         setUpDatabase();
         initializeUiElements();
-        deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra("DELETE_CUSTOMER"));
+        deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra(String.valueOf(R.string.placeholder_extra_delete_customer)));
+        ToolbarHelper.setUpToolbar(this, R.string.main_title);
     }
 
     private void setUpDatabase() {
@@ -82,8 +86,25 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         startActivity(intent);
     }
 
-    public void goToSettings(View view) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.toolbar_button_add:
+                intent = new Intent(this, AddNewCustomerActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.toolbar_button_settings:
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_both, menu);
+        return true;
     }
 }

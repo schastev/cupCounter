@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <EditText
         android:id="@+id/enterPhoneNumberToSearch"
         android:layout_width="745dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
@@ -18,34 +26,18 @@
         android:inputType="phone"
         android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/SearchCustomers"
-        app:layout_constraintHorizontal_bias="0.747"
-        app:layout_constraintStart_toEndOf="@+id/MoveToAddCustomerScreen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 
     <Button
         android:id="@+id/SearchCustomers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/main_button_search"
         android:onClick="findCustomer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/MoveToAddCustomerScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="56dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="addCustomer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_list_names"
@@ -59,14 +51,6 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SearchCustomers"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.317" />
 
-    <Button
-        android:id="@+id/main_button_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToSettings"
-        android:text="@string/main_button_settings"
-        app:layout_constraintEnd_toStartOf="@+id/MoveToAddCustomerScreen"
-        app:layout_constraintTop_toTopOf="@+id/MoveToAddCustomerScreen" />
 </androidx.constraintlayout.widget.ConstraintLayout>

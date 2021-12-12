@@ -2,8 +2,9 @@
     <string name="app_name">Счетчик кружек</string>
     <string name="main_input_phone_search_bar">Введите последние цифры номера телефона</string>
     <string name="main_button_search">Найти</string>
+    <string name="main_title">Найти клиента</string>
     <string name="main_button_add_customer">Новый клиент</string>
-    <string name="main_button_settings">настройки</string>
+    <string name="main_button_settings">Настройки</string>
 
     <string name="new_input_phone">Введите номер телефона</string>
     <string name="new_input_name">Введите имя</string>
@@ -12,12 +13,13 @@
     <string name="new_toast_phone_error">Введите номер телефона, состоящий только из цифр</string>
     <string name="new_toast_added">Клиент добавлен успешно</string>
 
+    <string name="info_title">Карточка клиента</string>
     <string name="info_button_update">Сохранить</string>
     <string name="info_button_add_coffee" translatable="false">+</string>
     <string name="info_button_claim">Cписать кофе</string>
     <string name="info_button_delete_customer">Удалить клиента</string>
-    <string name="info_button_revert_cups">сбросить изменения</string>
-    <string name="info_button_edit_phone">изменить телефон</string>
+    <string name="info_button_revert_cups">Сбросить изменения</string>
+    <string name="info_button_edit_phone">Изменить телефон</string>
     <string name="info_alert_lost">Потеряшка!</string>
     <string name="info_alert_free_cups">Доступно бесплатных кружек: %1$d</string>
     <string name="info_toast_phone_updated">Номер телефона обновлён успешно</string>

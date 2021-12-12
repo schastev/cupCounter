@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
+import com.example.cupcounter.toolbar.ToolbarHelper;
 
 import java.time.LocalDate;
 
@@ -35,6 +38,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         setUpDatabase();
         initializeUiElements();
         setUpAdditionalResources();
+        ToolbarHelper.setUpToolbar(this, R.string.main_button_add_customer);
     }
 
     private void setUpDatabase() {
@@ -82,5 +86,21 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             toast.show();
             startActivity(intent);
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        if (item.getItemId() == R.id.toolbar_button_settings) {
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_settings_only, menu);
+        return true;
     }
 }

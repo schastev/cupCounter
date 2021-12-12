@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.example.cupcounter.database.AppDatabase;
 import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
+import com.example.cupcounter.toolbar.ToolbarHelper;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -60,6 +63,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         checkReturningClientAlertVisibility();
         checkRevertCupsButtonVisibility();
         checkDeleteButtonVisibility();
+        ToolbarHelper.setUpToolbar(this, R.string.info_title);
     }
 
     private void setUpDatabase() {
@@ -229,5 +233,27 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     @Override
     public void onDataPass(String data) {
         newPhoneNumber = data;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.toolbar_button_add:
+                intent = new Intent(this, AddNewCustomerActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.toolbar_button_settings:
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_both, menu);
+        return true;
     }
 }

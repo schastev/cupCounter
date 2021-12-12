@@ -40,4 +40,6 @@
     <string name="settings_line_free_cups">How many drinks a customer must purchase to be eligible for a free drink</string>
     <string name="setting_line_returning_customer">How many days must pass for a \"Returning client\" alert to appear</string>
     <string name="placeholder_locale">en</string>
+    <string name="main_title">Find customer</string>
+    <string name="info_title">Customer card</string>
 </resources>
