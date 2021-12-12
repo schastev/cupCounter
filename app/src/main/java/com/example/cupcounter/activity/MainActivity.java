@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
-    public static final String EXTRA_MESSAGE = "com.example.cupcounter.MESSAGE";
-
     private EditText phoneSearchField;
     private RecyclerView customerNameList;
     private AppDatabase db;
@@ -79,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     private void goToCustomerCard(int position) {
         final Customer customer = foundCustomers.get(position);
         Intent intent = new Intent(this, DisplayCustomerInfoActivity.class);
-        intent.putExtra("CUSTOMER_ID", customer.getId());
-        intent.putExtra("DELETE_CUSTOMER", deleteCustomer);
+        intent.putExtra(String.valueOf(R.string.placeholder_extra_customer_id), customer.getId());
+        intent.putExtra(String.valueOf(R.string.placeholder_extra_delete_customer), deleteCustomer);
         startActivity(intent);
     }
 

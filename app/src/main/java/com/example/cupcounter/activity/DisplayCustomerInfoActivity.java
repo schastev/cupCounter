@@ -57,7 +57,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
         checkDateFieldsVisibility();
         checkClaimButtonVisibility();
-        checkReturningClientAlervVisibility();
+        checkReturningClientAlertVisibility();
         checkRevertCupsButtonVisibility();
         checkDeleteButtonVisibility();
     }
@@ -101,7 +101,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void setUpCustomer() {
-        int customerId = (int) this.getIntent().getExtras().get("CUSTOMER_ID");
+        int customerId = (int) this.getIntent().getExtras().get(String.valueOf(R.string.placeholder_extra_customer_id));
         customer = customerDAO.getById(customerId);
     }
 
@@ -119,7 +119,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         }
     }
 
-    private void checkReturningClientAlervVisibility() {
+    private void checkReturningClientAlertVisibility() {
         if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CUSTOMER))) {
             lostClientAlert.setVisibility(View.VISIBLE);
         } else {
@@ -146,7 +146,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void checkDeleteButtonVisibility() {
-        if ((boolean) this.getIntent().getExtras().get("DELETE_CUSTOMER")) {
+        if ((boolean) this.getIntent().getExtras().get(String.valueOf(R.string.placeholder_extra_delete_customer))) {
             deleteCustomerButton.setVisibility(View.VISIBLE);
         } else {
             deleteCustomerButton.setVisibility(View.INVISIBLE);
@@ -155,7 +155,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     private String formatDate(LocalDate date) {
         return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                .withLocale(new Locale("ru"))
+                .withLocale(new Locale(String.valueOf(R.string.placeholder_locale)))
                 .format(date);
     }
 

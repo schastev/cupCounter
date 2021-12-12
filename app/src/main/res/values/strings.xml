@@ -46,4 +46,7 @@
 
     <string name="placeholder_constant_free_cup" translatable="false">FREE_CUP</string>
     <string name="placeholder_constant_returning_customer" translatable="false">RETURNING_CUSTOMER</string>
+    <string name="placeholder_extra_customer_id" translatable="false">CUSTOMER_ID</string>
+    <string name="placeholder_extra_delete_customer" translatable="false">DELETE_CUSTOMER</string>
+    <string name="placeholder_locale">ru</string>
 </resources>
