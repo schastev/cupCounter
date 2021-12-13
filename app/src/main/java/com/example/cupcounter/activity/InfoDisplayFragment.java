@@ -33,9 +33,10 @@ public class InfoDisplayFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            fieldName = getArguments().getString(FIELD_NAME);
-            fieldValue = getArguments().getString(FIELD_VALUE);
+        Bundle args = getArguments();
+        if (args != null) {
+            fieldName = args.getString(FIELD_NAME);
+            fieldValue = args.getString(FIELD_VALUE);
         }
     }
 
