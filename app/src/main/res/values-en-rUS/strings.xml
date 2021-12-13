@@ -42,4 +42,6 @@
     <string name="placeholder_locale">en</string>
     <string name="main_title">Find customer</string>
     <string name="info_title">Customer card</string>
+    <string name="info_hint_name">Name</string>
+    <string name="info_hint_phone">Phone</string>
 </resources>

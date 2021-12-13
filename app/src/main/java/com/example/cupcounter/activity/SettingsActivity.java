@@ -1,15 +1,14 @@
 package com.example.cupcounter.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.cupcounter.R;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cupcounter.R;
 import com.example.cupcounter.settings.SettingsFragment;
 import com.example.cupcounter.toolbar.ToolbarHelper;
 
@@ -22,6 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportFragmentManager()
                 .beginTransaction()
+                .setReorderingAllowed(true)
                 .replace(R.id.settings_container_options, new SettingsFragment())
                 .commit();
         setContentView(R.layout.activity_settings);

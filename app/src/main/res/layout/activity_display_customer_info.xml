@@ -13,7 +13,7 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
         android:id="@+id/info_field_phone"
@@ -37,43 +37,6 @@
         app:layout_constraintEnd_toEndOf="@+id/info_field_phone"
         app:layout_constraintStart_toStartOf="@+id/info_field_phone"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/info_field_registration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:minHeight="48dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/info_field_last_visit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_hint_registration_date" />
-
-    <TextView
-        android:id="@+id/info_field_last_visit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:minHeight="48dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/info_field_registration"
-        app:layout_constraintTop_toBottomOf="@+id/info_hint_last_visit_date" />
-
-    <TextView
-        android:id="@+id/info_hint_last_visit_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info_hint_last_visit_date"
-        app:layout_constraintBottom_toTopOf="@+id/info_field_last_visit"
-        app:layout_constraintEnd_toEndOf="@+id/info_field_last_visit"
-        app:layout_constraintStart_toStartOf="@+id/info_field_last_visit"
-        app:layout_constraintTop_toBottomOf="@+id/guideline3"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
@@ -152,17 +115,6 @@
         app:layout_constraintEnd_toStartOf="@+id/info_button_update"
         app:layout_constraintTop_toBottomOf="@+id/info_button_claim" />
 
-    <TextView
-        android:id="@+id/info_hint_registration_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info_hint_registration_date"
-        app:layout_constraintBottom_toTopOf="@+id/info_field_registration"
-        app:layout_constraintEnd_toEndOf="@+id/info_field_registration"
-        app:layout_constraintStart_toStartOf="@+id/info_field_registration"
-        app:layout_constraintTop_toBottomOf="@+id/guideline3"
-        app:layout_constraintVertical_chainStyle="packed" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -205,4 +157,36 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="892dp" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/info_field_container_registration"
+        android:name="com.example.cupcounter.activity.InfoDisplayFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_container_phone" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/info_field_container_last_visit"
+        android:name="com.example.cupcounter.activity.InfoDisplayFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_container_registration" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/info_field_container_name"
+        android:name="com.example.cupcounter.activity.InfoDisplayFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/info_field_container_phone"
+        android:name="com.example.cupcounter.activity.InfoDisplayFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/info_field_container_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

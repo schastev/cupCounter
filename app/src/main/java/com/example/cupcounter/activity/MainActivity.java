@@ -1,6 +1,7 @@
 package com.example.cupcounter.activity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,15 +30,17 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     private AppDatabase db;
     private CustomerDAO customerDAO;
     private List<Customer> foundCustomers;
-    boolean deleteCustomer;
+    private boolean deleteCustomer;
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setUpAdditionalResources();
         setContentView(R.layout.activity_main);
         setUpDatabase();
         initializeUiElements();
-        deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra(String.valueOf(R.string.placeholder_extra_delete_customer)));
+        deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra(res.getString(R.string.placeholder_extra_delete_customer)));
         ToolbarHelper.setUpToolbar(this, R.string.main_title);
     }
 
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         phoneSearchField = findViewById(R.id.enterPhoneNumberToSearch);
         customerNameList = findViewById(R.id.result_list_names);
         customerNameList.setVisibility(View.INVISIBLE);
+    }
+
+    private void setUpAdditionalResources() {
+        res = getResources();
     }
 
     public void addCustomer(View view) {
@@ -81,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     private void goToCustomerCard(int position) {
         final Customer customer = foundCustomers.get(position);
         Intent intent = new Intent(this, DisplayCustomerInfoActivity.class);
-        intent.putExtra(String.valueOf(R.string.placeholder_extra_customer_id), customer.getId());
-        intent.putExtra(String.valueOf(R.string.placeholder_extra_delete_customer), deleteCustomer);
+        intent.putExtra(res.getString(R.string.placeholder_extra_customer_id), customer.getId());
+        intent.putExtra(res.getString(R.string.placeholder_extra_delete_customer), deleteCustomer);
         startActivity(intent);
     }
 

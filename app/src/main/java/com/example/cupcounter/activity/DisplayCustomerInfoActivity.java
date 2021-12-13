@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import com.example.cupcounter.DialogFragment;
@@ -38,7 +39,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     int FREE_CUP;
     int RETURNING_CUSTOMER;
 
-    TextView phoneField, nameField, cupNumberField, registrationField, lastVisitField, lostClientAlert, freeCupsAlert;
+    TextView phoneField, nameField, cupNumberField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton, revertPhoneButton, revertCupsButton, deleteCustomerButton;
 
     //fields to keep new values until they are recorded in the database
@@ -48,17 +49,29 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_customer_info);
-        setUpDatabase();
         setUpAdditionalResources();
-        setConstants();
+        setUpDatabase();
         setUpCustomer();
+        InfoDisplayFragment nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
+        InfoDisplayFragment phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
+            InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
+            InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
+            ft.replace(R.id.info_field_container_registration, registrationFragment)
+                    .replace(R.id.info_field_container_last_visit, lastVisitFragment);
+        }
+        ft.replace(R.id.info_field_container_name, nameFragment)
+                .replace(R.id.info_field_container_phone, phoneFragment)
+                .setReorderingAllowed(true)
+                .commit();
+        setContentView(R.layout.activity_display_customer_info);
+        setConstants();
         initializeUiElements();
         setFieldValues();
 
         newCups = customer.getCups();
 
-        checkDateFieldsVisibility();
         checkClaimButtonVisibility();
         checkReturningClientAlertVisibility();
         checkRevertCupsButtonVisibility();
@@ -75,8 +88,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         nameField = findViewById(R.id.info_field_name);
         phoneField = findViewById(R.id.info_field_phone);
         cupNumberField = findViewById(R.id.info_field_cups);
-        registrationField = findViewById(R.id.info_field_registration);
-        lastVisitField = findViewById(R.id.info_field_last_visit);
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
@@ -90,8 +101,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         phoneField.setText(customer.getPhoneNumber());
         nameField.setText(customer.getName());
         cupNumberField.setText(String.valueOf(customer.getCups()));
-        registrationField.setText(formatDate(customer.getRegistrationDate()));
-        lastVisitField.setText(formatDate(customer.getLastVisit()));
     }
 
     private void setUpAdditionalResources() {
@@ -105,22 +114,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void setUpCustomer() {
-        int customerId = (int) this.getIntent().getExtras().get(String.valueOf(R.string.placeholder_extra_customer_id));
+        int customerId = (int) this.getIntent().getExtras().get(res.getString(R.string.placeholder_extra_customer_id));
         customer = customerDAO.getById(customerId);
-    }
-
-    private void checkDateFieldsVisibility() {
-        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
-            findViewById(R.id.info_hint_last_visit_date).setVisibility(View.VISIBLE);
-            findViewById(R.id.info_hint_registration_date).setVisibility(View.VISIBLE);
-            registrationField.setVisibility(View.VISIBLE);
-            lastVisitField.setVisibility(View.VISIBLE);
-        } else {
-            registrationField.setVisibility(View.INVISIBLE);
-            lastVisitField.setVisibility(View.INVISIBLE);
-            findViewById(R.id.info_hint_last_visit_date).setVisibility(View.INVISIBLE);
-            findViewById(R.id.info_hint_registration_date).setVisibility(View.INVISIBLE);
-        }
     }
 
     private void checkReturningClientAlertVisibility() {
@@ -150,7 +145,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void checkDeleteButtonVisibility() {
-        if ((boolean) this.getIntent().getExtras().get(String.valueOf(R.string.placeholder_extra_delete_customer))) {
+        if ((boolean) this.getIntent().getExtras().get(res.getString(R.string.placeholder_extra_delete_customer))) {
             deleteCustomerButton.setVisibility(View.VISIBLE);
         } else {
             deleteCustomerButton.setVisibility(View.INVISIBLE);
@@ -159,7 +154,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     private String formatDate(LocalDate date) {
         return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                .withLocale(new Locale(String.valueOf(R.string.placeholder_locale)))
+                .withLocale(new Locale(res.getString(R.string.placeholder_locale)))
                 .format(date);
     }
 

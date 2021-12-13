@@ -27,6 +27,8 @@
     <string name="info_toast_customer_deleted">Клиент удален успешно</string>
     <string name="info_hint_last_visit_date">Дата последнего визита</string>
     <string name="info_hint_registration_date">Дата регистрации</string>
+    <string name="info_hint_name">Имя</string>
+    <string name="info_hint_phone">Телефон</string>
     <string name="info_dialog_phone_title">Обновить номер телефона</string>
     <string name="info_dialog_delete_main">Вы уверены, что хотите удалить клиента? Это действие нельзя отменить.</string>
     <string name="info_dialog_button_delete">Удалить</string>
