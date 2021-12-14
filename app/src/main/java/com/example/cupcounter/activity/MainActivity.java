@@ -1,11 +1,14 @@
 package com.example.cupcounter.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,18 +56,22 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         phoneSearchField = findViewById(R.id.enterPhoneNumberToSearch);
         customerNameList = findViewById(R.id.result_list_names);
         customerNameList.setVisibility(View.INVISIBLE);
+        showSoftKeyboard(phoneSearchField);
+        phoneSearchField.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled = false;
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                customerLookUp();
+                handled = true;
+            }
+            return handled;
+        });
     }
 
     private void setUpAdditionalResources() {
         res = getResources();
     }
 
-    public void addCustomer(View view) {
-        Intent intent = new Intent(this, AddNewCustomerActivity.class);
-        startActivity(intent);
-    }
-
-    public void findCustomer(View view) {
+    private void customerLookUp() {
         String numberEnding = phoneSearchField.getText().toString();
         foundCustomers = customerDAO.findByShortNumber("%" + numberEnding)
                 .stream()
@@ -74,15 +81,11 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             goToCustomerCard(0);
         } else {
             CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
-            // Привяжем массив через адаптер к ListView
             customerNameList.setAdapter(adapter);
             customerNameList.setVisibility(View.VISIBLE);
             adapter.setClickListener(this);
+            hideSoftKeyboard(phoneSearchField);
         }
-    }
-
-    public void onClick(View view, int position) {
-        goToCustomerCard(position);
     }
 
     private void goToCustomerCard(int position) {
@@ -93,25 +96,52 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         startActivity(intent);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.toolbar_button_add:
-                intent = new Intent(this, AddNewCustomerActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.toolbar_button_settings:
-                intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
-                return true;
-        }
-        return false;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_both, menu);
         return true;
+    }
+
+    private void showSoftKeyboard(View view) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }
+
+    private void hideSoftKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+    public void addCustomer(View view) {
+        Intent intent = new Intent(this, AddNewCustomerActivity.class);
+        startActivity(intent);
+    }
+
+    public void findCustomer(View view) {
+        customerLookUp();
+    }
+
+    public void onClick(View view, int position) {
+        goToCustomerCard(position);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        if (item.getItemId() == R.id.toolbar_button_add) {
+            intent = new Intent(this, AddNewCustomerActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.toolbar_button_settings) {
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
