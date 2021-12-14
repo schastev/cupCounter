@@ -40,7 +40,9 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     int RETURNING_CUSTOMER;
 
     TextView phoneField, nameField, cupNumberField, lostClientAlert, freeCupsAlert;
-    Button claimCoffeeButton, revertPhoneButton, revertCupsButton, deleteCustomerButton;
+    Button claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
+    InfoDisplayFragment nameFragment;
+    InfoDisplayFragment phoneFragment;
 
     //fields to keep new values until they are recorded in the database
     int newCups;
@@ -52,26 +54,10 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         setUpAdditionalResources();
         setUpDatabase();
         setUpCustomer();
-        InfoDisplayFragment nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
-        InfoDisplayFragment phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
-            InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
-            InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
-            ft.replace(R.id.info_field_container_registration, registrationFragment)
-                    .replace(R.id.info_field_container_last_visit, lastVisitFragment);
-        }
-        ft.replace(R.id.info_field_container_name, nameFragment)
-                .replace(R.id.info_field_container_phone, phoneFragment)
-                .setReorderingAllowed(true)
-                .commit();
         setContentView(R.layout.activity_display_customer_info);
         setConstants();
         initializeUiElements();
         setFieldValues();
-
-        newCups = customer.getCups();
-
         checkClaimButtonVisibility();
         checkReturningClientAlertVisibility();
         checkRevertCupsButtonVisibility();
@@ -92,12 +78,27 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
         claimCoffeeButton = findViewById(R.id.info_button_claim);
-        revertPhoneButton = findViewById(R.id.info_button_edit_phone);
+        editPhoneButton = findViewById(R.id.info_button_edit_phone);
         revertCupsButton = findViewById(R.id.info_button_revert_cups);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
+
+        nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
+        phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
+            InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
+            InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
+            ft.replace(R.id.info_field_container_registration, registrationFragment)
+                    .replace(R.id.info_field_container_last_visit, lastVisitFragment);
+        }
+        ft.replace(R.id.info_field_container_name, nameFragment)
+                .replace(R.id.info_field_container_phone, phoneFragment)
+                .setReorderingAllowed(true)
+                .commit();
     }
 
     private void setFieldValues() {
+        newCups = customer.getCups();
         phoneField.setText(customer.getPhoneNumber());
         nameField.setText(customer.getName());
         cupNumberField.setText(String.valueOf(customer.getCups()));
@@ -195,6 +196,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
                 customerDAO.update(customer);
                 phoneUpdated.show();
                 phoneField.setText(customer.getPhoneNumber());
+                InfoDisplayFragment fr = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
+                getSupportFragmentManager().beginTransaction()
+                        .detach(phoneFragment)
+                        .replace(R.id.info_field_container_phone, fr)
+                        .commit();
             }
         }
     }
@@ -232,18 +238,17 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
-        switch (item.getItemId()) {
-            case R.id.toolbar_button_add:
-                intent = new Intent(this, AddNewCustomerActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.toolbar_button_settings:
-                intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.toolbar_button_add) {
+            intent = new Intent(this, AddNewCustomerActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.toolbar_button_settings) {
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
