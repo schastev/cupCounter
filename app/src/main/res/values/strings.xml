@@ -48,7 +48,7 @@
     <string name="setting_line_import">Импортировать базу данных из .csv</string>
     <string name="setting_line_export">Экспортировать базу данных в .csv</string>
     <string name="settings_button_apply_changes">Сохранить</string>
-    <string name="settings_toast_invalid_number">Введите целое число</string>
+    <string name="settings_toast_invalid_number">Введите целое число больше нуля</string>
 
     <string name="placeholder_constant_free_cup" translatable="false">FREE_CUP</string>
     <string name="placeholder_constant_returning_customer" translatable="false">RETURNING_CUSTOMER</string>

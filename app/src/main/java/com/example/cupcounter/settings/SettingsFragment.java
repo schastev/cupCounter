@@ -15,14 +15,19 @@ import com.example.cupcounter.activity.MainActivity;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     Resources res;
+    Toast toast;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        res = getResources();
+        setUpAdditionalResources();
         setPreferencesFromResource(R.xml.preferences, rootKey);
         returningCustomerSetting();
         freeCupsSetting();
         deleteCustomerSetting();
+    }
+    private void setUpAdditionalResources(){
+        res = getResources();
+        toast = Toast.makeText(getContext(), res.getString(R.string.settings_toast_invalid_number), Toast.LENGTH_SHORT);
     }
 
     private void returningCustomerSetting() {
@@ -30,15 +35,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         assert returningPreference != null;
         returningPreference.setSummaryProvider(EditTextPreference.SimpleSummaryProvider.getInstance());
         returningPreference.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER));
-        returningPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            try {
-                Integer.parseInt((String) newValue);
-                return true;
-            } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), res.getString(R.string.settings_toast_invalid_number), Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+        returningPreference.setOnPreferenceChangeListener((preference, newValue) -> validateIntSetting(String.valueOf(newValue)));
     }
 
     private void freeCupsSetting() {
@@ -46,15 +43,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         assert freeCupPreference != null;
         freeCupPreference.setSummaryProvider(EditTextPreference.SimpleSummaryProvider.getInstance());
         freeCupPreference.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER));
-        freeCupPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            try {
-                Integer.parseInt((String) newValue);
-                return true;
-            } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), res.getString(R.string.settings_toast_invalid_number), Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+        freeCupPreference.setOnPreferenceChangeListener((preference, newValue) -> validateIntSetting(String.valueOf(newValue)));
     }
 
     private void deleteCustomerSetting() {
@@ -63,6 +52,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Intent intent = new Intent(getContext(), MainActivity.class);
         intent.putExtra(res.getString(R.string.placeholder_extra_delete_customer), "true");
         deleteCustomer.setIntent(intent);
+    }
+
+    private boolean validateIntSetting(String newValue) {
+        try {
+            int number = Integer.parseInt((String) newValue);
+            if (number < 1) {
+                toast.show();
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            toast.show();
+            return false;
+        }
     }
 
 }
