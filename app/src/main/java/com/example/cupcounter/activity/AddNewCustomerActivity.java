@@ -66,13 +66,14 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         String name = nameField.getText().toString();
         String validName = null;
         String validNumber = null;
-        if (name.matches("[a-zA-Z ]+") || name.matches("[а-яА-Я ]+")) {
+        if (name.matches(res.getString(R.string.placeholder_pattern_en))
+                || name.matches(res.getString(R.string.placeholder_pattern_ru))) {
             validName = name;
         } else {
             toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_name_error), Toast.LENGTH_LONG);
             toast.show();
         }
-        if (phoneNumber.matches("[0-9]+")) {
+        if (phoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
             validNumber = phoneNumber;
         } else {
             toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT);
@@ -80,7 +81,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         }
         if (validName != null && validNumber != null) {
             int defaultCups = 0;
-            if (defaultSettings.getBoolean("settings_add_cup_to_new_customer", false)) {
+            if (defaultSettings.getBoolean(res.getString(R.string.placeholder_setting_add_cup), false)) {
                 defaultCups = 1;
             }
             Customer newCustomer = new Customer(validName, validNumber, LocalDate.now(), LocalDate.now(), defaultCups);

@@ -85,7 +85,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
         phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (sharedPreferences.getBoolean("settings_show_dates_on_customer_screen", false)) {
+        if (sharedPreferences.getBoolean(res.getString(R.string.placeholder_setting_dates), false)) {
             InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
             InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
             ft.replace(R.id.info_field_container_registration, registrationFragment)
@@ -110,8 +110,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void setConstants() {
-        FREE_CUP = Integer.parseInt(sharedPreferences.getString("setting_free_cups", "5"));
-        RETURNING_CUSTOMER = Integer.parseInt(sharedPreferences.getString("setting_returning_customer", "30"));
+        FREE_CUP = Integer.parseInt(sharedPreferences.getString(res.getString(R.string.placeholder_setting_free_cup), "5"));
+        RETURNING_CUSTOMER = Integer.parseInt(sharedPreferences.getString(res.getString(R.string.placeholder_setting_returning_customer), "30"));
     }
 
     private void setUpCustomer() {
@@ -182,12 +182,12 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public void callNumberEditDialog(View view) {
         DialogFragment phoneInputDialogFragment = new DialogFragment();
-        phoneInputDialogFragment.show(getSupportFragmentManager(), "edit_phone");
+        phoneInputDialogFragment.show(getSupportFragmentManager(), res.getString(R.string.info_fragment_tag));
     }
 
     public void updatePhone() {
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
-            if (!newPhoneNumber.matches("[0-9]+")) {
+            if (!newPhoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
                 Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT).show();
             } else {
                 customer.setPhoneNumber(newPhoneNumber);

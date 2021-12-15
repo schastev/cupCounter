@@ -4,23 +4,23 @@
         app:key="settings_category_behavior"
         app:title="@string/settings_title_behavior">
         <EditTextPreference
-            app:key="setting_free_cups"
+            app:key="@string/placeholder_setting_free_cup"
             app:title="@string/settings_line_free_cups"/>
 
         <EditTextPreference
-            app:key="setting_returning_customer"
+            app:key="@string/placeholder_setting_returning_customer"
             app:title="@string/setting_line_returning_customer" />
 
         <SwitchPreferenceCompat
-            app:key="settings_show_dates_on_customer_screen"
+            app:key="@string/placeholder_setting_dates"
             app:title="@string/settings_line_show_dates_on_customer_screen" />
         <SwitchPreferenceCompat
-            app:key="settings_add_cup_to_new_customer"
+            app:key="@string/placeholder_setting_add_cup"
             app:title="@string/settings_line_add_cup_to_new_customer" />
     </PreferenceCategory>
     <PreferenceCategory>
         <Preference
-            app:key="settings_delete_customer"
+            app:key="@string/placeholder_setting_delete"
             app:title="@string/settings_line_delete_customer"/>
     </PreferenceCategory>
     <PreferenceCategory

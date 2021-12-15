@@ -35,7 +35,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
             phoneNumber = (TextView) view.findViewById(R.id.phoneNumber);
             itemView.setTag(itemView);
             itemView.setOnClickListener(this);
-//            this.setClickListener(super.get);
         }
 
         public TextView getName() {
