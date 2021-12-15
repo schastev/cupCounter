@@ -28,7 +28,7 @@
     <string name="info_dialog_button_delete">Delete</string>
     <string name="info_dialog_button_save">Save</string>
     <string name="info_dialog_button_cancel">Cancel</string>
-    <string name="settings_line_show_dates_on_customer_screen">Display dates of registratin and last visit on the customer card</string>
+    <string name="settings_line_show_dates_on_customer_screen">Display dates of registration and last visit on the customer card</string>
     <string name="settings_line_add_cup_to_new_customer">Add one drink to new customers automatically</string>
     <string name="settings_line_delete_customer">Delete customer</string>
     <string name="settings_title_behavior">Behavior</string>
