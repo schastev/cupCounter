@@ -8,6 +8,7 @@
         android:id="@+id/info_pair_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -15,6 +16,7 @@
         android:id="@+id/info_pair_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_pair_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
