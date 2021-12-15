@@ -1,5 +1,6 @@
 package com.example.cupcounter.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     private void initializeUiElements() {
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);
+        showSoftKeyboard(phoneField);
     }
 
     private void setUpAdditionalResources() {
@@ -102,5 +105,13 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_settings_only, menu);
         return true;
+    }
+
+    private void showSoftKeyboard(View view) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
     }
 }
