@@ -12,8 +12,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:theme="@style/Theme.MaterialComponents.DayNight"
+        app:popupTheme="@style/Theme.MaterialComponents.DayNight" />
 
     <EditText
         android:id="@+id/main_field_search"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toStartOf="@+id/main_button_search"
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/main_button_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

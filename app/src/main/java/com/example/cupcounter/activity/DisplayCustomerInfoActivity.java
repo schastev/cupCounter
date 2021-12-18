@@ -23,6 +23,7 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.button.MaterialButton;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -40,7 +41,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     int RETURNING_CUSTOMER;
 
     TextView cupNumberField, lostClientAlert, freeCupsAlert;
-    Button claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
+    MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
     InfoDisplayFragment nameFragment;
     InfoDisplayFragment phoneFragment;
 

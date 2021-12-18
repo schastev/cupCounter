@@ -12,10 +12,10 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:theme="@style/Theme.MaterialComponents.DayNight"
+        app:popupTheme="@style/Theme.MaterialComponents.DayNight" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_claim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/info_field_cups"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_add_coffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,10 +63,10 @@
         android:text="@string/info_button_update"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_72"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85"/>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_revert_cups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,10 +74,11 @@
         android:text="@string/info_button_revert_cups"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_72"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85"
+        style="?attr/materialButtonOutlinedStyle"/>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_delete_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +89,7 @@
 
 <!--CUSTOMER INFO-->
     <androidx.fragment.app.FragmentContainerView
+        android:layout_marginTop="5dp"
         android:id="@+id/info_field_container_name"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
         android:layout_width="0dp"
@@ -96,6 +98,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
     <androidx.fragment.app.FragmentContainerView
+        android:layout_marginTop="5dp"
         android:id="@+id/info_field_container_phone"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
         android:layout_width="0dp"
@@ -104,6 +107,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/info_field_container_name" />
     <androidx.fragment.app.FragmentContainerView
+        android:layout_marginTop="5dp"
         android:id="@+id/info_field_container_registration"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
         android:layout_width="0dp"
@@ -112,6 +116,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/info_field_container_phone" />
     <androidx.fragment.app.FragmentContainerView
+        android:layout_marginTop="5dp"
         android:id="@+id/info_field_container_last_visit"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
         android:layout_width="0dp"
@@ -128,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_25"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_edit_phone"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -136,7 +141,8 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v_25"
         app:layout_constraintTop_toTopOf="@+id/info_field_container_phone"
         app:layout_constraintBottom_toBottomOf="@+id/info_field_container_phone"
-        android:text="@string/info_button_edit_phone"/>
+        android:text="@string/info_button_edit_phone"
+        style="?attr/materialButtonOutlinedStyle"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_half"

@@ -21,15 +21,17 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class AddNewCustomerActivity extends AppCompatActivity {
 
     AppDatabase db;
     CustomerDAO customerDAO;
     Toast toast;
-    EditText phoneField, nameField;
+    TextInputLayout phoneField, nameField;
     Resources res;
     SharedPreferences defaultSettings;
 
@@ -62,24 +64,31 @@ public class AddNewCustomerActivity extends AppCompatActivity {
 
     public void addCustomer(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        String phoneNumber = phoneField.getText().toString();
-        String name = nameField.getText().toString();
+        String phoneNumber = Objects.requireNonNull(phoneField.getEditText()).getText().toString();
+        String name = Objects.requireNonNull(nameField.getEditText()).getText().toString();
         String validName = null;
         String validNumber = null;
         if (phoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
+            phoneField.setError(null);
             validNumber = phoneNumber;
-        } else {
-            toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT);
-            toast.show();
+        } else if (phoneNumber.equals("")) {
+            phoneField.setError("Обязательное поле");
+        }
+        else {
+            phoneField.setError(res.getString(R.string.new_toast_phone_error));
         }
         if (name.matches(res.getString(R.string.placeholder_pattern_en))
                 || name.matches(res.getString(R.string.placeholder_pattern_ru))) {
+            nameField.setError(null);
             validName = name;
+        } else if (name.equals("")) {
+            nameField.setError("Обязательное поле");
         } else {
-            toast = Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_name_error), Toast.LENGTH_LONG);
-            toast.show();
+            nameField.setError(res.getString(R.string.new_toast_name_error));
         }
         if (validName != null && validNumber != null) {
+            phoneField.setError(null);
+            nameField.setError(null);
             int defaultCups = 0;
             if (defaultSettings.getBoolean(res.getString(R.string.placeholder_setting_add_cup), false)) {
                 defaultCups = 1;
