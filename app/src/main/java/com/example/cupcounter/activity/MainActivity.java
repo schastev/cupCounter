@@ -21,6 +21,7 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     private List<Customer> foundCustomers;
     private boolean deleteCustomer;
     private Resources res;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         setUpDatabase();
         initializeUiElements();
         deleteCustomer = Boolean.parseBoolean(getIntent().getStringExtra(res.getString(R.string.placeholder_extra_delete_customer)));
-        ToolbarHelper.setUpToolbar(this, R.string.main_title);
     }
 
     private void setUpDatabase() {
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void initializeUiElements() {
+        toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_title);
+        toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerBoth(this, menuItem));
         phoneSearchField = findViewById(R.id.main_field_search);
         customerNameList = findViewById(R.id.main_list_results);
         customerNameList.setVisibility(View.INVISIBLE);
@@ -135,18 +138,4 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         goToCustomerCard(position);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        if (item.getItemId() == R.id.toolbar_button_add) {
-            intent = new Intent(this, AddNewCustomerActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (item.getItemId() == R.id.toolbar_button_settings) {
-            intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

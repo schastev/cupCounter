@@ -21,6 +21,7 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.LocalDate;
@@ -28,12 +29,13 @@ import java.util.Objects;
 
 public class AddNewCustomerActivity extends AppCompatActivity {
 
-    AppDatabase db;
-    CustomerDAO customerDAO;
-    Toast toast;
-    TextInputLayout phoneField, nameField;
-    Resources res;
-    SharedPreferences defaultSettings;
+    private AppDatabase db;
+    private CustomerDAO customerDAO;
+    private Toast toast;
+    private TextInputLayout phoneField, nameField;
+    private Resources res;
+    private SharedPreferences defaultSettings;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,6 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         setUpDatabase();
         initializeUiElements();
         setUpAdditionalResources();
-        ToolbarHelper.setUpToolbar(this, R.string.main_button_add_customer);
     }
 
     private void setUpDatabase() {
@@ -51,6 +52,8 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     }
 
     private void initializeUiElements() {
+        toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_button_add_customer);
+        toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerSettingsOnly(this, menuItem));
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);
         showSoftKeyboard(phoneField);
@@ -99,16 +102,6 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             toast.show();
             startActivity(intent);
         }
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        if (item.getItemId() == R.id.toolbar_button_settings) {
-            intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return false;
     }
 
     @Override

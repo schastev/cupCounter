@@ -6,22 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".activity.SettingsActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:id="@+id/settings_container_options"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar"></ScrollView>
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"></ScrollView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_95"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

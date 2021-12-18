@@ -1,20 +1,20 @@
 package com.example.cupcounter.activity;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.R;
 import com.example.cupcounter.settings.SettingsFragment;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.appbar.MaterialToolbar;
 
 
 public class SettingsActivity extends AppCompatActivity {
     Resources res;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +26,12 @@ public class SettingsActivity extends AppCompatActivity {
                 .commit();
         setContentView(R.layout.activity_settings);
         setUpAdditionalResources();
-        ToolbarHelper.setUpToolbar(this, R.string.main_button_settings);
+        toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_button_settings);
+        toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerAddOnly(this, menuItem));
     }
 
     private void setUpAdditionalResources() {
         res = getResources();
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        if (item.getItemId() == R.id.toolbar_button_add) {
-            intent = new Intent(this, AddNewCustomerActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return false;
     }
 
     @Override

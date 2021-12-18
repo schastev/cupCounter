@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".activity.DisplayCustomerInfoActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/Theme.MaterialComponents.DayNight"
-        app:popupTheme="@style/Theme.MaterialComponents.DayNight" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_claim"
@@ -53,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@+id/info_button_claim"
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/info_button_update"

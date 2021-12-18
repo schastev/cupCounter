@@ -23,6 +23,7 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 
 import java.time.LocalDate;
@@ -32,22 +33,23 @@ import java.util.Locale;
 
 public class DisplayCustomerInfoActivity extends AppCompatActivity implements DialogFragment.OnDataPass {
 
-    AppDatabase db;
-    CustomerDAO customerDAO;
-    Customer customer;
-    Resources res;
-    SharedPreferences sharedPreferences;
-    int FREE_CUP;
-    int RETURNING_CUSTOMER;
+    private AppDatabase db;
+    private CustomerDAO customerDAO;
+    private Customer customer;
+    private Resources res;
+    private SharedPreferences sharedPreferences;
+    private int FREE_CUP;
+    private int RETURNING_CUSTOMER;
 
-    TextView cupNumberField, lostClientAlert, freeCupsAlert;
-    MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
-    InfoDisplayFragment nameFragment;
-    InfoDisplayFragment phoneFragment;
+    private TextView cupNumberField, lostClientAlert, freeCupsAlert;
+    private MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
+    private InfoDisplayFragment nameFragment;
+    private InfoDisplayFragment phoneFragment;
+    private MaterialToolbar toolbar;
 
     //fields to keep new values until they are recorded in the database
-    int newCups;
-    String newPhoneNumber;
+    private int newCups;
+    private String newPhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         checkReturningClientAlertVisibility();
         checkRevertCupsButtonVisibility();
         checkDeleteButtonVisibility();
-        ToolbarHelper.setUpToolbar(this, R.string.info_title);
     }
 
     private void setUpDatabase() {
@@ -72,6 +73,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void initializeUiElements() {
+        toolbar = ToolbarHelper.setUpToolbar(this, R.string.info_title);
+        toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerBoth(this, menuItem));
         cupNumberField = findViewById(R.id.info_field_cups);
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
@@ -230,21 +233,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     @Override
     public void onDataPass(String data) {
         newPhoneNumber = data;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        if (item.getItemId() == R.id.toolbar_button_add) {
-            intent = new Intent(this, AddNewCustomerActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (item.getItemId() == R.id.toolbar_button_settings) {
-            intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override
