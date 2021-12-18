@@ -72,7 +72,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             phoneField.setError(null);
             validNumber = phoneNumber;
         } else if (phoneNumber.equals("")) {
-            phoneField.setError("Обязательное поле");
+            phoneField.setError(res.getText(R.string.new_toast_empty_field));
         }
         else {
             phoneField.setError(res.getString(R.string.new_toast_phone_error));
@@ -82,7 +82,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             nameField.setError(null);
             validName = name;
         } else if (name.equals("")) {
-            nameField.setError("Обязательное поле");
+            nameField.setError(res.getText(R.string.new_toast_empty_field));
         } else {
             nameField.setError(res.getString(R.string.new_toast_name_error));
         }

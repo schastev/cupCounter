@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,13 +21,15 @@ import com.example.cupcounter.database.Customer;
 import com.example.cupcounter.database.CustomerDAO;
 import com.example.cupcounter.database.DBClient;
 import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
-    private EditText phoneSearchField;
+    private TextInputLayout phoneSearchField;
     private RecyclerView customerNameList;
     private AppDatabase db;
     private CustomerDAO customerDAO;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         customerNameList = findViewById(R.id.main_list_results);
         customerNameList.setVisibility(View.INVISIBLE);
         showSoftKeyboard(phoneSearchField);
-        phoneSearchField.setOnEditorActionListener((v, actionId, event) -> {
+        Objects.requireNonNull(phoneSearchField.getEditText()).setOnEditorActionListener((v, actionId, event) -> {
             boolean handled = false;
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 customerLookUp();
@@ -72,14 +73,18 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void customerLookUp() {
-        String numberEnding = phoneSearchField.getText().toString();
+        String numberEnding = Objects.requireNonNull(phoneSearchField.getEditText()).getText().toString();
         foundCustomers = customerDAO.findByShortNumber("%" + numberEnding)
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
         if (foundCustomers.size() == 1) {
+            phoneSearchField.setError(null);
             goToCustomerCard(0);
+        } else if (foundCustomers.size() == 0) {
+            phoneSearchField.setError(res.getString(R.string.main_no_result));
         } else {
+            phoneSearchField.setError(null);
             CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
             customerNameList.setAdapter(adapter);
             customerNameList.setVisibility(View.VISIBLE);

@@ -45,4 +45,5 @@
     <string name="info_hint_phone">Phone</string>
     <string name="settings_toast_invalid_number">Please input a valid positive integer</string>
     <string name="new_toast_empty_field">Required field</string>
+    <string name="main_no_result">Nothing found</string>
 </resources>

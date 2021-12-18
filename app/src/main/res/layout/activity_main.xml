@@ -15,18 +15,28 @@
         android:theme="@style/Theme.MaterialComponents.DayNight"
         app:popupTheme="@style/Theme.MaterialComponents.DayNight" />
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/main_field_search"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/main_input_phone_search_bar"
-        android:imeOptions="actionSearch"
-        android:inputType="phone"
-        android:minHeight="48dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/info_hint_phone"
+        app:helperText="@string/main_input_phone_search_bar"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
         app:layout_constraintStart_toEndOf="@+id/guideline_v_5"
         app:layout_constraintEnd_toStartOf="@+id/main_button_search"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_15">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:inputType="number"
+            android:imeOptions="actionSearch"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/main_button_search"
@@ -41,11 +51,12 @@
         android:id="@+id/main_list_results"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_40" />
+        app:layout_constraintTop_toBottomOf="@+id/main_field_search" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_half"
