@@ -27,18 +27,18 @@
             app:key="@string/placeholder_setting_delete"
             app:title="@string/settings_line_delete_customer"/>
     </PreferenceCategory>
-    <PreferenceCategory
-        app:key="settings_category_export"
-        app:title="@string/settings_category_export">
-        <Preference
-            app:key="setting_import"
-            app:title="@string/setting_line_import" />
-        <Preference
-            app:key="setting_export"
-            app:title="@string/setting_line_export" />
-        <Preference
-            app:key="setting_backup"
-            app:title="@string/setting_line_backup" />
-    </PreferenceCategory>
+<!--    <PreferenceCategory-->
+<!--        app:key="settings_category_export"-->
+<!--        app:title="@string/settings_category_export">-->
+<!--        <Preference-->
+<!--            app:key="setting_import"-->
+<!--            app:title="@string/setting_line_import" />-->
+<!--        <Preference-->
+<!--            app:key="setting_export"-->
+<!--            app:title="@string/setting_line_export" />-->
+<!--        <Preference-->
+<!--            app:key="setting_backup"-->
+<!--            app:title="@string/setting_line_backup" />-->
+<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>
