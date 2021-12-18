@@ -15,7 +15,7 @@
     <string name="info_button_claim">Claim free drink</string>
     <string name="info_button_delete_customer">Delete Customer</string>
     <string name="info_button_revert_cups">Revert changes</string>
-    <string name="info_button_edit_phone">Edit</string>
+    <string name="info_button_edit_phone">Edit phone</string>
     <string name="info_alert_lost">Returning client</string>
     <string name="info_alert_free_cups">Free drinks available: %1$d</string>
     <string name="info_toast_phone_updated">Phone number updated successfully</string>

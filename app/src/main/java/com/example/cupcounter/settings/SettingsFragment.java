@@ -56,7 +56,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private boolean validateIntSetting(String newValue) {
         try {
-            int number = Integer.parseInt((String) newValue);
+            int number = Integer.parseInt(newValue);
             if (number < 1) {
                 toast.show();
                 return false;

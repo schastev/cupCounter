@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:onClick="claimCoffee"
         android:text="@string/info_button_claim"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h_40"
+        app:layout_constraintBaseline_toBaselineOf="@+id/info_field_cups"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half" />
 
     <Button
@@ -30,15 +30,16 @@
         android:layout_height="wrap_content"
         android:onClick="addCoffee"
         android:text="@string/info_button_add_coffee"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h_40"
+        app:layout_constraintBaseline_toBaselineOf="@+id/info_field_cups"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
         app:layout_constraintStart_toEndOf="@+id/info_field_cups" />
 
     <TextView
         android:id="@+id/info_field_cups"
-        android:layout_width="94dp"
-        android:layout_height="47dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
         app:layout_constraintTop_toTopOf="@+id/guideline_h_40"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_95" />
@@ -62,7 +63,7 @@
         android:text="@string/info_button_update"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_72"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_60" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85" />
 
 
     <Button
@@ -73,7 +74,7 @@
         android:text="@string/info_button_revert_cups"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_72"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_60" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_85" />
 
 
     <Button
@@ -83,40 +84,41 @@
         android:onClick="deleteCustomer"
         android:text="@string/info_button_delete_customer"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h_60" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_h_85" />
 
 <!--CUSTOMER INFO-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_name"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_25"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_phone"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_25"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/info_field_container_name" />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_registration"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_25"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/info_field_container_phone" />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_last_visit"
         android:name="com.example.cupcounter.activity.InfoDisplayFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_25"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toBottomOf="@+id/info_field_container_registration" />
-
-
-
 
     <TextView
         android:id="@+id/info_alert_lost"
@@ -124,15 +126,16 @@
         android:layout_height="wrap_content"
         android:text="@string/info_alert_lost"
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15"
-        app:layout_constraintStart_toEndOf="@+id/info_field_container_name"/>
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_25"/>
 
     <Button
         android:id="@+id/info_button_edit_phone"
-        android:layout_width="137dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:onClick="callNumberEditDialog"
-        app:layout_constraintEnd_toEndOf="@+id/guideline_v_half"
-        app:layout_constraintTop_toBottomOf="@+id/info_field_container_name"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_25"
+        app:layout_constraintTop_toTopOf="@+id/info_field_container_phone"
+        app:layout_constraintBottom_toBottomOf="@+id/info_field_container_phone"
         android:text="@string/info_button_edit_phone"/>
 
     <androidx.constraintlayout.widget.Guideline
@@ -143,40 +146,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_h_60"
+        android:id="@+id/guideline_h_85"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
+        app:layout_constraintGuide_percent="0.85" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_95"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_72"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.725" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_h_40"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3"
         app:layout_constraintStart_toStartOf="parent" />
@@ -187,5 +184,13 @@
         android:layout_marginStart="16dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.25"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
