@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void initializeUiElements() {
-        phoneSearchField = findViewById(R.id.enterPhoneNumberToSearch);
-        customerNameList = findViewById(R.id.result_list_names);
+        phoneSearchField = findViewById(R.id.main_field_search);
+        customerNameList = findViewById(R.id.main_list_results);
         customerNameList.setVisibility(View.INVISIBLE);
         showSoftKeyboard(phoneSearchField);
         phoneSearchField.setOnEditorActionListener((v, actionId, event) -> {

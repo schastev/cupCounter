@@ -16,42 +16,84 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <EditText
-        android:id="@+id/enterPhoneNumberToSearch"
-        android:layout_width="745dp"
+        android:id="@+id/main_field_search"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/main_input_phone_search_bar"
+        android:imeOptions="actionSearch"
         android:inputType="phone"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/SearchCustomers"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        android:imeOptions="actionSearch"/>
+        app:layout_constraintStart_toEndOf="@+id/guideline_v_5"
+        app:layout_constraintEnd_toStartOf="@+id/main_button_search"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
 
     <Button
-        android:id="@+id/SearchCustomers"
+        android:id="@+id/main_button_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
         android:hint="@string/main_button_search"
         android:onClick="findCustomer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h_15" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/result_list_names"
-        android:layout_width="813dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/main_list_results"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h_40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_half"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchCustomers"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_95"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_72"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.725" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

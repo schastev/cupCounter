@@ -18,5 +18,6 @@
         android:layout_height="wrap_content"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_pair_title" />
+        app:layout_constraintTop_toBottomOf="@+id/info_pair_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 </androidx.constraintlayout.widget.ConstraintLayout>

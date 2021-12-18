@@ -39,7 +39,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     int FREE_CUP;
     int RETURNING_CUSTOMER;
 
-    TextView phoneField, nameField, cupNumberField, lostClientAlert, freeCupsAlert;
+    TextView cupNumberField, lostClientAlert, freeCupsAlert;
     Button claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
     InfoDisplayFragment nameFragment;
     InfoDisplayFragment phoneFragment;
@@ -71,8 +71,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void initializeUiElements() {
-        nameField = findViewById(R.id.info_field_name);
-        phoneField = findViewById(R.id.info_field_phone);
         cupNumberField = findViewById(R.id.info_field_cups);
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
@@ -99,8 +97,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     private void setFieldValues() {
         newCups = customer.getCups();
-        phoneField.setText(customer.getPhoneNumber());
-        nameField.setText(customer.getName());
         cupNumberField.setText(String.valueOf(customer.getCups()));
     }
 
@@ -195,7 +191,6 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
                 customer.setLastVisit(LocalDate.now());
                 customerDAO.update(customer);
                 phoneUpdated.show();
-                phoneField.setText(customer.getPhoneNumber());
                 InfoDisplayFragment fr = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
                 getSupportFragmentManager().beginTransaction()
                         .detach(phoneFragment)
