@@ -115,4 +115,10 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initializeUiElements();
+    }
 }

@@ -135,4 +135,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         goToCustomerCard(position);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        customerLookUp();
+    }
+
 }

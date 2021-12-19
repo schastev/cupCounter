@@ -29,6 +29,7 @@ public class ToolbarHelper {
             return true;
         } else if (item.getItemId() == R.id.toolbar_button_settings) {
             intent = new Intent(activity, SettingsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             activity.startActivity(intent);
             return true;
         } else {
@@ -40,6 +41,7 @@ public class ToolbarHelper {
         Intent intent;
         if (item.getItemId() == R.id.toolbar_button_add) {
             intent = new Intent(activity, AddNewCustomerActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             activity.startActivity(intent);
             return true;
         }
@@ -50,6 +52,7 @@ public class ToolbarHelper {
         Intent intent;
         if (item.getItemId() == R.id.toolbar_button_settings) {
             intent = new Intent(activity, SettingsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             activity.startActivity(intent);
             return true;
         }
