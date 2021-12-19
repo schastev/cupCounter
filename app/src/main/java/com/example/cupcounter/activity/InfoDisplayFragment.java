@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.cupcounter.R;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class InfoDisplayFragment extends Fragment {
 
@@ -48,9 +50,8 @@ public class InfoDisplayFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle bundle) {
-        TextView title = view.findViewById(R.id.info_pair_title);
-        TextView content = view.findViewById(R.id.info_pair_content);
-        title.setText(fieldName);
-        content.setText(fieldValue);
+        TextInputLayout layout = view.findViewById(R.id.info_pair);
+        layout.setHint(fieldName);
+        Objects.requireNonNull(layout.getEditText()).setText(fieldValue);
     }
 }
