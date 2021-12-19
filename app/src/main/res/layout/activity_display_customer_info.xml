@@ -72,10 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/info_alert_free_cups"
-        app:layout_constraintBottom_toTopOf="@+id/info_button_claim"
+        app:layout_constraintBottom_toTopOf="@+id/info_field_cups"
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
+        app:layout_constraintTop_toTopOf="@+id/info_field_container_name" />
     <!--BOTTOM OF THE PAGE-->
 
     <com.google.android.material.button.MaterialButton
@@ -160,8 +160,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/info_alert_lost"
+        app:layout_constraintBottom_toTopOf="@+id/info_button_edit_phone"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_25"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_15" />
+        app:layout_constraintTop_toTopOf="@+id/info_field_container_name" />
 
 
     <androidx.constraintlayout.widget.Guideline

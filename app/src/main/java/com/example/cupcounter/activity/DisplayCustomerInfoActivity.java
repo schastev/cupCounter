@@ -159,7 +159,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private String formatDate(LocalDate date) {
-        return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+        return DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
                 .withLocale(new Locale(res.getString(R.string.placeholder_locale)))
                 .format(date);
     }
