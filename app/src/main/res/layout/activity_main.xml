@@ -7,6 +7,7 @@
     tools:context=".activity.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -20,24 +21,25 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/main_field_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="@string/info_hint_phone"
-        app:helperText="@string/main_input_phone_search_bar"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
-        app:layout_constraintStart_toEndOf="@+id/guideline_v_5"
+        app:helperText="@string/main_input_phone_search_bar"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
-        app:layout_constraintTop_toBottomOf="@+id/guideline_h_15">
+        app:layout_constraintStart_toEndOf="@+id/guideline_v_5"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:singleLine="true"
-            android:inputType="number"
+            android:layout_height="wrap_content"
             android:imeOptions="actionSearch"
-            android:layout_height="wrap_content" />
+            android:inputType="number"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
