@@ -6,10 +6,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,7 +81,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         if (name.matches(res.getString(R.string.placeholder_pattern_en))
                 || name.matches(res.getString(R.string.placeholder_pattern_ru))) {
             nameField.setError(null);
-            validName = name;
+            validName = name.trim();
         } else if (name.equals("")) {
             nameField.setError(res.getText(R.string.new_toast_empty_field));
         } else {

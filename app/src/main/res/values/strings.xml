@@ -9,7 +9,7 @@
     <string name="new_input_phone">Номер телефона</string>
     <string name="new_input_name">Имя</string>
     <string name="new_button_add">Добавить запись</string>
-    <string name="new_toast_name_error">Допускаются только символы русского или английского алфавита и пробелы</string>
+    <string name="new_toast_name_error">Допускаются только символы русского или английского алфавита</string>
     <string name="new_toast_phone_error">Допускаются только цифры</string>
     <string name="new_toast_empty_field">Обязательное поле</string>
     <string name="new_toast_added">Клиент добавлен успешно</string>
@@ -61,8 +61,8 @@
     <string name="placeholder_setting_free_cup" translatable="false">setting_free_cups</string>
     <string name="placeholder_setting_returning_customer" translatable="false">setting_returning_customer</string>
     <string name="placeholder_setting_delete" translatable="false">settings_delete_customer</string>
-    <string name="placeholder_pattern_ru" translatable="false">[а-яА-Я ]+</string>
-    <string name="placeholder_pattern_en" translatable="false">[a-zA-Z ]+</string>
+    <string name="placeholder_pattern_ru" translatable="false">[а-яА-Я]+</string>
+    <string name="placeholder_pattern_en" translatable="false">[a-zA-Z]+</string>
     <string name="placeholder_pattern_digits" translatable="false">[0-9]+</string>
     <string name="main_no_result">Ничего не найдено</string>
 </resources>

@@ -7,7 +7,7 @@
     <string name="new_input_phone">Phone number</string>
     <string name="new_input_name">Name</string>
     <string name="new_button_add">Add Customer</string>
-    <string name="new_toast_name_error">Only Russian or English symbols and spaces are allowed</string>
+    <string name="new_toast_name_error">Only Russian or English symbols are allowed</string>
     <string name="new_toast_phone_error">Only digits allowed</string>
     <string name="new_toast_added">Customer added successfully</string>
     <string name="info_button_update">Save</string>
