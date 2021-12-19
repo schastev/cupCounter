@@ -42,7 +42,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     private int RETURNING_CUSTOMER;
 
     private TextView cupNumberField, lostClientAlert, freeCupsAlert;
-    private MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton;
+    private MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton, saveChangesButton;
     private InfoDisplayFragment nameFragment;
     private InfoDisplayFragment phoneFragment;
     private MaterialToolbar toolbar;
@@ -82,6 +82,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         claimCoffeeButton = findViewById(R.id.info_button_claim);
         editPhoneButton = findViewById(R.id.info_button_edit_phone);
         revertCupsButton = findViewById(R.id.info_button_revert_cups);
+        saveChangesButton = findViewById(R.id.info_button_update);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
 
         nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
@@ -142,7 +143,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     private void checkRevertCupsButtonVisibility() {
         if (cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
             revertCupsButton.setVisibility(View.INVISIBLE);
-        } else revertCupsButton.setVisibility(View.VISIBLE);
+            saveChangesButton.setVisibility(View.INVISIBLE);
+        } else {
+            revertCupsButton.setVisibility(View.VISIBLE);
+            saveChangesButton.setVisibility(View.VISIBLE);
+        }
     }
 
     private void checkDeleteButtonVisibility() {
