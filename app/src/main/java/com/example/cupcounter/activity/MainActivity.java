@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             goToCustomerCard(0);
         } else if (foundCustomers.size() == 0) {
             phoneSearchField.setError(res.getString(R.string.main_no_result));
+            customerNameList.setVisibility(View.INVISIBLE);
         } else {
             phoneSearchField.setError(null);
             CustomerAdapter adapter = new CustomerAdapter(this, foundCustomers);
@@ -128,10 +129,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void addCustomer(View view) {
         Intent intent = new Intent(this, AddNewCustomerActivity.class);
         startActivity(intent);
-    }
-
-    public void findCustomer(View view) {
-        customerLookUp();
     }
 
     public void onClick(View view, int position) {

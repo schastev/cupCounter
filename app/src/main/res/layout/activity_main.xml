@@ -29,7 +29,7 @@
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintStart_toEndOf="@+id/guideline_v_5"
-        app:layout_constraintEnd_toStartOf="@+id/main_button_search"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
         app:layout_constraintTop_toBottomOf="@+id/guideline_h_15">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -40,15 +40,6 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/main_button_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_button_search"
-        android:onClick="findCustomer"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h_15" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_list_results"
