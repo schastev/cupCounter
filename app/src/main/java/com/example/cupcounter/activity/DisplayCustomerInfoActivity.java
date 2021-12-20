@@ -245,4 +245,11 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         getMenuInflater().inflate(R.menu.menu_both, menu);
         return true;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setConstants();
+        initializeUiElements();
+    }
 }
