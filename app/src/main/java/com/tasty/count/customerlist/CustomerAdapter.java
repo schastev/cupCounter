@@ -1,4 +1,4 @@
-package com.example.cupcounter.customerlist;
+package com.tasty.count.customerlist;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.database.Customer;
+import com.tasty.count.database.Customer;
 
 import java.util.List;
 

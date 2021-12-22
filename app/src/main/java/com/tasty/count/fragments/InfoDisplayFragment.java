@@ -1,4 +1,4 @@
-package com.example.cupcounter.fragments;
+package com.tasty.count.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

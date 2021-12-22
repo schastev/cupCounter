@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DisplayCustomerInfoActivity">
+    tools:context="com.tasty.count.activity.DisplayCustomerInfoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_layout"
@@ -117,7 +117,7 @@
     <!--CUSTOMER INFO-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_name"
-        android:name="com.example.cupcounter.fragments.InfoDisplayFragment"
+        android:name="com.tasty.count.fragments.InfoDisplayFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -127,7 +127,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_phone"
-        android:name="com.example.cupcounter.fragments.InfoDisplayFragment"
+        android:name="com.tasty.count.fragments.InfoDisplayFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -137,7 +137,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_registration"
-        android:name="com.example.cupcounter.fragments.InfoDisplayFragment"
+        android:name="com.tasty.count.fragments.InfoDisplayFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -147,7 +147,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/info_field_container_last_visit"
-        android:name="com.example.cupcounter.fragments.InfoDisplayFragment"
+        android:name="com.tasty.count.fragments.InfoDisplayFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

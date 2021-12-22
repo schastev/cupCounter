@@ -1,4 +1,4 @@
-package com.example.cupcounter.activity;
+package com.tasty.count.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.database.AppDatabase;
-import com.example.cupcounter.database.Customer;
-import com.example.cupcounter.database.CustomerDAO;
-import com.example.cupcounter.database.DBClient;
-import com.example.cupcounter.toolbar.ToolbarHelper;
+import com.tasty.count.database.AppDatabase;
+import com.tasty.count.database.Customer;
+import com.tasty.count.database.CustomerDAO;
+import com.tasty.count.database.DBClient;
+import com.tasty.count.toolbar.ToolbarHelper;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputLayout;
 

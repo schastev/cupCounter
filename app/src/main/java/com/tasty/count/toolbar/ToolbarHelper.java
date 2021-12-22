@@ -1,4 +1,4 @@
-package com.example.cupcounter.toolbar;
+package com.tasty.count.toolbar;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.activity.AddNewCustomerActivity;
-import com.example.cupcounter.activity.SettingsActivity;
+import com.tasty.count.activity.AddNewCustomerActivity;
+import com.tasty.count.activity.SettingsActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.Objects;

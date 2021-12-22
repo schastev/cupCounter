@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.tasty.count;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,9 +11,9 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.cupcounter.database.AppDatabase;
-import com.example.cupcounter.database.Customer;
-import com.example.cupcounter.database.CustomerDAO;
+import com.tasty.count.database.AppDatabase;
+import com.tasty.count.database.Customer;
+import com.tasty.count.database.CustomerDAO;
 
 import org.junit.After;
 import org.junit.Before;

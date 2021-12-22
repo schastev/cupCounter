@@ -1,4 +1,4 @@
-package com.example.cupcounter.database;
+package com.tasty.count.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,7 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.example.cupcounter.CustomerGenerator;
+import com.tasty.count.CustomerGenerator;
 
 import java.io.Serializable;
 import java.time.LocalDate;

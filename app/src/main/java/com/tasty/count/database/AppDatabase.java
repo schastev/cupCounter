@@ -1,4 +1,4 @@
-package com.example.cupcounter.database;
+package com.tasty.count.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

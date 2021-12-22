@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.tasty.count;
 
 import com.github.javafaker.Faker;
 

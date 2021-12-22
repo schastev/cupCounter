@@ -11,19 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <activity
-            android:name=".activity.SettingsActivity"
+            android:name="com.tasty.count.activity.SettingsActivity"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity.DisplayCustomerInfoActivity"
+            android:name="com.tasty.count.activity.DisplayCustomerInfoActivity"
             android:screenOrientation="landscape"
             android:exported="true"/>
         <activity
-            android:name=".activity.AddNewCustomerActivity"
+            android:name="com.tasty.count.activity.AddNewCustomerActivity"
             android:screenOrientation="landscape"
             android:exported="true"/>
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.tasty.count.activity.MainActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan">

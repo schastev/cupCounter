@@ -1,4 +1,4 @@
-package com.example.cupcounter.customerlist;
+package com.tasty.count.customerlist;
 
 import android.view.View;
 

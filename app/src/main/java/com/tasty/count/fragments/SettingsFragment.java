@@ -1,4 +1,4 @@
-package com.example.cupcounter.fragments;
+package com.tasty.count.fragments;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,7 +11,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.activity.MainActivity;
+import com.tasty.count.activity.MainActivity;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     Resources res;

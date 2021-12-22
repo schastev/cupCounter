@@ -1,4 +1,4 @@
-package com.example.cupcounter.fragments;
+package com.tasty.count.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.activity.DisplayCustomerInfoActivity;
+import com.tasty.count.activity.DisplayCustomerInfoActivity;
 
 import java.util.Objects;
 
