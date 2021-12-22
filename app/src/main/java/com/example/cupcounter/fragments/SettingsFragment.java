@@ -1,4 +1,4 @@
-package com.example.cupcounter.settings;
+package com.example.cupcounter.fragments;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,7 +25,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         freeCupsSetting();
         deleteCustomerSetting();
     }
-    private void setUpAdditionalResources(){
+
+    private void setUpAdditionalResources() {
         res = getResources();
         toast = Toast.makeText(getContext(), res.getString(R.string.settings_toast_invalid_number), Toast.LENGTH_SHORT);
     }

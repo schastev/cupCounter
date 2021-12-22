@@ -1,4 +1,4 @@
-package com.example.cupcounter;
+package com.example.cupcounter.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+
+import com.example.cupcounter.R;
 import com.example.cupcounter.activity.DisplayCustomerInfoActivity;
 
 import java.util.Objects;
@@ -19,11 +22,12 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     OnDataPass dataPasser;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         dataPasser = (OnDataPass) context;
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         LayoutInflater inflater = requireActivity().getLayoutInflater();

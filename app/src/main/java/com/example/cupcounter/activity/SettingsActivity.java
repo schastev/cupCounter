@@ -7,7 +7,7 @@ import android.view.Menu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cupcounter.R;
-import com.example.cupcounter.settings.SettingsFragment;
+import com.example.cupcounter.fragments.SettingsFragment;
 import com.example.cupcounter.toolbar.ToolbarHelper;
 import com.google.android.material.appbar.MaterialToolbar;
 
