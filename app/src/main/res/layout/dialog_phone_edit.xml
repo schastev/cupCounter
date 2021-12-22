@@ -10,11 +10,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/info_hint_update_phone"
         android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteY="148dp" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_95"
         android:layout_width="wrap_content"

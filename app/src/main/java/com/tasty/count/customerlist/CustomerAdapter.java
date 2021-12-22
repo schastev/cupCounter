@@ -6,18 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.database.Customer;
 
 import java.util.List;
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHolder> {
-    private List<Customer> customers;
+    private final List<Customer> customers;
     private final LayoutInflater inflater;
     private OnItemClickListener clickListener;
-    private Context context;
+//    private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView name, phoneNumber;
@@ -37,14 +38,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
             itemView.setOnClickListener(this);
         }
 
-        public TextView getName() {
-            return name;
-        }
-
-        public TextView getPhoneNumber() {
-            return phoneNumber;
-        }
-
         @Override
         public void onClick(View v) {
             if (clickListener != null) clickListener.onClick(v, getAbsoluteAdapterPosition());
@@ -55,12 +48,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     public CustomerAdapter(Context context, List<Customer> dataSet) {
         this.customers = dataSet;
         this.inflater = LayoutInflater.from(context);
-        this.context = context;
+//        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public CustomerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }

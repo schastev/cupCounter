@@ -18,11 +18,11 @@ public class Customer implements Serializable, Comparable {
     @ColumnInfo(name = "id")
     private int id;
     @ColumnInfo(name = "name")
-    private String name;
+    private final String name;
     @ColumnInfo(name = "phone_number")
     private String phoneNumber;
     @ColumnInfo(name = "registration_date")
-    private LocalDate registrationDate;
+    private final LocalDate registrationDate;
     @ColumnInfo(name = "last_visit")
     private LocalDate lastVisit;
     @ColumnInfo(name = "cups")
@@ -94,16 +94,8 @@ public class Customer implements Serializable, Comparable {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
     }
 
     public void setLastVisit(LocalDate lastVisit) {

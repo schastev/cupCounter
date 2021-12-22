@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.activity.AddNewCustomerActivity;
 import com.tasty.count.activity.SettingsActivity;
 import com.google.android.material.appbar.MaterialToolbar;

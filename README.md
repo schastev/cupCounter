@@ -28,7 +28,7 @@ This Android app is a helper app for any shop that provides a free something to 
     * `/activity` stores classes for the four main Activities of the app. Each of them contains methods responsible for the initialization of UI elements on screen, representation and handling of data
     * `/customerlist` stores helper files to display search results on the main screen in a specific format
     * `/database` stores all helper classes needed to work with the Room database:
-        * `AppDatabase` is a class describing the database itsel 
+        * `AppDatabase` is a class describing the database itself
         * `Customer` is a class describing a Customer
         * `CustomerDAO` is an interface that allows to make changes to the Customer counterparts in the database
         * `DBClient` is a client that allows the Activities to communicate with the database and provides a single copy of the database to all parts of the app

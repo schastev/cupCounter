@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
@@ -32,7 +32,6 @@ import java.util.Locale;
 
 public class DisplayCustomerInfoActivity extends AppCompatActivity implements DialogFragment.OnDataPass {
 
-    private AppDatabase db;
     private CustomerDAO customerDAO;
     private Customer customer;
     private Resources res;
@@ -41,10 +40,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     private int RETURNING_CUSTOMER;
 
     private TextView cupNumberField, lostClientAlert, freeCupsAlert;
-    private MaterialButton claimCoffeeButton, editPhoneButton, revertCupsButton, deleteCustomerButton, saveChangesButton;
-    private InfoDisplayFragment nameFragment;
+    private MaterialButton claimCoffeeButton, revertCupsButton, deleteCustomerButton, saveChangesButton;
     private InfoDisplayFragment phoneFragment;
-    private MaterialToolbar toolbar;
 
     //fields to keep new values until they are recorded in the database
     private int newCups;
@@ -67,24 +64,23 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void setUpDatabase() {
-        db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
+        AppDatabase db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
     }
 
     private void initializeUiElements() {
-        toolbar = ToolbarHelper.setUpToolbar(this, R.string.info_title);
+        MaterialToolbar toolbar = ToolbarHelper.setUpToolbar(this, R.string.info_title);
         toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerBoth(this, menuItem));
         cupNumberField = findViewById(R.id.info_field_cups);
         lostClientAlert = findViewById(R.id.info_alert_lost);
         freeCupsAlert = findViewById(R.id.info_alert_free_cups);
 
         claimCoffeeButton = findViewById(R.id.info_button_claim);
-        editPhoneButton = findViewById(R.id.info_button_edit_phone);
         revertCupsButton = findViewById(R.id.info_button_revert_cups);
         saveChangesButton = findViewById(R.id.info_button_update);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
 
-        nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
+        InfoDisplayFragment nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
         phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (sharedPreferences.getBoolean(res.getString(R.string.placeholder_setting_dates), false)) {

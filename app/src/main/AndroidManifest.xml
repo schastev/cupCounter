@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cupcounter">
+    package="com.tasty.count">
 
     <application
         android:allowBackup="true"
@@ -16,12 +16,12 @@
             android:screenOrientation="landscape" />
         <activity
             android:name="com.tasty.count.activity.DisplayCustomerInfoActivity"
-            android:screenOrientation="landscape"
-            android:exported="true"/>
+            android:exported="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name="com.tasty.count.activity.AddNewCustomerActivity"
-            android:screenOrientation="landscape"
-            android:exported="true"/>
+            android:exported="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name="com.tasty.count.activity.MainActivity"
             android:exported="true"

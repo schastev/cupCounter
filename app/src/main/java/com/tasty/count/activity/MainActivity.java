@@ -12,7 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.customerlist.CustomerAdapter;
 import com.tasty.count.customerlist.OnItemClickListener;
 import com.tasty.count.database.AppDatabase;
@@ -31,12 +31,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private TextInputLayout phoneSearchField;
     private RecyclerView customerNameList;
-    private AppDatabase db;
     private CustomerDAO customerDAO;
     private List<Customer> foundCustomers;
     private boolean deleteCustomer;
     private Resources res;
-    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +47,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void setUpDatabase() {
-        db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
+        AppDatabase db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
     }
 
     private void initializeUiElements() {
-        toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_title);
+        MaterialToolbar toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_title);
         toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerBoth(this, menuItem));
         phoneSearchField = findViewById(R.id.main_field_search);
         customerNameList = findViewById(R.id.main_list_results);

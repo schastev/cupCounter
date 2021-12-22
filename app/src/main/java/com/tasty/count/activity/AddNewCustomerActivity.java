@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
@@ -27,13 +27,11 @@ import java.util.Objects;
 
 public class AddNewCustomerActivity extends AppCompatActivity {
 
-    private AppDatabase db;
     private CustomerDAO customerDAO;
     private Toast toast;
     private TextInputLayout phoneField, nameField;
     private Resources res;
     private SharedPreferences defaultSettings;
-    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +43,12 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     }
 
     private void setUpDatabase() {
-        db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
+        AppDatabase db = DBClient.getInstance(getApplicationContext()).getAppDatabase();
         customerDAO = db.customerDao();
     }
 
     private void initializeUiElements() {
-        toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_button_add_customer);
+        MaterialToolbar toolbar = ToolbarHelper.setUpToolbar(this, R.string.main_button_add_customer);
         toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerSettingsOnly(this, menuItem));
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);

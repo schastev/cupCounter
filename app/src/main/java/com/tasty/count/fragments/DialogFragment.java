@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.tasty.count.activity.DisplayCustomerInfoActivity;
 
 import java.util.Objects;

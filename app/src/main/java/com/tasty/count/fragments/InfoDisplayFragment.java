@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.cupcounter.R;
+import com.tasty.count.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;

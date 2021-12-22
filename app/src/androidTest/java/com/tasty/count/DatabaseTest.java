@@ -22,13 +22,12 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RunWith(AndroidJUnit4.class)
 public class DatabaseTest {
     private CustomerDAO customerDAO;
     private AppDatabase db;
-    List <Customer> allCustomers = new ArrayList<>();
+    final List <Customer> allCustomers = new ArrayList<>();
 
     @Before
     public void createDb() {
@@ -131,7 +130,7 @@ public class DatabaseTest {
         expected.setCups(4);
         customerDAO.update(expected);
         String phoneNumber = expected.getPhoneNumber();
-        List<Customer> actual = customerDAO.findByShortNumber("%" + phoneNumber.substring(phoneNumber.length() - 4)).stream().collect(Collectors.toList());
+        List<Customer> actual = new ArrayList<>(customerDAO.findByShortNumber("%" + phoneNumber.substring(phoneNumber.length() - 4)));
         assertTrue(actual.contains(expected));
     }
 
@@ -144,8 +143,8 @@ public class DatabaseTest {
         expected.setPhoneNumber(newNumber);
 
         customerDAO.update(expected);
-        List<Customer> actual = customerDAO.findByShortNumber("%" + newNumber.substring(newNumber.length() - 4)).stream().collect(Collectors.toList());
-        List<Customer> searchOld = customerDAO.findByShortNumber("%" + oldNumber.substring(oldNumber.length() - 4)).stream().collect(Collectors.toList());
+        List<Customer> actual = new ArrayList<>(customerDAO.findByShortNumber("%" + newNumber.substring(newNumber.length() - 4)));
+        List<Customer> searchOld = new ArrayList<>(customerDAO.findByShortNumber("%" + oldNumber.substring(oldNumber.length() - 4)));
         assertTrue(actual.contains(expected));
         assertTrue(searchOld.isEmpty());
     }
