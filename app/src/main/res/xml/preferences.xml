@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         app:key="settings_category_behavior"
         app:title="@string/settings_title_behavior">
@@ -14,10 +15,17 @@
             app:defaultValue="30"/>
 
     </PreferenceCategory>
-    <PreferenceCategory>
+    <PreferenceCategory
+        app:key="settings_category_admin"
+        app:title="Администраторские действия">
         <Preference
             app:key="@string/placeholder_setting_delete"
             app:title="@string/settings_line_delete_customer"/>
+        <EditTextPreference
+            app:key="settings_admin_password"
+            app:title="Задать пароль администратора"
+            android:inputType="textPassword"
+            app:defaultValue="coffee is life"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

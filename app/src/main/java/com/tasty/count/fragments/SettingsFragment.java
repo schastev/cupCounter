@@ -24,6 +24,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         returningCustomerSetting();
         freeCupsSetting();
         deleteCustomerSetting();
+        adminPassword();
     }
 
     private void setUpAdditionalResources() {
@@ -45,6 +46,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         freeCupPreference.setSummaryProvider(EditTextPreference.SimpleSummaryProvider.getInstance());
         freeCupPreference.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER));
         freeCupPreference.setOnPreferenceChangeListener((preference, newValue) -> validateIntSetting(String.valueOf(newValue)));
+    }
+
+    private void adminPassword() {
+        EditTextPreference adminPassword = findPreference("settings_admin_password");
+        assert adminPassword != null;
+        adminPassword.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD));
     }
 
     private void deleteCustomerSetting() {
