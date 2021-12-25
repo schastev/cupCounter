@@ -8,7 +8,7 @@
     <string name="main_no_result">Ничего не найдено</string>
 
     <string name="toolbar_dialog_title">Введите пароль администратора</string>
-    <string name="toolbar_dialog_ok" translatable="false">OK</string>
+    <string name="toolbar_dialog_ok">Войти</string>
     <string name="toolbar_toast_wrong_pw">Неверный пароль</string>
 
     <string name="new_input_phone">Номер телефона</string>
