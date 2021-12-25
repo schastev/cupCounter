@@ -28,7 +28,7 @@
         <EditTextPreference
             android:inputType="textPassword"
             app:defaultValue="coffee"
-            app:key="@string/settings_line_admin_password"
+            app:key="@string/placeholder_setting_admin_password"
             app:title="@string/settings_line_change_admin_password" />
     </PreferenceCategory>
 

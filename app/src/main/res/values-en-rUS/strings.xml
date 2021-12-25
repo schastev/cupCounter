@@ -53,4 +53,6 @@
     <string name="settings_line_change_admin_password">Change administrator password</string>
     <string name="settings_category_admin">Administrator actions</string>
     <string name="settings_line_ask_admin_password">Ask for administrator password when entering Settings</string>
+    <string name="settings_toast_empty_password">Password cannot be empty</string>
+    <string name="settings_toast_short_password">Please input a password longer than 3 symbols</string>
 </resources>

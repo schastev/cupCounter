@@ -10,7 +10,6 @@
     <string name="toolbar_dialog_title">Введите пароль администратора</string>
     <string name="toolbar_dialog_ok" translatable="false">OK</string>
     <string name="toolbar_toast_wrong_pw">Неверный пароль</string>
-    <string name="toolbar_fragment_tag" translatable="false">password_prompt</string>
 
     <string name="new_input_phone">Номер телефона</string>
     <string name="new_input_name">Имя</string>
@@ -45,7 +44,6 @@
     <string name="info_dialog_button_delete">Удалить</string>
     <string name="info_dialog_button_save">Сохранить</string>
     <string name="info_dialog_button_cancel">Отменить</string>
-    <string name="info_fragment_tag" translatable="false">edit_phone</string>
 
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
@@ -59,15 +57,17 @@
     <string name="setting_line_backup">Резервное копирование</string>
     <string name="setting_line_import">Импортировать базу данных из .csv</string>
     <string name="setting_line_export">Экспортировать базу данных в .csv</string>
-    <string name="settings_line_admin_password" translatable="false">settings_admin_password</string>
     <string name="settings_button_apply_changes">Сохранить</string>
     <string name="settings_toast_invalid_number">Введите целое число больше нуля</string>
+    <string name="settings_toast_empty_password">Пароль не может быть пустым</string>
+    <string name="settings_toast_short_password">Введите пароль не менее трёх символов</string>
 
     <string name="placeholder_constant_free_cup" translatable="false">FREE_CUP</string>
     <string name="placeholder_constant_returning_customer" translatable="false">RETURNING_CUSTOMER</string>
     <string name="placeholder_extra_customer_id" translatable="false">CUSTOMER_ID</string>
     <string name="placeholder_extra_delete_customer" translatable="false">DELETE_CUSTOMER</string>
     <string name="placeholder_locale">ru</string>
+    <string name="placeholder_setting_admin_password" translatable="false">settings_admin_password</string>
     <string name="placeholder_setting_ask_password" translatable="false">settings_line_ask_password</string>
     <string name="placeholder_setting_admin_actions" translatable="false">settings_category_admin</string>
     <string name="placeholder_setting_dates" translatable="false">settings_show_dates_on_customer_screen</string>
@@ -78,4 +78,7 @@
     <string name="placeholder_pattern_ru" translatable="false">[а-яА-Я]+</string>
     <string name="placeholder_pattern_en" translatable="false">[a-zA-Z]+</string>
     <string name="placeholder_pattern_digits" translatable="false">[0-9]+</string>
+    <string name="placeholder_pattern_spaces" translatable="false">[ ]+</string>
+    <string name="placeholder_phone_fragment_tag" translatable="false">edit_phone</string>
+    <string name="placeholder_password_fragment_tag" translatable="false">password_prompt</string>
 </resources>

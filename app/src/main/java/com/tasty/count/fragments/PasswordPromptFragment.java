@@ -62,7 +62,7 @@ public class PasswordPromptFragment extends androidx.fragment.app.DialogFragment
 
     private void checkPassword(EditText passwordField) {
         String password = String.valueOf(passwordField.getText());
-        if (!password.equals(sharedPreferences.getString(res.getString(R.string.settings_line_admin_password), "coffee"))) {
+        if (!password.equals(sharedPreferences.getString(res.getString(R.string.placeholder_setting_admin_password), "coffee"))) {
             Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
                     res.getString(R.string.toolbar_toast_wrong_pw),
                     Toast.LENGTH_SHORT).show();

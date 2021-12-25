@@ -56,7 +56,7 @@ public class ToolbarHelper {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((AppCompatActivity) activity);
         if (sharedPreferences.getBoolean(res.getString(R.string.placeholder_setting_ask_password), true)) {
             PasswordPromptFragment passwordPromptFragment = new PasswordPromptFragment();
-            passwordPromptFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), res.getString(R.string.toolbar_fragment_tag));
+            passwordPromptFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), res.getString(R.string.placeholder_password_fragment_tag));
         } else {
             Intent intent = new Intent(activity, SettingsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

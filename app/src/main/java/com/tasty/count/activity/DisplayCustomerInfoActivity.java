@@ -204,7 +204,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public void callNumberEditDialog(View view) {
         DialogFragment phoneInputDialogFragment = new DialogFragment();
-        phoneInputDialogFragment.show(getSupportFragmentManager(), res.getString(R.string.info_fragment_tag));
+        phoneInputDialogFragment.show(getSupportFragmentManager(), res.getString(R.string.placeholder_phone_fragment_tag));
     }
 
     public void updatePhone() {

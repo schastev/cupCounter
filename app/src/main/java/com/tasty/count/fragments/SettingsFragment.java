@@ -49,9 +49,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void adminPassword() {
-        EditTextPreference adminPassword = findPreference("settings_admin_password");
+        EditTextPreference adminPassword = findPreference(res.getString(R.string.placeholder_setting_admin_password));
         assert adminPassword != null;
         adminPassword.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD));
+        adminPassword.setOnPreferenceChangeListener(((preference, newValue) -> validatePassword((String) newValue)));
+    }
+
+    private boolean validatePassword(String newValue) {
+        if (newValue.matches(res.getString(R.string.placeholder_pattern_spaces)) || newValue.equals("")) {
+            Toast.makeText(getContext(), res.getString(R.string.settings_toast_empty_password), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (newValue.length() < 3) {
+            Toast.makeText(getContext(), res.getString(R.string.settings_toast_short_password), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void deleteCustomerSetting() {
