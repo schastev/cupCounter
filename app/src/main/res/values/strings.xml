@@ -51,6 +51,7 @@
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
     <string name="settings_line_delete_customer">Удалить клиента</string>
     <string name="settings_category_admin">Администраторские действия</string>
+    <string name="settings_line_ask_admin_password">Запрашивать пароль администратора при входе в настройки приложения</string>
     <string name="settings_line_change_admin_password">Изменить пароль администратора</string>
     <string name="settings_title_behavior">Поведение приложения</string>
 
@@ -67,6 +68,7 @@
     <string name="placeholder_extra_customer_id" translatable="false">CUSTOMER_ID</string>
     <string name="placeholder_extra_delete_customer" translatable="false">DELETE_CUSTOMER</string>
     <string name="placeholder_locale">ru</string>
+    <string name="placeholder_setting_ask_password" translatable="false">settings_line_ask_password</string>
     <string name="placeholder_setting_admin_actions" translatable="false">settings_category_admin</string>
     <string name="placeholder_setting_dates" translatable="false">settings_show_dates_on_customer_screen</string>
     <string name="placeholder_setting_add_cup" translatable="false">settings_add_cup_to_new_customer</string>
