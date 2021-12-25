@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,9 +20,8 @@ import com.tasty.count.activity.DisplayCustomerInfoActivity;
 import java.util.Objects;
 
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
-    String newPhoneNumber;
-
-    OnDataPass dataPasser;
+    private String newPhoneNumber;
+    private OnDataPass dataPasser;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -32,16 +32,18 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Resources res = getResources();
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View dialogPopUp = inflater.inflate(R.layout.dialog_phone_edit, null);
         showSoftKeyboard(dialogPopUp);
+        EditText newPhoneField = dialogPopUp.findViewById(R.id.info_dialog_edit_phone_field);
+        newPhoneField.setHint(res.getString(R.string.info_hint_update_phone));
+        newPhoneField.setInputType(InputType.TYPE_CLASS_PHONE);
         builder.setTitle(R.string.info_dialog_phone_title)
                 .setView(dialogPopUp)
                 .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> {
-                    EditText newPhoneField = dialogPopUp.findViewById(R.id.info_dialog_edit_phone_field);
                     newPhoneNumber = String.valueOf(newPhoneField.getText());
-                    Resources res = getResources();
                     if (!newPhoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
                         Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
                                 res.getString(R.string.new_toast_phone_error),

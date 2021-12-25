@@ -48,4 +48,8 @@
     <string name="main_no_result">Nothing found</string>
     <string name="info_hint_update_phone">Please input new phone number</string>
     <string name="new_hint_add_cup">Add one drink automatically</string>
+    <string name="toolbar_dialog_title">Please enter administrator password</string>
+    <string name="toolbar_toast_wrong_pw">Wrong password</string>
+    <string name="settings_line_change_admin_password">Change administrator password</string>
+    <string name="settings_category_admin">Administrator actions</string>
 </resources>

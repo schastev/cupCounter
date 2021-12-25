@@ -5,6 +5,12 @@
     <string name="main_title">Найти клиента</string>
     <string name="main_button_add_customer">Новый клиент</string>
     <string name="main_button_settings">Настройки</string>
+    <string name="main_no_result">Ничего не найдено</string>
+
+    <string name="toolbar_dialog_title">Введите пароль администратора</string>
+    <string name="toolbar_dialog_ok" translatable="false">OK</string>
+    <string name="toolbar_toast_wrong_pw">Неверный пароль</string>
+    <string name="toolbar_fragment_tag" translatable="false">password_prompt</string>
 
     <string name="new_input_phone">Номер телефона</string>
     <string name="new_input_name">Имя</string>
@@ -44,12 +50,15 @@
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
     <string name="settings_line_delete_customer">Удалить клиента</string>
+    <string name="settings_category_admin">Администраторские действия</string>
+    <string name="settings_line_change_admin_password">Изменить пароль администратора</string>
     <string name="settings_title_behavior">Поведение приложения</string>
 
     <string name="settings_category_export">База данных</string>
     <string name="setting_line_backup">Резервное копирование</string>
     <string name="setting_line_import">Импортировать базу данных из .csv</string>
     <string name="setting_line_export">Экспортировать базу данных в .csv</string>
+    <string name="settings_line_admin_password" translatable="false">settings_admin_password</string>
     <string name="settings_button_apply_changes">Сохранить</string>
     <string name="settings_toast_invalid_number">Введите целое число больше нуля</string>
 
@@ -58,6 +67,7 @@
     <string name="placeholder_extra_customer_id" translatable="false">CUSTOMER_ID</string>
     <string name="placeholder_extra_delete_customer" translatable="false">DELETE_CUSTOMER</string>
     <string name="placeholder_locale">ru</string>
+    <string name="placeholder_setting_admin_actions" translatable="false">settings_category_admin</string>
     <string name="placeholder_setting_dates" translatable="false">settings_show_dates_on_customer_screen</string>
     <string name="placeholder_setting_add_cup" translatable="false">settings_add_cup_to_new_customer</string>
     <string name="placeholder_setting_free_cup" translatable="false">setting_free_cups</string>
@@ -66,5 +76,4 @@
     <string name="placeholder_pattern_ru" translatable="false">[а-яА-Я]+</string>
     <string name="placeholder_pattern_en" translatable="false">[a-zA-Z]+</string>
     <string name="placeholder_pattern_digits" translatable="false">[0-9]+</string>
-    <string name="main_no_result">Ничего не найдено</string>
 </resources>

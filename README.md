@@ -13,7 +13,7 @@ This Android app is a helper app for any shop that provides a free something to 
 1. Main Screen where the user can search the database for customers by last digits of their phone number
 1. New Customer screen where the user can add new customers. User's input is validated: only digits are allowed for the phone number field and only Russian OR English symbols can be saved in the name field
 1. Customer Info screen which displays the information about the customer. It will show alerts when the customer is eligible for a freebie and if their database entry has not been updated in a certain number of days. The user can update the number somethings the customer purchased (both add and subtract though claiming), and edit customer's phone number
-1. Settings screen where the user can customize eligibility criteria for the freebie, set the number of days for the alert to pop up. The user can also delete a customer from the database. This screen is meant to be used only by the shop manager and therefore is password-protected
+1. Settings screen where the user can customize eligibility criteria for the freebie, set the number of days for the alert to pop up. The user can also delete a customer from the database. This screen is meant to be used only by the shop manager and is therefore password-protected
 1. Russian and English locales
 
 ##### Quality of life features:
@@ -41,7 +41,7 @@ This Android app is a helper app for any shop that provides a free something to 
     * `layout` - descriptions of elements contained in each activity/fragment and their relationships between each other
     * `menu` - variations of button combinations for the toolbar
     * `values` - colors and strings used throughout the app both in UI and code only. I tried to avoid passing strings directly to make my life easier in the future if I ever need to edit a parameter or a constant name
-    * `xml` - contains a list of preferences on the Settings screen. There is a commented-out category for database backup and restore, which is a planned feature that was discussed with the coffee shop but goes beyond the scope of this final project.
+    * `xml` - contains a list of preferences on the Settings screen.
 
 Your README.md file should be minimally multiple paragraphs in length, and should explain what your project is, 
 what each of the files you wrote for the project contains and does, 

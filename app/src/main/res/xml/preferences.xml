@@ -16,16 +16,16 @@
 
     </PreferenceCategory>
     <PreferenceCategory
-        app:key="settings_category_admin"
-        app:title="Администраторские действия">
+        app:key="@string/placeholder_setting_admin_actions"
+        app:title="@string/settings_category_admin">
         <Preference
             app:key="@string/placeholder_setting_delete"
             app:title="@string/settings_line_delete_customer"/>
         <EditTextPreference
-            app:key="settings_admin_password"
-            app:title="Задать пароль администратора"
+            app:key="@string/settings_line_admin_password"
+            app:title="@string/settings_line_change_admin_password"
             android:inputType="textPassword"
-            app:defaultValue="coffee is life"/>
+            app:defaultValue="coffee"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
