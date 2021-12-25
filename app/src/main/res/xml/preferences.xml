@@ -17,28 +17,11 @@
             app:key="@string/placeholder_setting_dates"
             app:title="@string/settings_line_show_dates_on_customer_screen"
             app:defaultValue="false"/>
-        <SwitchPreferenceCompat
-            app:key="@string/placeholder_setting_add_cup"
-            app:title="@string/settings_line_add_cup_to_new_customer"
-            app:defaultValue="true"/>
     </PreferenceCategory>
     <PreferenceCategory>
         <Preference
             app:key="@string/placeholder_setting_delete"
             app:title="@string/settings_line_delete_customer"/>
     </PreferenceCategory>
-<!--    <PreferenceCategory-->
-<!--        app:key="settings_category_export"-->
-<!--        app:title="@string/settings_category_export">-->
-<!--        <Preference-->
-<!--            app:key="setting_import"-->
-<!--            app:title="@string/setting_line_import" />-->
-<!--        <Preference-->
-<!--            app:key="setting_export"-->
-<!--            app:title="@string/setting_line_export" />-->
-<!--        <Preference-->
-<!--            app:key="setting_backup"-->
-<!--            app:title="@string/setting_line_backup" />-->
-<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>

@@ -2,7 +2,6 @@ package com.tasty.count.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,16 +10,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.textfield.TextInputLayout;
 import com.tasty.count.R;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
 import com.tasty.count.database.DBClient;
 import com.tasty.count.toolbar.ToolbarHelper;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -31,15 +30,15 @@ public class AddNewCustomerActivity extends AppCompatActivity {
     private Toast toast;
     private TextInputLayout phoneField, nameField;
     private Resources res;
-    private SharedPreferences defaultSettings;
+    private SwitchMaterial addCupSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_customer);
         setUpDatabase();
-        initializeUiElements();
         setUpAdditionalResources();
+        initializeUiElements();
     }
 
     private void setUpDatabase() {
@@ -52,13 +51,13 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(menuItem -> ToolbarHelper.setListenerSettingsOnly(this, menuItem));
         phoneField = findViewById(R.id.new_input_phone);
         nameField = findViewById(R.id.new_input_name);
+        addCupSwitch = findViewById(R.id.new_switch_add_cup);
         showSoftKeyboard(phoneField);
     }
 
     private void setUpAdditionalResources() {
         toast = new Toast(getApplicationContext());
         res = getResources();
-        defaultSettings = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     public void addCustomer(View view) {
@@ -72,8 +71,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             validNumber = phoneNumber;
         } else if (phoneNumber.equals("")) {
             phoneField.setError(res.getText(R.string.new_toast_empty_field));
-        }
-        else {
+        } else {
             phoneField.setError(res.getString(R.string.new_toast_phone_error));
         }
         if (name.matches(res.getString(R.string.placeholder_pattern_en))
@@ -89,7 +87,7 @@ public class AddNewCustomerActivity extends AppCompatActivity {
             phoneField.setError(null);
             nameField.setError(null);
             int defaultCups = 0;
-            if (defaultSettings.getBoolean(res.getString(R.string.placeholder_setting_add_cup), false)) {
+            if (addCupSwitch.isChecked()) {
                 defaultCups = 1;
             }
             Customer newCustomer = new Customer(validName, validNumber, LocalDate.now(), LocalDate.now(), defaultCups);

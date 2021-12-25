@@ -10,6 +10,7 @@
     <string name="new_input_name">Имя</string>
     <string name="new_button_add">Добавить запись</string>
     <string name="new_toast_name_error">Допускаются только символы русского или английского алфавита</string>
+    <string name="new_hint_add_cup">Добавить один напиток автоматически</string>
     <string name="new_toast_phone_error">Допускаются только цифры</string>
     <string name="new_toast_empty_field">Обязательное поле</string>
     <string name="new_toast_added">Клиент добавлен успешно</string>
@@ -41,7 +42,6 @@
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
     <string name="settings_line_show_dates_on_customer_screen">Показывать на карточке клиента даты регистрации и последнего визита</string>
-    <string name="settings_line_add_cup_to_new_customer">Автоматически добавлять новому клиенту одну кружку при регистрации</string>
     <string name="settings_line_delete_customer">Удалить клиента</string>
     <string name="settings_title_behavior">Поведение приложения</string>
 

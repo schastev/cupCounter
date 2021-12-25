@@ -28,7 +28,6 @@
     <string name="info_dialog_button_save">Save</string>
     <string name="info_dialog_button_cancel">Cancel</string>
     <string name="settings_line_show_dates_on_customer_screen">Display dates of registration and last visit on the customer card</string>
-    <string name="settings_line_add_cup_to_new_customer">Add one drink to new customers automatically</string>
     <string name="settings_line_delete_customer">Delete customer</string>
     <string name="settings_title_behavior">Behavior</string>
     <string name="settings_category_export">Database</string>
@@ -47,4 +46,5 @@
     <string name="new_toast_empty_field">Required field</string>
     <string name="main_no_result">Nothing found</string>
     <string name="info_hint_update_phone">Please input new phone number</string>
+    <string name="new_hint_add_cup">Add one drink automatically</string>
 </resources>
