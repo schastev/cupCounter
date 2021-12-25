@@ -3,11 +3,13 @@ package com.tasty.count.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -39,8 +41,15 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> {
                     EditText newPhoneField = dialogPopUp.findViewById(R.id.info_dialog_edit_phone_field);
                     newPhoneNumber = String.valueOf(newPhoneField.getText());
-                    dataPasser.onDataPass(newPhoneNumber);
-                    ((DisplayCustomerInfoActivity) Objects.requireNonNull(getActivity())).updatePhone();
+                    Resources res = getResources();
+                    if (!newPhoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
+                        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
+                                res.getString(R.string.new_toast_phone_error),
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        dataPasser.onDataPass(newPhoneNumber);
+                        ((DisplayCustomerInfoActivity) Objects.requireNonNull(getActivity())).updatePhone();
+                    }
                 })
                 .setNegativeButton(R.string.info_dialog_button_cancel, null);
         return builder.create();

@@ -107,8 +107,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
                         .show(lastVisitFragment)
                         .setReorderingAllowed(true)
                         .commit();
-            }
-            else {
+            } else {
                 datesSwitch.setText(res.getString(R.string.info_hint_show_dates_on_customer_screen));
                 ftDates.hide(registrationFragment)
                         .hide(lastVisitFragment)
@@ -210,20 +209,16 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public void updatePhone() {
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
-            if (!newPhoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
-                Toast.makeText(getApplicationContext(), res.getString(R.string.new_toast_phone_error), Toast.LENGTH_SHORT).show();
-            } else {
-                customer.setPhoneNumber(newPhoneNumber);
-                Toast phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
-                customer.setLastVisit(LocalDate.now());
-                customerDAO.update(customer);
-                phoneUpdated.show();
-                InfoDisplayFragment fr = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
-                getSupportFragmentManager().beginTransaction()
-                        .detach(phoneFragment)
-                        .replace(R.id.info_field_container_phone, fr)
-                        .commit();
-            }
+            customer.setPhoneNumber(newPhoneNumber);
+            Toast phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
+            customer.setLastVisit(LocalDate.now());
+            customerDAO.update(customer);
+            phoneUpdated.show();
+            InfoDisplayFragment fr = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
+            getSupportFragmentManager().beginTransaction()
+                    .detach(phoneFragment)
+                    .replace(R.id.info_field_container_phone, fr)
+                    .commit();
         }
     }
 
