@@ -13,10 +13,6 @@
             app:title="@string/setting_line_returning_customer"
             app:defaultValue="30"/>
 
-        <SwitchPreferenceCompat
-            app:key="@string/placeholder_setting_dates"
-            app:title="@string/settings_line_show_dates_on_customer_screen"
-            app:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory>
         <Preference

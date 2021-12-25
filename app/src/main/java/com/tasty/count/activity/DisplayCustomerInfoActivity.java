@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.tasty.count.R;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
@@ -42,6 +43,7 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     private TextView cupNumberField, lostClientAlert, freeCupsAlert;
     private MaterialButton claimCoffeeButton, revertCupsButton, deleteCustomerButton, saveChangesButton;
     private InfoDisplayFragment phoneFragment;
+    private SwitchMaterial datesSwitch;
 
     //fields to keep new values until they are recorded in the database
     private int newCups;
@@ -79,20 +81,41 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
         revertCupsButton = findViewById(R.id.info_button_revert_cups);
         saveChangesButton = findViewById(R.id.info_button_update);
         deleteCustomerButton = findViewById(R.id.info_button_delete_customer);
+        datesSwitch = findViewById(R.id.info_switch_dates);
+        datesSwitch.setChecked(false);
+        datesSwitch.setText(res.getString(R.string.info_hint_show_dates_on_customer_screen));
 
+        InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
+        InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
         InfoDisplayFragment nameFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_name), customer.getName());
         phoneFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (sharedPreferences.getBoolean(res.getString(R.string.placeholder_setting_dates), false)) {
-            InfoDisplayFragment registrationFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_registration_date), formatDate(customer.getRegistrationDate()));
-            InfoDisplayFragment lastVisitFragment = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_last_visit_date), formatDate(customer.getLastVisit()));
-            ft.replace(R.id.info_field_container_registration, registrationFragment)
-                    .replace(R.id.info_field_container_last_visit, lastVisitFragment);
-        }
         ft.replace(R.id.info_field_container_name, nameFragment)
                 .replace(R.id.info_field_container_phone, phoneFragment)
+                .replace(R.id.info_field_container_registration, registrationFragment)
+                .replace(R.id.info_field_container_last_visit, lastVisitFragment)
+                .hide(registrationFragment)
+                .hide(lastVisitFragment)
                 .setReorderingAllowed(true)
                 .commit();
+        datesSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            FragmentTransaction ftDates = getSupportFragmentManager().beginTransaction();
+            if (datesSwitch.isChecked()) {
+                datesSwitch.setText(res.getString(R.string.info_hint_hide_dates_on_customer_screen));
+                ftDates.show(registrationFragment)
+                        .show(lastVisitFragment)
+                        .setReorderingAllowed(true)
+                        .commit();
+            }
+            else {
+                datesSwitch.setText(res.getString(R.string.info_hint_show_dates_on_customer_screen));
+                ftDates.hide(registrationFragment)
+                        .hide(lastVisitFragment)
+                        .setReorderingAllowed(true)
+                        .commit();
+            }
+        });
     }
 
     private void setFieldValues() {

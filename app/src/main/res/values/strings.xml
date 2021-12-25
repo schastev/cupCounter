@@ -32,6 +32,8 @@
     <string name="info_hint_registration_date">Дата регистрации</string>
     <string name="info_hint_name">Имя</string>
     <string name="info_hint_phone">Телефон</string>
+    <string name="info_hint_show_dates_on_customer_screen">Показать даты регистрации и последнего визита</string>
+    <string name="info_hint_hide_dates_on_customer_screen">Скрыть даты регистрации и последнего визита</string>
     <string name="info_dialog_phone_title">Обновить номер телефона</string>
     <string name="info_dialog_delete_main">Вы уверены, что хотите удалить клиента? Это действие нельзя отменить.</string>
     <string name="info_dialog_button_delete">Удалить</string>
@@ -41,7 +43,6 @@
 
     <string name="settings_line_free_cups">Сколько напитков нужно купить клиенту, чтобы получить бесплатный</string>
     <string name="setting_line_returning_customer">Через сколько дней после последнего визита клиент считается потеряшкой</string>
-    <string name="settings_line_show_dates_on_customer_screen">Показывать на карточке клиента даты регистрации и последнего визита</string>
     <string name="settings_line_delete_customer">Удалить клиента</string>
     <string name="settings_title_behavior">Поведение приложения</string>
 

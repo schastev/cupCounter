@@ -77,6 +77,14 @@
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_half"
         app:layout_constraintTop_toTopOf="@+id/info_field_container_name" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/info_switch_dates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:defaultValue="false"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_95"
+        app:layout_constraintTop_toTopOf="@+id/info_field_container_registration"/>
     <!--BOTTOM OF THE PAGE-->
 
     <com.google.android.material.button.MaterialButton
