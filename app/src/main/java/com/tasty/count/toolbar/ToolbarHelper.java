@@ -22,40 +22,40 @@ public class ToolbarHelper {
     }
 
     public static boolean setListenerBoth(Activity activity, MenuItem item) {
-        Intent intent;
         if (item.getItemId() == R.id.toolbar_button_add) {
-            intent = new Intent(activity, AddNewCustomerActivity.class);
-            activity.startActivity(intent);
-            return true;
+            return moveToAddCustomer(activity);
         } else if (item.getItemId() == R.id.toolbar_button_settings) {
-            intent = new Intent(activity, SettingsActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            activity.startActivity(intent);
-            return true;
+            return moveToSettings(activity);
         } else {
             return false;
         }
     }
 
     public static boolean setListenerAddOnly(Activity activity, MenuItem item) {
-        Intent intent;
         if (item.getItemId() == R.id.toolbar_button_add) {
-            intent = new Intent(activity, AddNewCustomerActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            activity.startActivity(intent);
-            return true;
+            return moveToAddCustomer(activity);
         }
         return false;
     }
 
     public static boolean setListenerSettingsOnly(Activity activity, MenuItem item) {
-        Intent intent;
         if (item.getItemId() == R.id.toolbar_button_settings) {
-            intent = new Intent(activity, SettingsActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            activity.startActivity(intent);
-            return true;
+            return moveToSettings(activity);
         }
         return false;
+    }
+
+    private static boolean moveToSettings(Activity activity) {
+        Intent intent = new Intent(activity, SettingsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+        return true;
+    }
+
+    private static boolean moveToAddCustomer(Activity activity) {
+        Intent intent = new Intent(activity, AddNewCustomerActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+        return true;
     }
 }
