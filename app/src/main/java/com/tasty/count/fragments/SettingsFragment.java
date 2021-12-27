@@ -1,6 +1,7 @@
 package com.tasty.count.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.InputType;
@@ -9,13 +10,18 @@ import android.widget.Toast;
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import com.tasty.count.R;
+import com.tasty.count.SetPasswordFragment;
 import com.tasty.count.activity.MainActivity;
+
+import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     Resources res;
     Toast toast;
+    String newAdminPassword;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -25,6 +31,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         freeCupsSetting();
         deleteCustomerSetting();
         adminPassword();
+
+        getParentFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, bundle) -> {
+            newAdminPassword = bundle.getString("newPassword");
+            setNewPassword();
+        });
+
     }
 
     private void setUpAdditionalResources() {
@@ -49,22 +61,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void adminPassword() {
-        EditTextPreference adminPassword = findPreference(res.getString(R.string.placeholder_setting_admin_password));
+        Preference adminPassword = findPreference(res.getString(R.string.placeholder_setting_admin_password));
         assert adminPassword != null;
-        adminPassword.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD));
-        adminPassword.setOnPreferenceChangeListener(((preference, newValue) -> validatePassword((String) newValue)));
+        adminPassword.setOnPreferenceClickListener(preference -> {
+            SetPasswordFragment phoneInputDialogFragment = new SetPasswordFragment();
+            phoneInputDialogFragment.show(getParentFragmentManager(), "new_password");
+            return true;
+        });
     }
 
-    private boolean validatePassword(String newValue) {
-        if (newValue.matches(res.getString(R.string.placeholder_pattern_spaces)) || newValue.equals("")) {
-            Toast.makeText(getContext(), res.getString(R.string.settings_toast_empty_password), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (newValue.length() < 3) {
-            Toast.makeText(getContext(), res.getString(R.string.settings_toast_short_password), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
+    public void setNewPassword() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()));
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(res.getString(R.string.placeholder_setting_admin_password), newAdminPassword);
+        editor.apply();
     }
 
     private void deleteCustomerSetting() {

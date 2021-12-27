@@ -25,7 +25,7 @@
             app:defaultValue="true"
             app:key="@string/placeholder_setting_ask_password"
             app:title="@string/settings_line_ask_admin_password" />
-        <EditTextPreference
+        <Preference
             android:inputType="textPassword"
             app:defaultValue="coffee"
             app:key="@string/placeholder_setting_admin_password"
