@@ -113,8 +113,9 @@ public class SetPasswordFragment extends androidx.fragment.app.DialogFragment {
                 } else {
                     newPasswordField.setError(null);
                     confirmationField.setError(null);
-                    validatePassword(newPassword, newPasswordField);
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    if (validatePassword(newPassword, newPasswordField)) {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    }
                 }
             }
 
