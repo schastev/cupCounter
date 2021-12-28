@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="main_input_phone_search_bar">Input last digits of phone number</string>
-    <string name="main_button_search">Search</string>
     <string name="main_button_add_customer">New client</string>
     <string name="main_button_settings">Preferences</string>
-    <string name="new_input_phone">Phone number</string>
-    <string name="new_input_name">Name</string>
     <string name="new_button_add">Add Customer</string>
     <string name="new_toast_name_error">Only Russian or English symbols are allowed</string>
     <string name="new_toast_phone_error">Only digits allowed</string>
@@ -31,11 +28,6 @@
     <string name="info_dialog_button_cancel">Cancel</string>
     <string name="settings_line_delete_customer">Delete customer</string>
     <string name="settings_title_behavior">Behavior</string>
-    <string name="settings_category_export">Database</string>
-    <string name="setting_line_backup">Backup</string>
-    <string name="setting_line_import">Import database</string>
-    <string name="setting_line_export">Export database</string>
-    <string name="settings_button_apply_changes">Save</string>
     <string name="settings_line_free_cups">How many drinks a customer must purchase to be eligible for a free drink</string>
     <string name="setting_line_returning_customer">How many days must pass for a \"Returning client\" alert to appear</string>
     <string name="placeholder_locale">en</string>

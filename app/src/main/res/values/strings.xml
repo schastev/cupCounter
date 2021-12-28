@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">TastyCount</string>
     <string name="main_input_phone_search_bar">Введите последние цифры номера телефона</string>
-    <string name="main_button_search">Найти</string>
     <string name="main_title">Найти клиента</string>
     <string name="main_button_add_customer">Новый клиент</string>
     <string name="main_button_settings">Настройки</string>
@@ -11,8 +10,6 @@
     <string name="toolbar_dialog_ok">Войти</string>
     <string name="toolbar_toast_wrong_pw">Неверный пароль</string>
 
-    <string name="new_input_phone">Номер телефона</string>
-    <string name="new_input_name">Имя</string>
     <string name="new_button_add">Добавить запись</string>
     <string name="new_toast_name_error">Допускаются только символы русского или английского алфавита</string>
     <string name="new_hint_add_cup">Добавить один напиток автоматически</string>
@@ -62,25 +59,16 @@
     <string name="settings_hint_new_password">Новый пароль</string>
     <string name="settings_hint_confirmation">Подтверждение пароля</string>
 
-    <string name="settings_category_export">База данных</string>
-    <string name="setting_line_backup">Резервное копирование</string>
-    <string name="setting_line_import">Импортировать базу данных из .csv</string>
-    <string name="setting_line_export">Экспортировать базу данных в .csv</string>
-    <string name="settings_button_apply_changes">Сохранить</string>
     <string name="settings_toast_invalid_number">Введите целое число больше нуля</string>
     <string name="settings_toast_empty_password">Пароль не может быть пустым</string>
     <string name="settings_toast_short_password">Введите пароль не менее трёх символов</string>
 
-    <string name="placeholder_constant_free_cup" translatable="false">FREE_CUP</string>
-    <string name="placeholder_constant_returning_customer" translatable="false">RETURNING_CUSTOMER</string>
     <string name="placeholder_extra_customer_id" translatable="false">CUSTOMER_ID</string>
     <string name="placeholder_extra_delete_customer" translatable="false">DELETE_CUSTOMER</string>
     <string name="placeholder_locale">ru</string>
     <string name="placeholder_setting_admin_password" translatable="false">setting_admin_password</string>
     <string name="placeholder_setting_ask_password" translatable="false">setting_ask_password</string>
     <string name="placeholder_setting_admin_actions" translatable="false">settings_category_admin</string>
-    <string name="placeholder_setting_dates" translatable="false">settings_show_dates_on_customer_screen</string>
-    <string name="placeholder_setting_add_cup" translatable="false">settings_add_cup_to_new_customer</string>
     <string name="placeholder_setting_free_cup" translatable="false">setting_free_cups</string>
     <string name="placeholder_setting_returning_customer" translatable="false">setting_returning_customer</string>
     <string name="placeholder_setting_delete" translatable="false">settings_delete_customer</string>

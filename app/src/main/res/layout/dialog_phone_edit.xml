@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="@+id/guideline_v_95"
         app:layout_constraintStart_toStartOf="@+id/guideline_v_5"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="148dp" />
+        tools:layout_editor_absoluteY="148dp"
+        tools:ignore="TextFields" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v_5"
