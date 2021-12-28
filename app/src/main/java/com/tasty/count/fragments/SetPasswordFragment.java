@@ -1,4 +1,4 @@
-package com.tasty.count;
+package com.tasty.count.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.tasty.count.R;
 
 import java.util.Objects;
 

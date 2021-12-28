@@ -18,7 +18,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     private final List<Customer> customers;
     private final LayoutInflater inflater;
     private OnItemClickListener clickListener;
-//    private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView name, phoneNumber;
@@ -32,8 +31,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            name = (TextView) view.findViewById(R.id.name);
-            phoneNumber = (TextView) view.findViewById(R.id.phoneNumber);
+            name = view.findViewById(R.id.name);
+            phoneNumber = view.findViewById(R.id.phoneNumber);
             itemView.setTag(itemView);
             itemView.setOnClickListener(this);
         }
@@ -48,7 +47,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     public CustomerAdapter(Context context, List<Customer> dataSet) {
         this.customers = dataSet;
         this.inflater = LayoutInflater.from(context);
-//        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)

@@ -53,7 +53,7 @@ public class ToolbarHelper {
     }
 
     private static boolean moveToSettings(Activity activity) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((AppCompatActivity) activity);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
         if (sharedPreferences.getBoolean(res.getString(R.string.placeholder_setting_ask_password), true)) {
             PasswordPromptFragment passwordPromptFragment = new PasswordPromptFragment();
             passwordPromptFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), res.getString(R.string.placeholder_password_fragment_tag));

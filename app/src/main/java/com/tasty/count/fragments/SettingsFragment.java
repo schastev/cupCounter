@@ -13,7 +13,6 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.tasty.count.R;
-import com.tasty.count.SetPasswordFragment;
 import com.tasty.count.activity.MainActivity;
 
 import java.util.Objects;
