@@ -33,10 +33,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         adminPassword();
 
         getParentFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, bundle) -> {
-            newAdminPassword = bundle.getString("newPassword");
+            newAdminPassword = bundle.getString(res.getString(R.string.placeholder_new_password_bundle));
             setNewPassword();
         });
-
     }
 
     private void setUpAdditionalResources() {
@@ -64,8 +63,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference adminPassword = findPreference(res.getString(R.string.placeholder_setting_admin_password));
         assert adminPassword != null;
         adminPassword.setOnPreferenceClickListener(preference -> {
-            SetPasswordFragment phoneInputDialogFragment = new SetPasswordFragment();
-            phoneInputDialogFragment.show(getParentFragmentManager(), "new_password");
+            SetPasswordFragment setPasswordFragment = new SetPasswordFragment();
+            setPasswordFragment.show(getParentFragmentManager(), res.getString(R.string.placeholder_update_password_fragment_tag));
             return true;
         });
     }
@@ -98,5 +97,4 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
         }
     }
-
 }

@@ -56,4 +56,12 @@
     <string name="settings_toast_empty_password">Password cannot be empty</string>
     <string name="settings_toast_short_password">Please input a password longer than 3 symbols</string>
     <string name="toolbar_dialog_ok">Log in</string>
+    <string name="settings_hint_current_password">Current password</string>
+    <string name="settings_hint_new_password">New password</string>
+    <string name="settings_hint_confirmation">Confirmation</string>
+    <string name="settings_dialog_title_update_password">Update password</string>
+    <string name="settings_dialog_error_wrong_current_password">Wrong current password</string>
+    <string name="settings_dialog_error_mismatch">New password and confirmation do not match</string>
+    <string name="settings_toast_password_saved">Password updated successfully</string>
+    <string name="settings_toast_password_not_saved">Password was not updated</string>
 </resources>
