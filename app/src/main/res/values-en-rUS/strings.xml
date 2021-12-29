@@ -22,7 +22,7 @@
     <string name="info_dialog_phone_title">Update phone number</string>
     <string name="info_hint_show_dates_on_customer_screen">Display dates of registration and last visit</string>
     <string name="info_hint_hide_dates_on_customer_screen">Hide dates of registration and last visit</string>
-    <string name="info_dialog_delete_main">Are you sure you want to delete this customer. This action cannot be undone</string>
+    <string name="info_dialog_delete_main">Are you sure you want to delete this customer? This action cannot be undone</string>
     <string name="info_dialog_button_delete">Delete</string>
     <string name="info_dialog_button_save">Save</string>
     <string name="info_dialog_button_cancel">Cancel</string>
