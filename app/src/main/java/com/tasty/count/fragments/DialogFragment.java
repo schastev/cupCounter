@@ -15,13 +15,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.tasty.count.R;
+import com.tasty.count.Validator;
 import com.tasty.count.activity.DisplayCustomerInfoActivity;
+import com.tasty.count.database.AppDatabase;
+import com.tasty.count.database.CustomerDAO;
+import com.tasty.count.database.DBClient;
 
 import java.util.Objects;
 
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private String newPhoneNumber;
     private OnDataPass dataPasser;
+    private CustomerDAO customerDAO;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -32,6 +37,8 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AppDatabase db = DBClient.getInstance(getContext()).getAppDatabase();
+        customerDAO = db.customerDao();
         Resources res = getResources();
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -48,7 +55,12 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                         Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
                                 res.getString(R.string.new_toast_phone_error),
                                 Toast.LENGTH_SHORT).show();
-                    } else {
+                    } else if (Validator.checkForRepeatedNumbers(newPhoneNumber, customerDAO)){
+                        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
+                                res.getString(R.string.new_toast_already_registered),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else {
                         dataPasser.onDataPass(newPhoneNumber);
                         ((DisplayCustomerInfoActivity) Objects.requireNonNull(getActivity())).updatePhone();
                     }

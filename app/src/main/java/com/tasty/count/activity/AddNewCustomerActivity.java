@@ -15,6 +15,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.tasty.count.R;
+import com.tasty.count.Validator;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
@@ -66,22 +67,12 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         String name = Objects.requireNonNull(nameField.getEditText()).getText().toString();
         String validName = null;
         String validNumber = null;
-        if (phoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
-            phoneField.setError(null);
+        if (Validator.validatePhone(phoneNumber, res, phoneField, customerDAO)) {
             validNumber = phoneNumber;
-        } else if (phoneNumber.equals("")) {
-            phoneField.setError(res.getText(R.string.new_toast_empty_field));
-        } else {
-            phoneField.setError(res.getString(R.string.new_toast_phone_error));
         }
-        if (name.matches(res.getString(R.string.placeholder_pattern_en))
-                || name.matches(res.getString(R.string.placeholder_pattern_ru))) {
+        if (Validator.validateName(name, res, nameField)) {
             nameField.setError(null);
-            validName = name.trim();
-        } else if (name.equals("")) {
-            nameField.setError(res.getText(R.string.new_toast_empty_field));
-        } else {
-            nameField.setError(res.getString(R.string.new_toast_name_error));
+            validName = name;
         }
         if (validName != null && validNumber != null) {
             phoneField.setError(null);
@@ -98,11 +89,13 @@ public class AddNewCustomerActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_settings_only, menu);
         return true;
     }
+
 
     private void showSoftKeyboard(View view) {
         if (view.requestFocus()) {

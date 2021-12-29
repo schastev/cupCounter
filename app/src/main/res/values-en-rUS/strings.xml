@@ -56,4 +56,5 @@
     <string name="settings_dialog_error_mismatch">New password and confirmation do not match</string>
     <string name="settings_toast_password_saved">Password updated successfully</string>
     <string name="settings_toast_password_not_saved">Password was not updated</string>
+    <string name="new_toast_already_registered">This phone number is already registered</string>
 </resources>

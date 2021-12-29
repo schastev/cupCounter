@@ -15,6 +15,8 @@
     <string name="new_hint_add_cup">Добавить один напиток автоматически</string>
     <string name="new_toast_phone_error">Допускаются только цифры</string>
     <string name="new_toast_empty_field">Обязательное поле</string>
+    <string name="new_toast_already_registered">Данный номер телефона уже зарегистрирован</string>
+
     <string name="new_toast_added">Клиент добавлен</string>
 
     <string name="info_title">Карточка клиента</string>

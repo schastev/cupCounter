@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.tasty.count.R;
 import com.tasty.count.database.AppDatabase;
@@ -23,8 +25,6 @@ import com.tasty.count.database.DBClient;
 import com.tasty.count.fragments.DialogFragment;
 import com.tasty.count.fragments.InfoDisplayFragment;
 import com.tasty.count.toolbar.ToolbarHelper;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
