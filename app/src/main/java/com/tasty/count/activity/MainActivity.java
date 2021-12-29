@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     public void onResume() {
         super.onResume();
-        customerLookUp();
+        Objects.requireNonNull(phoneSearchField.getEditText()).setText(null);
+        customerNameList.setVisibility(View.INVISIBLE);
     }
 
 }
