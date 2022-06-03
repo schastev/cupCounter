@@ -18,6 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.tasty.count.R;
+import com.tasty.count.VisibilityChecker;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
@@ -138,41 +139,31 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     }
 
     private void checkReturningClientAlertVisibility() {
-        if (customer.getLastVisit().isBefore(LocalDate.now().minusDays(RETURNING_CUSTOMER))) {
-            lostClientAlert.setVisibility(View.VISIBLE);
-        } else {
-            lostClientAlert.setVisibility(View.INVISIBLE);
-        }
+        int visibility = VisibilityChecker.isReturningClient(customer.getLastVisit(), RETURNING_CUSTOMER);
+        lostClientAlert.setVisibility(visibility);
     }
 
     private void checkClaimButtonVisibility() {
-        if (newCups / FREE_CUP >= 1) {
-            claimCoffeeButton.setVisibility(View.VISIBLE);
-            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups), newCups / FREE_CUP);
+        int visibility = VisibilityChecker.canClaimCup(newCups, FREE_CUP);
+        if (visibility == View.VISIBLE) {
+            String cupsAlertTest = String.format(res.getString(R.string.info_alert_free_cups),
+                    newCups / FREE_CUP);
             freeCupsAlert.setText(cupsAlertTest);
-            freeCupsAlert.setVisibility(View.VISIBLE);
-        } else {
-            claimCoffeeButton.setVisibility(View.INVISIBLE);
-            freeCupsAlert.setVisibility(View.INVISIBLE);
         }
+        freeCupsAlert.setVisibility(visibility);
+        claimCoffeeButton.setVisibility(visibility);
     }
 
     private void checkRevertCupsButtonVisibility() {
-        if (cupNumberField.getText().equals(String.valueOf(customer.getCups()))) {
-            revertCupsButton.setVisibility(View.INVISIBLE);
-            saveChangesButton.setVisibility(View.INVISIBLE);
-        } else {
-            revertCupsButton.setVisibility(View.VISIBLE);
-            saveChangesButton.setVisibility(View.VISIBLE);
-        }
+        int visibility = VisibilityChecker.canRevertChanges(customer.getCups(), cupNumberField.getText());
+        revertCupsButton.setVisibility(visibility);
+        saveChangesButton.setVisibility(visibility);
     }
 
     private void checkDeleteButtonVisibility() {
-        if ((boolean) this.getIntent().getExtras().get(res.getString(R.string.placeholder_extra_delete_customer))) {
-            deleteCustomerButton.setVisibility(View.VISIBLE);
-        } else {
-            deleteCustomerButton.setVisibility(View.INVISIBLE);
-        }
+        int visibility = VisibilityChecker.canDelete((boolean) this.getIntent().getExtras()
+                .get(res.getString(R.string.placeholder_extra_delete_customer)));
+        deleteCustomerButton.setVisibility(visibility);
     }
 
     private String formatDate(LocalDate date) {
