@@ -32,7 +32,6 @@ public class NameValidatorTest {
     public final MockitoRule rule = MockitoJUnit.rule();
     private Resources res;
     private TextInputLayout inputField;
-    private CustomerDAO customerDAO;
 
     public NameValidatorTest(String input, boolean expectedResult) {
         this.input = input;
@@ -45,8 +44,6 @@ public class NameValidatorTest {
         when(res.getString(R.string.placeholder_pattern_en)).thenReturn("[a-zA-Z]+");
         when(res.getString(R.string.placeholder_pattern_ru)).thenReturn("[а-яА-Я]+");
         inputField = mock(TextInputLayout.class);
-        customerDAO = mock(CustomerDAO.class);
-        when(customerDAO.findByFullNumber(anyString())).thenReturn(Arrays.asList(new Customer(), new Customer()));
     }
 
     @Parameterized.Parameters
