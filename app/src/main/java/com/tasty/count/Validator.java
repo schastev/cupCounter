@@ -48,4 +48,13 @@ public class Validator {
         List<Customer> customers = customerDAO.findByFullNumber(phone);
         return !customers.isEmpty();
     }
+
+    public static boolean validateIntSetting(String newValue) {
+        try {
+            int number = Integer.parseInt(newValue);
+            return number >= 1;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

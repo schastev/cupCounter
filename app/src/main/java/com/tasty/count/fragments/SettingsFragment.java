@@ -13,6 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.tasty.count.R;
+import com.tasty.count.Validator;
 import com.tasty.count.activity.MainActivity;
 
 import java.util.Objects;
@@ -84,16 +85,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private boolean validateIntSetting(String newValue) {
-        try {
-            int number = Integer.parseInt(newValue);
-            if (number < 1) {
-                toast.show();
-                return false;
-            }
-            return true;
-        } catch (NumberFormatException e) {
+        boolean valid = Validator.validateIntSetting(newValue);
+        if (!valid) {
             toast.show();
-            return false;
         }
+        return valid;
     }
 }
