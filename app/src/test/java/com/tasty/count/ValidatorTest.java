@@ -55,7 +55,7 @@ public class ValidatorTest {
         }
 
         @Parameterized.Parameters
-        public static List<Object> phoneParameterd() {
+        public static List<Object> parameters() {
             return Arrays.asList(new Object[][]{
                     {"1234", true},
                     {"1111111111111111111", true},
@@ -96,7 +96,7 @@ public class ValidatorTest {
         }
 
         @Parameterized.Parameters
-        public static List<Object> nameParameters() {
+        public static List<Object> parameters() {
             return Arrays.asList(new Object[][]{
                     {"Jack", true},
                     {"Абс", true},
@@ -127,7 +127,7 @@ public class ValidatorTest {
         }
 
         @Parameterized.Parameters
-        public static List<Object> integerParameters() {
+        public static List<Object> parameters() {
             return Arrays.asList(new Object[][]{
                     {"1", true},
                     {"10", true},
