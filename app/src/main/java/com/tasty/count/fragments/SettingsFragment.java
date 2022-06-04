@@ -13,7 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.tasty.count.R;
-import com.tasty.count.Validator;
+import com.tasty.count.utils.Validator;
 import com.tasty.count.activity.MainActivity;
 
 import java.util.Objects;
@@ -70,7 +70,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     public void setNewPassword() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()));
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(requireActivity());
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(res.getString(R.string.placeholder_setting_admin_password), newAdminPassword);
         editor.apply();

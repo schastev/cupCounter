@@ -1,7 +1,7 @@
 package com.tasty.count;
 
 
-import static com.tasty.count.VisibilityChecker.isReturningClient;
+import static com.tasty.count.utils.VisibilityChecker.isReturningClient;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;

@@ -1,8 +1,9 @@
-package com.tasty.count;
+package com.tasty.count.utils;
 
 import android.content.res.Resources;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.tasty.count.R;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
 

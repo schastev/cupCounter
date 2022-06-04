@@ -6,14 +6,14 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.tasty.count.CustomerGenerator;
+import com.tasty.count.utils.CustomerGenerator;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @TypeConverters({LocalDateTypeConverter.class})
-public class Customer implements Serializable, Comparable {
+public class Customer implements Serializable, Comparable<Customer> {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
@@ -59,9 +59,9 @@ public class Customer implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        if (o.getClass().equals(Customer.class)) {
-            return this.name.compareTo(((Customer) o).getName());
+    public int compareTo(Customer customer) {
+        if (customer.getClass().equals(Customer.class)) {
+            return this.name.compareTo(customer.getName());
         }
         return 0;
     }

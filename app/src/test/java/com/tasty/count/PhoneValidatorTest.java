@@ -1,7 +1,7 @@
 package com.tasty.count;
 
 
-import static com.tasty.count.Validator.validatePhone;
+import static com.tasty.count.utils.Validator.validatePhone;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import android.content.res.Resources;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
 
 import org.junit.Before;

@@ -18,7 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.tasty.count.R;
-import com.tasty.count.VisibilityChecker;
+import com.tasty.count.utils.VisibilityChecker;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;

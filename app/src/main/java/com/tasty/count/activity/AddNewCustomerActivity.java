@@ -15,7 +15,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.tasty.count.R;
-import com.tasty.count.Validator;
+import com.tasty.count.utils.Validator;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;

@@ -14,6 +14,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.Customer;
 import com.tasty.count.database.CustomerDAO;
+import com.tasty.count.utils.CustomerGenerator;
 
 import org.junit.After;
 import org.junit.Before;

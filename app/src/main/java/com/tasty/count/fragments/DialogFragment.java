@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.tasty.count.R;
-import com.tasty.count.Validator;
+import com.tasty.count.utils.Validator;
 import com.tasty.count.activity.DisplayCustomerInfoActivity;
 import com.tasty.count.database.AppDatabase;
 import com.tasty.count.database.CustomerDAO;
@@ -52,17 +52,17 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> {
                     newPhoneNumber = String.valueOf(newPhoneField.getText());
                     if (!newPhoneNumber.matches(res.getString(R.string.placeholder_pattern_digits))) {
-                        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
+                        Toast.makeText(requireActivity().getApplicationContext(),
                                 res.getString(R.string.new_toast_phone_error),
                                 Toast.LENGTH_SHORT).show();
                     } else if (Validator.checkForRepeatedNumbers(newPhoneNumber, customerDAO)){
-                        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
+                        Toast.makeText(requireActivity().getApplicationContext(),
                                 res.getString(R.string.new_toast_already_registered),
                                 Toast.LENGTH_SHORT).show();
                     }
                     else {
                         dataPasser.onDataPass(newPhoneNumber);
-                        ((DisplayCustomerInfoActivity) Objects.requireNonNull(getActivity())).updatePhone();
+                        ((DisplayCustomerInfoActivity) requireActivity()).updatePhone();
                     }
                 })
                 .setNegativeButton(R.string.info_dialog_button_cancel, null);
@@ -76,7 +76,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private void showSoftKeyboard(View view) {
         if (view.requestFocus()) {
             InputMethodManager imm = (InputMethodManager)
-                    Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }
