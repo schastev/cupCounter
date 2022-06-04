@@ -34,7 +34,7 @@ public class SetPasswordFragment extends androidx.fragment.app.DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         res = getResources();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()));
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View dialogPopUp = inflater.inflate(R.layout.settings_password, null);
@@ -45,6 +45,7 @@ public class SetPasswordFragment extends androidx.fragment.app.DialogFragment {
         builder.setTitle(res.getString(R.string.settings_dialog_title_update_password))
                 .setView(dialogPopUp)
                 .setPositiveButton(R.string.info_dialog_button_save, (dialog, whichButton) -> {
+                    String toastTest;
                     if (currentPasswordField.getError() == null
                             && newPasswordField.getError() == null
                             && confirmationField.getError() == null) {
@@ -52,10 +53,11 @@ public class SetPasswordFragment extends androidx.fragment.app.DialogFragment {
                         Bundle result = new Bundle();
                         result.putString(res.getString(R.string.placeholder_new_password_bundle), newPassword);
                         getParentFragmentManager().setFragmentResult("requestKey", result);
-                        Toast.makeText(getContext(), res.getString(R.string.settings_toast_password_saved), Toast.LENGTH_SHORT).show();
+                        toastTest = res.getString(R.string.settings_toast_password_saved);
                     } else {
-                        Toast.makeText(getContext(), res.getString(R.string.settings_toast_password_not_saved), Toast.LENGTH_SHORT).show();
+                        toastTest = res.getString(R.string.settings_toast_password_not_saved);
                     }
+                    Toast.makeText(getContext(), toastTest, Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton(R.string.info_dialog_button_cancel, null);
         AlertDialog dialog = builder.create();
@@ -130,7 +132,7 @@ public class SetPasswordFragment extends androidx.fragment.app.DialogFragment {
     private void showSoftKeyboard(View view) {
         if (view.requestFocus()) {
             InputMethodManager imm = (InputMethodManager)
-                    Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }

@@ -16,7 +16,6 @@ import com.tasty.count.R;
 import com.tasty.count.utils.Validator;
 import com.tasty.count.activity.MainActivity;
 
-import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     Resources res;

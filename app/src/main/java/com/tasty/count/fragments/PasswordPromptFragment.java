@@ -50,24 +50,24 @@ public class PasswordPromptFragment extends androidx.fragment.app.DialogFragment
     private void showSoftKeyboard(View view) {
         if (view.requestFocus()) {
             InputMethodManager imm = (InputMethodManager)
-                    Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }
 
     private void setUpAdditionalResources() {
         res = getResources();
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()));
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
     }
 
     private void checkPassword(EditText passwordField) {
         String password = String.valueOf(passwordField.getText());
         if (!password.equals(sharedPreferences.getString(res.getString(R.string.placeholder_setting_admin_password), "coffee"))) {
-            Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(),
+            Toast.makeText(requireActivity().getApplicationContext(),
                     res.getString(R.string.toolbar_toast_wrong_pw),
                     Toast.LENGTH_SHORT).show();
         } else {
-            Activity activity = Objects.requireNonNull(getActivity());
+            Activity activity = requireActivity();
             Intent intent = new Intent(activity, SettingsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             activity.startActivity(intent);
