@@ -4,13 +4,15 @@ plugins {
 
 android {
     defaultConfig{
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation":"$projectDir/schemas".toString()]
             }
         }
+    }
+    testOptions {
+        animationsDisabled = true
     }
     compileSdk 31
 
