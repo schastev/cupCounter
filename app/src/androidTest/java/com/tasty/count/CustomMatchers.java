@@ -1,6 +1,12 @@
 package com.tasty.count;
 
 import static androidx.test.espresso.core.internal.deps.guava.base.Preconditions.checkNotNull;
+import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.endsWith;
 
 import android.view.View;
 
@@ -60,5 +66,11 @@ public final class CustomMatchers {
                 return itemMatcher.matches(viewHolder.itemView);
             }
         };
+    }
+
+    public static Matcher<View> isEditTextInLayout(int parentViewId) {
+        return allOf(
+                isDescendantOfA(withId(parentViewId)),
+                withClassName(endsWith("EditText")));
     }
 }
