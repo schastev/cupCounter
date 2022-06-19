@@ -62,4 +62,11 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
+
+    def allure_version = "2.4.0"
+    testImplementation "io.qameta.allure:allure-kotlin-model:$allure_version"
+    testImplementation "io.qameta.allure:allure-kotlin-commons:$allure_version"
+    testImplementation "io.qameta.allure:allure-kotlin-junit4:$allure_version"
+    testImplementation 'io.qameta.allure:allure-junit4:2.18.1'
+
 }

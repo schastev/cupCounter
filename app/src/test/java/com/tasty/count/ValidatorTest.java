@@ -27,11 +27,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.qameta.allure.kotlin.junit4.AllureParametrizedRunner;
+
 @RunWith(Enclosed.class)
 public class ValidatorTest {
 
-    @RunWith(Parameterized.class)
-    public static class PhoneValidatorTest {
+    @RunWith(AllureParametrizedRunner.class)
+    public static class PhoneNumber {
         String input;
         boolean expectedResult;
         @Rule
@@ -40,7 +42,7 @@ public class ValidatorTest {
         private TextInputLayout inputField;
         private CustomerDAO customerDAO;
 
-        public PhoneValidatorTest(String input, boolean expectedResult) {
+        public PhoneNumber(String input, boolean expectedResult) {
             this.input = input;
             this.expectedResult = expectedResult;
         }
@@ -73,8 +75,8 @@ public class ValidatorTest {
         }
     }
 
-    @RunWith(Parameterized.class)
-    public static class NameValidatorTest {
+    @RunWith(AllureParametrizedRunner.class)
+    public static class Name {
         String input;
         boolean expectedResult;
         @Rule
@@ -82,7 +84,7 @@ public class ValidatorTest {
         private Resources res;
         private TextInputLayout inputField;
 
-        public NameValidatorTest(String input, boolean expectedResult) {
+        public Name(String input, boolean expectedResult) {
             this.input = input;
             this.expectedResult = expectedResult;
         }
@@ -114,14 +116,14 @@ public class ValidatorTest {
         }
     }
 
-    @RunWith(Parameterized.class)
-    public static class SettingsValidatorTest {
+    @RunWith(AllureParametrizedRunner.class)
+    public static class Settings {
         String input;
         boolean expectedResult;
         @Rule
         public final MockitoRule rule = MockitoJUnit.rule();
 
-        public SettingsValidatorTest(String input, boolean expectedResult) {
+        public Settings(String input, boolean expectedResult) {
             this.input = input;
             this.expectedResult = expectedResult;
         }

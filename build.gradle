@@ -16,3 +16,13 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task generateAllure(type: Exec) {
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine 'cmd', '/c', 'allure.bat', 'generate', '-c', "$projectDir/build/allure-results"
+    } else {
+        commandLine 'bash', '-c', 'allure', 'generate', '-c',"$projectDir/build/allure-results"
+    }
+}
+
+tasks.withType(Test)*.finalizedBy generateAllure
