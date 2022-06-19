@@ -1,3 +1,4 @@
+![Build status](https://github.com/schastev/cupCounter/actions/workflows/gradle.yml/badge.svg)
 # TastyCount
 
 #### Video Demo:  https://youtu.be/ZTNs0kdhmqg
