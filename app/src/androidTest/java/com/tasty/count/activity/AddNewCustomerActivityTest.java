@@ -3,32 +3,25 @@ package com.tasty.count.activity;
 
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static com.tasty.count.CustomMatchers.isEditTextInLayout;
-import static com.tasty.count.Utils.checkErrorMessage;
-import static com.tasty.count.Utils.checkVisibility;
-import static com.tasty.count.Utils.clickButton;
-import static com.tasty.count.Utils.hideKeyboard;
-import static com.tasty.count.Utils.inputText;
 
-import android.content.res.Resources;
 import android.view.View;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.tasty.count.R;
+import com.tasty.count.test.BaseTest;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matcher;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AddNewCustomerActivityTest {
+public class AddNewCustomerActivityTest extends BaseTest {
 
     @Rule
     public ActivityScenarioRule<AddNewCustomerActivity> mActivityScenarioRule =
@@ -39,12 +32,6 @@ public class AddNewCustomerActivityTest {
     private Matcher<View> nameInput = isEditTextInLayout(R.id.new_input_name);
     private Matcher<View> cupSwitch = withId(R.id.new_switch_add_cup);
     private Matcher<View> addButton = withId(R.id.new_button_add);
-    private Resources res;
-
-    @Before
-    public void setup() {
-        res = InstrumentationRegistry.getInstrumentation().getTargetContext().getResources();
-    }
 
     @Test
     public void activityLoads() {
