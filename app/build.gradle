@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    defaultConfig{
+    defaultConfig {
         vectorDrawables.useSupportLibrary = true
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation":"$projectDir/schemas".toString()]
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
     }
@@ -52,7 +52,7 @@ dependencies {
 
     def espressoVersion = "3.4.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation"androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
     def androidXTestVersion = "1.4.1-alpha07"
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
