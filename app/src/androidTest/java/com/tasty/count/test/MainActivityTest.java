@@ -1,4 +1,4 @@
-package com.tasty.count.activity;
+package com.tasty.count.test;
 
 
 import static androidx.test.espresso.Espresso.onView;

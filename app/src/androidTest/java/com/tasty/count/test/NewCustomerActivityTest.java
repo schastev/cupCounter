@@ -1,4 +1,4 @@
-package com.tasty.count.activity;
+package com.tasty.count.test;
 
 
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import com.tasty.count.R;
+import com.tasty.count.activity.AddNewCustomerActivity;
 import com.tasty.count.page.NewCustomerPage;
 import com.tasty.count.test.BaseTest;
 
@@ -18,7 +19,7 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AddNewCustomerActivityTest extends BaseTest {
+public class NewCustomerActivityTest extends BaseTest {
     NewCustomerPage newCustomerPage = new NewCustomerPage();
 
     @Rule

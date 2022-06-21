@@ -1,4 +1,4 @@
-package com.tasty.count;
+package com.tasty.count.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
