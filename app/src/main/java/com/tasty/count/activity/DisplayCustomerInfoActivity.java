@@ -200,9 +200,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
 
     public void updatePhone() {
         if (!newPhoneNumber.equals(customer.getPhoneNumber())) {
-            customer.setPhoneNumber(newPhoneNumber);
             Toast phoneUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_phone_updated), Toast.LENGTH_SHORT);
-            customer.setLastVisit(LocalDate.now());
+            customer.setPhoneNumber(newPhoneNumber).setLastVisit(LocalDate.now());
             customerDAO.update(customer);
             phoneUpdated.show();
             InfoDisplayFragment fr = InfoDisplayFragment.newInstance(res.getString(R.string.info_hint_phone), customer.getPhoneNumber());
@@ -216,9 +215,8 @@ public class DisplayCustomerInfoActivity extends AppCompatActivity implements Di
     public void updateCustomer(View view) {
         Toast cupsUpdated = null;
         if (newCups != customer.getCups()) {
-            customer.setCups(newCups);
             cupsUpdated = Toast.makeText(getApplicationContext(), res.getString(R.string.info_toast_cups_updated), Toast.LENGTH_SHORT);
-            customer.setLastVisit(LocalDate.now());
+            customer.setCups(newCups).setLastVisit(LocalDate.now());
         }
         customerDAO.update(customer);
         Intent intent = new Intent(this, MainActivity.class);

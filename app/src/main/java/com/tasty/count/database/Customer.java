@@ -94,16 +94,19 @@ public class Customer implements Serializable, Comparable<Customer> {
         this.id = id;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public Customer setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        return this;
     }
 
-    public void setLastVisit(LocalDate lastVisit) {
+    public Customer setLastVisit(LocalDate lastVisit) {
         this.lastVisit = lastVisit;
+        return this;
     }
 
-    public void setCups(int cups) {
+    public Customer setCups(int cups) {
         this.cups = cups;
+        return this;
     }
 
 }

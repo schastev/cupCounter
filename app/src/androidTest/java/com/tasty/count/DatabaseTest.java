@@ -127,8 +127,7 @@ public class DatabaseTest {
     @Test
     public void updateCupsTest() {
         int random = (int) Math.floor(Math.random()*(allCustomers.size()));
-        Customer expected = allCustomers.get(random);
-        expected.setCups(4);
+        Customer expected = allCustomers.get(random).setCups(4);
         customerDAO.update(expected);
         String phoneNumber = expected.getPhoneNumber();
         List<Customer> actual = new ArrayList<>(customerDAO.findByShortNumber("%" + phoneNumber.substring(phoneNumber.length() - 4)));
