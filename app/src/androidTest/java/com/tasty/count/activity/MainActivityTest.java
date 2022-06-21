@@ -6,14 +6,10 @@ import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
-import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static com.tasty.count.CustomMatchers.atPosition;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.not;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -22,6 +18,7 @@ import androidx.test.filters.LargeTest;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tasty.count.R;
 import com.tasty.count.database.Customer;
+import com.tasty.count.page.MainPage;
 import com.tasty.count.test.BaseTest;
 import com.tasty.count.utils.CustomerGenerator;
 
@@ -38,6 +35,7 @@ import java.util.stream.Collectors;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest extends BaseTest {
+    MainPage mainPage = new MainPage();
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
@@ -45,12 +43,14 @@ public class MainActivityTest extends BaseTest {
 
     @Test
     public void mainActivityLoads() {
-        checkVisibility(withId(R.id.my_toolbar));
-        checkVisibility(withId(R.id.main_field_search));
+        checkVisibility(mainPage.toolbar);
+        checkVisibility(mainPage.searchBar);
+        assertToolbarName(mainPage.toolbarText, R.string.main_title);
     }
 
     /**
      * Sets up a specified number of customers, whose numbers end with the same digits
+     *
      * @param search the digits at the end of the phone numbers that must be the same
      * @param number the number of customers to set up
      * @return list of set-up customers
@@ -90,8 +90,8 @@ public class MainActivityTest extends BaseTest {
         onView(instanceOf(TextInputEditText.class)).perform(typeText(search)).perform(pressImeActionButton());
         List<Customer> actual = findSortedCustomers(search);
         assertThat(actual.size(), equalTo((0)));
-        onView(withId(R.id.main_list_results)).check(matches(not(isDisplayed())));
-        checkErrorMessage(withId(R.id.main_field_search), res.getString(R.string.main_no_result));
+        assertNotDisplayed(mainPage.results);
+        checkErrorMessage(mainPage.searchBar, R.string.main_no_result);
     }
 
     @Test
@@ -116,13 +116,6 @@ public class MainActivityTest extends BaseTest {
         onView(instanceOf(TextInputEditText.class)).perform(typeText(search)).perform(pressImeActionButton());
         List<Customer> actual = findSortedCustomers(search);
         assertThat(actual, equalTo(expected));
-        int resultSize = actual.size();
-        for (int i = 0; i < resultSize; i++) {
-            Customer customer = actual.get(i);
-            onView(withId(R.id.main_list_results))
-                    .check(matches(atPosition(i, hasDescendant(withText(customer.getName())))));
-            onView(withId(R.id.main_list_results))
-                    .check(matches(atPosition(i, hasDescendant(withText(customer.getPhoneNumber())))));
-        }
+        assertThatUiListIsEqualToDatabase(actual, mainPage.results);
     }
 }
