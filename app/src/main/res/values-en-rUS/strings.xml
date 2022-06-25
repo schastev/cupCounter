@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="main_input_phone_search_bar">Input last digits of phone number</string>
-    <string name="main_button_add_customer">New client</string>
+    <string name="main_button_add_customer">New customer</string>
     <string name="main_button_settings">Preferences</string>
     <string name="new_button_add">Add Customer</string>
     <string name="new_toast_name_error">Only Russian or English symbols are allowed</string>
@@ -12,7 +12,7 @@
     <string name="info_button_delete_customer">Delete Customer</string>
     <string name="info_button_revert_cups">Revert changes</string>
     <string name="info_button_edit_phone">Edit phone</string>
-    <string name="info_alert_lost">Returning client</string>
+    <string name="info_alert_lost">Returning customer</string>
     <string name="info_alert_free_cups">Free drinks available: %1$d</string>
     <string name="info_toast_phone_updated">Phone number updated successfully</string>
     <string name="info_toast_cups_updated">Drink information updated successfully</string>
@@ -29,7 +29,7 @@
     <string name="settings_line_delete_customer">Delete customer</string>
     <string name="settings_title_behavior">Behavior</string>
     <string name="settings_line_free_cups">How many drinks a customer must purchase to be eligible for a free drink</string>
-    <string name="setting_line_returning_customer">How many days must pass for a \"Returning client\" alert to appear</string>
+    <string name="setting_line_returning_customer">How many days must pass for a \"Returning customer\" alert to appear</string>
     <string name="placeholder_locale">en</string>
     <string name="main_title">Find customer</string>
     <string name="info_title">Customer card</string>
