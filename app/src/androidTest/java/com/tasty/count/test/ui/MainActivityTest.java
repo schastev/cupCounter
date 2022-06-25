@@ -17,9 +17,9 @@ import androidx.test.filters.LargeTest;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.tasty.count.R;
+import com.tasty.count.activity.MainActivity;
 import com.tasty.count.database.Customer;
 import com.tasty.count.page.MainPage;
-import com.tasty.count.test.BaseTest;
 import com.tasty.count.utils.CustomerGenerator;
 
 import org.apache.commons.lang3.RandomStringUtils;
