@@ -26,3 +26,16 @@ task generateAllure(type: Exec) {
 }
 
 tasks.withType(Test)*.finalizedBy generateAllure
+
+tasks.withType(Test) {
+    testLogging {
+        events "passed", "skipped", "failed" //, "standardOut", "standardError"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+
+        showStandardStreams = false
+    }
+}
