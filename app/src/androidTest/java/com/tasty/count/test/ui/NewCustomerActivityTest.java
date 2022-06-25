@@ -1,4 +1,4 @@
-package com.tasty.count.test;
+package com.tasty.count.test.ui;
 
 
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -10,7 +10,6 @@ import androidx.test.filters.LargeTest;
 import com.tasty.count.R;
 import com.tasty.count.activity.AddNewCustomerActivity;
 import com.tasty.count.page.NewCustomerPage;
-import com.tasty.count.test.BaseTest;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Rule;
